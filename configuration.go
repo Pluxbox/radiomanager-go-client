@@ -40,7 +40,7 @@ type Configuration struct {
 
 func NewConfiguration() *Configuration {
 	cfg := &Configuration{
-		BasePath:      "http://radiomanager.pb/api/v2",
+		BasePath:      "https://staging.radiomanager.pluxbox.com/api/v2",
 		DefaultHeader: make(map[string]string),
 		UserAgent:     "Swagger-Codegen/1.0.0/go",
 	}

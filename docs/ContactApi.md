@@ -12,18 +12,17 @@ Method | HTTP request | Description
 
 
 # **CreateContact**
-> PostSuccess CreateContact($data)
-
+> PostSuccess CreateContact(ctx, data)
 Create contact.
 
 Create contact.
 
-
-### Parameters
+### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **data** | [**ContactDataInput**](ContactDataInput.md)| Data **(Required)** | 
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **data** | [**ContactDataInput**](ContactDataInput.md)| Data **(Required)** | 
 
 ### Return type
 
@@ -41,18 +40,17 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **DeleteContactById**
-> Success DeleteContactById($id)
-
+> Success DeleteContactById(ctx, id)
 Delete contact by id
 
 Delete contact by id
 
-
-### Parameters
+### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int64**| ID of Contact **(Required)** | 
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **id** | **int64**| ID of Contact **(Required)** | 
 
 ### Return type
 
@@ -70,19 +68,26 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetContactById**
-> ContactResult GetContactById($id, $externalStationId)
-
+> ContactResult GetContactById(ctx, id, optional)
 Get contact by id
 
 Get contact by id
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **id** | **int64**| ID of Contact **(Required)** | 
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int64**| ID of Contact **(Required)** | 
- **externalStationId** | **int64**| Query on a different (content providing) station *(Optional)* | [optional] 
+ **externalStationId** | **int64**| Query on a different (content providing) station *(Optional)* | 
 
 ### Return type
 
@@ -100,22 +105,28 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ListContacts**
-> ContactResults ListContacts($page, $modelTypeId, $tagId, $itemId, $externalStationId)
-
+> ContactResults ListContacts(ctx, optional)
 Get all contacts.
 
 List all contacts.
 
-
-### Parameters
+### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **int64**| Current page *(Optional)* | [optional] [default to 1]
- **modelTypeId** | **int64**| Search on ModelType ID *(Optional)* | [optional] 
- **tagId** | **int64**| Search on Tag ID *(Optional)* &#x60;(Relation)&#x60; | [optional] 
- **itemId** | **int64**| Search on Item ID *(Optional)* &#x60;(Relation)&#x60; | [optional] 
- **externalStationId** | **int64**| Query on a different (content providing) station *(Optional)* | [optional] 
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **page** | **int64**| Current page *(Optional)* | [default to 1]
+ **modelTypeId** | **int64**| Search on ModelType ID *(Optional)* | 
+ **tagId** | **int64**| Search on Tag ID *(Optional)* &#x60;(Relation)&#x60; | 
+ **itemId** | **int64**| Search on Item ID *(Optional)* &#x60;(Relation)&#x60; | 
+ **externalStationId** | **int64**| Query on a different (content providing) station *(Optional)* | 
 
 ### Return type
 
@@ -133,19 +144,26 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **UpdateContactByID**
-> Success UpdateContactByID($id, $data)
-
+> Success UpdateContactByID(ctx, id, optional)
 Update contact by id
 
 Update contact by id
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **id** | **int64**| ID of Contact **(Required)** | 
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int64**| ID of Contact **(Required)** | 
- **data** | [**ContactDataInput**](ContactDataInput.md)| Data *(Optional)* | [optional] 
+ **data** | [**ContactDataInput**](ContactDataInput.md)| Data *(Optional)* | 
 
 ### Return type
 

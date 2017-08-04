@@ -11,19 +11,26 @@ Method | HTTP request | Description
 
 
 # **GetBlockById**
-> BlockResult GetBlockById($id, $externalStationId)
-
+> BlockResult GetBlockById(ctx, id, optional)
 Get block by id
 
 Get block by id
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **id** | **int64**| ID of Block **(Required)** | 
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int64**| ID of Block **(Required)** | 
- **externalStationId** | **int64**| Query on a different (content providing) station *(Optional)* | [optional] 
+ **externalStationId** | **int64**| Query on a different (content providing) station *(Optional)* | 
 
 ### Return type
 
@@ -41,14 +48,12 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetCurrentBlock**
-> BlockResult GetCurrentBlock()
-
+> BlockResult GetCurrentBlock(ctx, )
 Get current Block
 
 Get current Block
 
-
-### Parameters
+### Required Parameters
 This endpoint does not need any parameter.
 
 ### Return type
@@ -67,14 +72,12 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetNextBlock**
-> BlockResult GetNextBlock()
-
+> BlockResult GetNextBlock(ctx, )
 Get next Block
 
 Get next Block
 
-
-### Parameters
+### Required Parameters
 This endpoint does not need any parameter.
 
 ### Return type
@@ -93,24 +96,30 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ListBlocks**
-> BlockResults ListBlocks($page, $startMin, $startMax, $broadcastId, $programId, $itemId, $externalStationId)
-
+> BlockResults ListBlocks(ctx, optional)
 Get a list of all blocks currently in your station.
 
 Get a list of all blocks currently in your station. This feature supports pagination and will give a maximum of 50 blocks back.
 
-
-### Parameters
+### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **int64**| Current page *(Optional)* | [optional] [default to 1]
- **startMin** | **time.Time**| Minimum start date *(Optional)* | [optional] 
- **startMax** | **time.Time**| Maximum start date *(Optional)* | [optional] 
- **broadcastId** | **int64**| Search on Broadcast ID *(Optional)* &#x60;(Relation)&#x60; | [optional] 
- **programId** | **int64**| Search on Program ID *(Optional)* &#x60;(Relation)&#x60; | [optional] 
- **itemId** | **int64**| Search on Item ID *(Optional)* &#x60;(Relation)&#x60; | [optional] 
- **externalStationId** | **int64**| Query on a different (content providing) station *(Optional)* | [optional] 
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **page** | **int64**| Current page *(Optional)* | [default to 1]
+ **startMin** | **time.Time**| Minimum start date *(Optional)* | 
+ **startMax** | **time.Time**| Maximum start date *(Optional)* | 
+ **broadcastId** | **int64**| Search on Broadcast ID *(Optional)* &#x60;(Relation)&#x60; | 
+ **programId** | **int64**| Search on Program ID *(Optional)* &#x60;(Relation)&#x60; | 
+ **itemId** | **int64**| Search on Item ID *(Optional)* &#x60;(Relation)&#x60; | 
+ **externalStationId** | **int64**| Query on a different (content providing) station *(Optional)* | 
 
 ### Return type
 

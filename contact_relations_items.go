@@ -18,5 +18,5 @@ type ContactRelationsItems struct {
 
 	Operation string `json:"operation,omitempty"`
 
-	Params ContactRelationsTagsParams `json:"params,omitempty"`
+	Params *ContactRelationsTagsParams `json:"params,omitempty"`
 }

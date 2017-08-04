@@ -18,5 +18,5 @@ type CampaignRelationsItems struct {
 
 	Operation string `json:"operation,omitempty"`
 
-	Params CampaignRelationsItemsParams `json:"params,omitempty"`
+	Params *CampaignRelationsItemsParams `json:"params,omitempty"`
 }

@@ -18,5 +18,5 @@ type PresenterRelationsBroadcasts struct {
 
 	Operation string `json:"operation,omitempty"`
 
-	Params PresenterRelationsProgramsParams `json:"params,omitempty"`
+	Params *PresenterRelationsProgramsParams `json:"params,omitempty"`
 }

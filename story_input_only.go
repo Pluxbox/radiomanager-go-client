@@ -10,9 +10,7 @@
 
 package radiomanagerclient
 
-type GenreRelations struct {
+type StoryInputOnly struct {
 
-	Broadcasts *GenreRelationsBroadcasts `json:"broadcasts,omitempty"`
-
-	Programs *GenreRelationsPrograms `json:"programs,omitempty"`
+	Tags []int32 `json:"tags,omitempty"`
 }

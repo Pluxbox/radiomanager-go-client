@@ -22,7 +22,7 @@ type Broadcast struct {
 
 	StationId int64 `json:"station_id,omitempty"`
 
-	FieldValues BroadcastFieldValues `json:"field_values,omitempty"`
+	FieldValues *BroadcastFieldValues `json:"field_values,omitempty"`
 
 	Title string `json:"title,omitempty"`
 
@@ -56,7 +56,7 @@ type Broadcast struct {
 
 	RepetitionStart time.Time `json:"repetition_start,omitempty"`
 
-	RepetitionDays []bool `json:"repetition_days,omitempty"`
+	RepetitionDays string `json:"repetition_days,omitempty"`
 
 	PtyCodeId int64 `json:"pty_code_id,omitempty"`
 }

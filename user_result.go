@@ -32,7 +32,7 @@ type UserResult struct {
 
 	Active bool `json:"active,omitempty"`
 
-	Settings UserResultSettings `json:"settings,omitempty"`
+	Settings *UserResultSettings `json:"settings,omitempty"`
 
 	Language bool `json:"language,omitempty"`
 

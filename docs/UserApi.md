@@ -11,18 +11,17 @@ Method | HTTP request | Description
 
 
 # **DeleteUserById**
-> Success DeleteUserById($id)
-
+> Success DeleteUserById(ctx, id)
 Remove user from station by Id
 
 Remove user from station by Id
 
-
-### Parameters
+### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int64**| id of User | 
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **id** | **int64**| id of User | 
 
 ### Return type
 
@@ -40,18 +39,17 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetUserById**
-> UserResult GetUserById($id)
-
+> UserResult GetUserById(ctx, id)
 Get user by id
 
 Get user by id
 
-
-### Parameters
+### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int64**| id of User | 
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **id** | **int64**| id of User | 
 
 ### Return type
 
@@ -69,18 +67,17 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **InviteUserByMail**
-> InviteUserSuccess InviteUserByMail($data)
-
+> InviteUserSuccess InviteUserByMail(ctx, data)
 Invite user by mail
 
 Invite user by mail
 
-
-### Parameters
+### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **data** | [**InviteUserData**](InviteUserData.md)| Data **(Required)** | 
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **data** | [**InviteUserData**](InviteUserData.md)| Data **(Required)** | 
 
 ### Return type
 
@@ -98,19 +95,25 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ListUsers**
-> UserResults ListUsers($page, $roleId)
-
+> UserResults ListUsers(ctx, optional)
 Get all users.
 
 List all users.
 
-
-### Parameters
+### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **int64**| Current page *(Optional)* | [optional] [default to 1]
- **roleId** | **int64**| Search on Role ID *(Optional)* | [optional] 
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **page** | **int64**| Current page *(Optional)* | [default to 1]
+ **roleId** | **int64**| Search on Role ID *(Optional)* | 
 
 ### Return type
 

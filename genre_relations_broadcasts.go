@@ -18,5 +18,5 @@ type GenreRelationsBroadcasts struct {
 
 	Operation string `json:"operation,omitempty"`
 
-	Params GenreRelationsBroadcastsParams `json:"params,omitempty"`
+	Params *GenreRelationsBroadcastsParams `json:"params,omitempty"`
 }

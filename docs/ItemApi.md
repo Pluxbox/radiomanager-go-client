@@ -16,18 +16,24 @@ Method | HTTP request | Description
 
 
 # **CreateItem**
-> PostSuccess CreateItem($data)
-
+> PostSuccess CreateItem(ctx, optional)
 Create an new item.
 
 Create item.
 
-
-### Parameters
+### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **data** | [**ItemDataInput**](ItemDataInput.md)| Data *(Optional)* | [optional] 
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **data** | [**ItemDataInput**](ItemDataInput.md)| Data *(Optional)* | 
 
 ### Return type
 
@@ -45,18 +51,24 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **CurrentItemPostStructure**
-> Success CurrentItemPostStructure($data)
-
+> Success CurrentItemPostStructure(ctx, optional)
 Post a current playing item, keep structure
 
 Post a current playing item, keep structure
 
-
-### Parameters
+### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **data** | [**ImportItem**](ImportItem.md)| Data *(Optional)* | [optional] 
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **data** | [**ImportItem**](ImportItem.md)| Data *(Optional)* | 
 
 ### Return type
 
@@ -74,18 +86,24 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **CurrentItemPostTiming**
-> Success CurrentItemPostTiming($data)
-
+> Success CurrentItemPostTiming(ctx, optional)
 Post a current playing item
 
 Post a current playing item
 
-
-### Parameters
+### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **data** | [**ImportItem**](ImportItem.md)| Data *(Optional)* | [optional] 
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **data** | [**ImportItem**](ImportItem.md)| Data *(Optional)* | 
 
 ### Return type
 
@@ -103,18 +121,17 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **DeleteItemById**
-> Success DeleteItemById($id)
-
+> Success DeleteItemById(ctx, id)
 Delete item by ID.
 
 Delete item by id.
 
-
-### Parameters
+### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int64**| ID of Item **(Required)** | 
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **id** | **int64**| ID of Item **(Required)** | 
 
 ### Return type
 
@@ -132,19 +149,26 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetItemById**
-> ItemResult GetItemById($id, $externalStationId)
-
+> ItemResult GetItemById(ctx, id, optional)
 Get extended item details by ID.
 
 Read item by id.
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **id** | **int64**| ID of Item **(Required)** | 
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int64**| ID of Item **(Required)** | 
- **externalStationId** | **int64**| Query on a different (content providing) station *(Optional)* | [optional] 
+ **externalStationId** | **int64**| Query on a different (content providing) station *(Optional)* | 
 
 ### Return type
 
@@ -162,36 +186,42 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ListItems**
-> ItemResults ListItems($page, $orderBy, $orderDirection, $startMin, $startMax, $durationMin, $durationMax, $status, $modelTypeId, $programDraftId, $userDraftId, $stationDraftId, $blockId, $broadcastId, $campaignId, $contactId, $programId, $tagId, $externalStationId)
-
+> ItemResults ListItems(ctx, optional)
 Get a list of all the items currently in your station.
 
 Get a list of all the items currently in your station. This feature supports pagination and will give a maximum results of 50 items back.
 
-
-### Parameters
+### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **int64**| Current page *(Optional)* | [optional] 
- **orderBy** | **string**| Field to order the results *(Optional)* | [optional] 
- **orderDirection** | **string**| Direction of ordering *(Optional)* | [optional] 
- **startMin** | **time.Time**| Minimum start date *(Optional)* | [optional] 
- **startMax** | **time.Time**| Maximum start date *(Optional)* | [optional] 
- **durationMin** | **int32**| Minimum duration (seconds) *(Optional)* | [optional] 
- **durationMax** | **int32**| Maximum duration (seconds) *(Optional)* | [optional] 
- **status** | **string**| Play Status of item *(Optional)* | [optional] 
- **modelTypeId** | **int64**| Search on ModelType ID *(Optional)* | [optional] 
- **programDraftId** | **int64**| Search on Program Draft ID *(Optional)* | [optional] 
- **userDraftId** | **int64**| Search on User Draft ID *(Optional)* | [optional] 
- **stationDraftId** | **int64**| Search on Station Draft ID *(Optional)* | [optional] 
- **blockId** | **int64**| Search on Block ID *(Optional)* &#x60;(Relation)&#x60; | [optional] 
- **broadcastId** | **int64**| Search on Broadcast ID *(Optional)* &#x60;(Relation)&#x60; | [optional] 
- **campaignId** | **int64**| Search on Campaign ID *(Optional)* &#x60;(Relation)&#x60; | [optional] 
- **contactId** | **int64**| Search on Contact ID *(Optional)* &#x60;(Relation)&#x60; | [optional] 
- **programId** | **int64**| Search on Program ID *(Optional)* &#x60;(Relation)&#x60; | [optional] 
- **tagId** | **int64**| Search on Tag ID *(Optional)* &#x60;(Relation)&#x60; | [optional] 
- **externalStationId** | **int64**| Query on a different (content providing) station *(Optional)* | [optional] 
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **page** | **int64**| Current page *(Optional)* | 
+ **orderBy** | **string**| Field to order the results *(Optional)* | 
+ **orderDirection** | **string**| Direction of ordering *(Optional)* | 
+ **startMin** | **time.Time**| Minimum start date *(Optional)* | 
+ **startMax** | **time.Time**| Maximum start date *(Optional)* | 
+ **durationMin** | **int32**| Minimum duration (seconds) *(Optional)* | 
+ **durationMax** | **int32**| Maximum duration (seconds) *(Optional)* | 
+ **status** | **string**| Play Status of item *(Optional)* | 
+ **modelTypeId** | **int64**| Search on ModelType ID *(Optional)* | 
+ **programDraftId** | **int64**| Search on Program Draft ID *(Optional)* | 
+ **userDraftId** | **int64**| Search on User Draft ID *(Optional)* | 
+ **stationDraftId** | **int64**| Search on Station Draft ID *(Optional)* | 
+ **blockId** | **int64**| Search on Block ID *(Optional)* &#x60;(Relation)&#x60; | 
+ **broadcastId** | **int64**| Search on Broadcast ID *(Optional)* &#x60;(Relation)&#x60; | 
+ **campaignId** | **int64**| Search on Campaign ID *(Optional)* &#x60;(Relation)&#x60; | 
+ **contactId** | **int64**| Search on Contact ID *(Optional)* &#x60;(Relation)&#x60; | 
+ **programId** | **int64**| Search on Program ID *(Optional)* &#x60;(Relation)&#x60; | 
+ **tagId** | **int64**| Search on Tag ID *(Optional)* &#x60;(Relation)&#x60; | 
+ **externalStationId** | **int64**| Query on a different (content providing) station *(Optional)* | 
 
 ### Return type
 
@@ -209,18 +239,24 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **PlaylistPostStructure**
-> InlineResponse202 PlaylistPostStructure($data)
-
+> InlineResponse202 PlaylistPostStructure(ctx, optional)
 Post a playlist, keep current structure
 
 Post a playlist, keep current structure
 
-
-### Parameters
+### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **data** | [**Data1**](Data1.md)| Data *(Optional)* | [optional] 
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **data** | [**Data1**](Data1.md)| Data *(Optional)* | 
 
 ### Return type
 
@@ -238,18 +274,24 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **PlaylistPostTiming**
-> InlineResponse202 PlaylistPostTiming($data)
-
+> InlineResponse202 PlaylistPostTiming(ctx, optional)
 Post a playlist
 
 Post a playlist
 
-
-### Parameters
+### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **data** | [**Data**](Data.md)| Data *(Optional)* | [optional] 
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **data** | [**Data**](Data.md)| Data *(Optional)* | 
 
 ### Return type
 
@@ -267,19 +309,26 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **UpdateItemById**
-> Success UpdateItemById($id, $data)
-
+> Success UpdateItemById(ctx, id, optional)
 Update extended item details by ID.
 
 Update item by id.
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **id** | **int64**| ID of Item **(Required)** | 
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int64**| ID of Item **(Required)** | 
- **data** | [**Item**](Item.md)| Data *(Optional)* | [optional] 
+ **data** | [**Item**](Item.md)| Data *(Optional)* | 
 
 ### Return type
 

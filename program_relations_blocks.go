@@ -18,5 +18,5 @@ type ProgramRelationsBlocks struct {
 
 	Operation string `json:"operation,omitempty"`
 
-	Params ProgramRelationsItemsParams `json:"params,omitempty"`
+	Params *ProgramRelationsItemsParams `json:"params,omitempty"`
 }

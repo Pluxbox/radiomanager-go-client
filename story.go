@@ -17,7 +17,7 @@ type Story struct {
 
 	Recommended bool `json:"recommended,omitempty"`
 
-	FieldValues interface{} `json:"field_values,omitempty"`
+	FieldValues *interface{} `json:"field_values,omitempty"`
 
 	Name string `json:"name"`
 

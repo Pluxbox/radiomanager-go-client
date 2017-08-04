@@ -12,18 +12,17 @@ Method | HTTP request | Description
 
 
 # **CreatePresenter**
-> PostSuccess CreatePresenter($data)
-
+> PostSuccess CreatePresenter(ctx, data)
 Create presenter.
 
 Create presenter.
 
-
-### Parameters
+### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **data** | [**PresenterDataInput**](PresenterDataInput.md)| Data **(Required)** | 
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **data** | [**PresenterDataInput**](PresenterDataInput.md)| Data **(Required)** | 
 
 ### Return type
 
@@ -41,18 +40,17 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **DeletePresenterById**
-> Success DeletePresenterById($id)
-
+> Success DeletePresenterById(ctx, id)
 Delete presenter by id
 
 Delete presenter by id
 
-
-### Parameters
+### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int64**| id of presenter | 
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **id** | **int64**| id of presenter | 
 
 ### Return type
 
@@ -70,19 +68,26 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetPresenterById**
-> PresenterResult GetPresenterById($id, $externalStationId)
-
+> PresenterResult GetPresenterById(ctx, id, optional)
 Get presenter by id
 
 Get presenter by id
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **id** | **int64**| id of Presenter | 
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int64**| id of Presenter | 
- **externalStationId** | **int64**| Query on a different (content providing) station *(Optional)* | [optional] 
+ **externalStationId** | **int64**| Query on a different (content providing) station *(Optional)* | 
 
 ### Return type
 
@@ -100,22 +105,28 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ListPresenters**
-> PresenterResults ListPresenters($page, $modelTypeId, $programId, $broadcastId, $externalStationId)
-
+> PresenterResults ListPresenters(ctx, optional)
 Get all presenters.
 
 List all presenters.
 
-
-### Parameters
+### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **int64**| Current page *(Optional)* | [optional] 
- **modelTypeId** | **int64**| Search on ModelType ID (Optional) | [optional] 
- **programId** | **int64**| Search on Program ID *(Optional)* &#x60;(Relation)&#x60; | [optional] 
- **broadcastId** | **int64**| Search on Broadcast ID *(Optional)* &#x60;(Relation)&#x60; | [optional] 
- **externalStationId** | **int64**| Query on a different (content providing) station *(Optional)* | [optional] 
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **page** | **int64**| Current page *(Optional)* | 
+ **modelTypeId** | **int64**| Search on ModelType ID (Optional) | 
+ **programId** | **int64**| Search on Program ID *(Optional)* &#x60;(Relation)&#x60; | 
+ **broadcastId** | **int64**| Search on Broadcast ID *(Optional)* &#x60;(Relation)&#x60; | 
+ **externalStationId** | **int64**| Query on a different (content providing) station *(Optional)* | 
 
 ### Return type
 
@@ -133,19 +144,26 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **UpdatePresenterByID**
-> Success UpdatePresenterByID($id, $data)
-
+> Success UpdatePresenterByID(ctx, id, optional)
 Update presenter by id
 
 Update presenter by id
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context containing the authentication | nil if no authentication
+  **id** | **int64**| id of Presenter | 
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int64**| id of Presenter | 
- **data** | [**PresenterDataInput**](PresenterDataInput.md)| Data *(Optional)* | [optional] 
+ **data** | [**PresenterDataInput**](PresenterDataInput.md)| Data *(Optional)* | 
 
 ### Return type
 

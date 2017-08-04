@@ -16,9 +16,11 @@ type StoryDataInput struct {
 
 	Recommended bool `json:"recommended,omitempty"`
 
-	FieldValues interface{} `json:"field_values,omitempty"`
+	FieldValues *interface{} `json:"field_values,omitempty"`
 
 	Name string `json:"name"`
 
 	Description string `json:"description,omitempty"`
+
+	Tags []int32 `json:"tags,omitempty"`
 }

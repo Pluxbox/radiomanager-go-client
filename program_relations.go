@@ -12,15 +12,15 @@ package radiomanagerclient
 
 type ProgramRelations struct {
 
-	Items ProgramRelationsItems `json:"items,omitempty"`
+	Items *ProgramRelationsItems `json:"items,omitempty"`
 
-	Blocks ProgramRelationsBlocks `json:"blocks,omitempty"`
+	Blocks *ProgramRelationsBlocks `json:"blocks,omitempty"`
 
-	Broadcasts ProgramRelationsBroadcasts `json:"broadcasts,omitempty"`
+	Broadcasts *ProgramRelationsBroadcasts `json:"broadcasts,omitempty"`
 
-	Presenters ProgramRelationsPresenters `json:"presenters,omitempty"`
+	Presenters *ProgramRelationsPresenters `json:"presenters,omitempty"`
 
-	Tags ProgramRelationsTags `json:"tags,omitempty"`
+	Tags *ProgramRelationsTags `json:"tags,omitempty"`
 
-	ModelType BroadcastRelationsModelType `json:"model_type,omitempty"`
+	ModelType *BroadcastRelationsModelType `json:"model_type,omitempty"`
 }

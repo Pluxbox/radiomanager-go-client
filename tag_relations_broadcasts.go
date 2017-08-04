@@ -18,5 +18,5 @@ type TagRelationsBroadcasts struct {
 
 	Operation string `json:"operation,omitempty"`
 
-	Params TagRelationsBroadcastsParams `json:"params,omitempty"`
+	Params *TagRelationsBroadcastsParams `json:"params,omitempty"`
 }

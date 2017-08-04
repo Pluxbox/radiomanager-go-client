@@ -8,12 +8,14 @@ Method | HTTP request | Description
 
 
 # **GetVisualSlide**
-> VisualResult GetVisualSlide(ctx, )
-Get Visual Slide Image as Base64
+> VisualResult GetVisualSlide()
 
 Get Visual Slide Image as Base64
 
-### Required Parameters
+Get Visual Slide Image as Base64
+
+
+### Parameters
 This endpoint does not need any parameter.
 
 ### Return type

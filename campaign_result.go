@@ -42,7 +42,7 @@ type CampaignResult struct {
 
 	Description string `json:"description,omitempty"`
 
-	Items *CampaignRelationsItems `json:"items,omitempty"`
+	Items CampaignRelationsItems `json:"items,omitempty"`
 
-	ModelType *BroadcastRelationsModelType `json:"model_type,omitempty"`
+	ModelType BroadcastRelationsModelType `json:"model_type,omitempty"`
 }

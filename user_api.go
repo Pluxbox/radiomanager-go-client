@@ -12,342 +12,287 @@ package radiomanagerclient
 
 import (
 	"net/url"
-	"net/http"
 	"strings"
-	"golang.org/x/net/context"
 	"encoding/json"
 	"fmt"
 )
 
-// Linger please
-var (
-	_ context.Context
-)
+type UserApi struct {
+	Configuration *Configuration
+}
 
-type UserApiService service
+func NewUserApi() *UserApi {
+	configuration := NewConfiguration()
+	return &UserApi{
+		Configuration: configuration,
+	}
+}
 
+func NewUserApiWithBasePath(basePath string) *UserApi {
+	configuration := NewConfiguration()
+	configuration.BasePath = basePath
 
-/* UserApiService Remove user from station by Id
- Remove user from station by Id
- * @param ctx context.Context Authentication Context 
- @param id id of User
- @return Success*/
-func (a *UserApiService) DeleteUserById(ctx context.Context, id int64) (Success,  *http.Response, error) {
-	var (
-		localVarHttpMethod = strings.ToUpper("Delete")
-		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
-	 	successPayload  Success
-	)
+	return &UserApi{
+		Configuration: configuration,
+	}
+}
 
+/**
+ * Remove user from station by Id
+ * Remove user from station by Id
+ *
+ * @param id id of User
+ * @return *Success
+ */
+func (a UserApi) DeleteUserById(id int64) (*Success, *APIResponse, error) {
+
+	var localVarHttpMethod = strings.ToUpper("Delete")
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/users/{id}"
+	localVarPath := a.Configuration.BasePath + "/users/{id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if id < 0 {
-			return successPayload, nil, reportError("id must be greater than 0")
+	localVarFormParams := make(map[string]string)
+	var localVarPostBody interface{}
+	var localVarFileName string
+	var localVarFileBytes []byte
+	// authentication '(API Key)' required
+	// set key with prefix in header
+	localVarHeaderParams["api-key"] = a.Configuration.GetAPIKeyWithPrefix("api-key")
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		localVarHeaderParams[key] = a.Configuration.DefaultHeader[key]
 	}
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
 	// set Content-Type header
-	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
 	if localVarHttpContentType != "" {
 		localVarHeaderParams["Content-Type"] = localVarHttpContentType
 	}
-
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
 		"application/json",
 		}
 
 	// set Accept header
-	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	if ctx != nil {
-		// API Key Authentication
-		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
-			var key string
-			if auth.Prefix != "" {
-				key = auth.Prefix + " " + auth.Key
-			} else {
-				key = auth.Key
-			}
-			localVarHeaderParams["api-key"] = key
-		}
+	var successPayload = new(Success)
+	localVarHttpResponse, err := a.Configuration.APIClient.CallAPI(localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+
+	var localVarURL, _ = url.Parse(localVarPath)
+	localVarURL.RawQuery = localVarQueryParams.Encode()
+	var localVarAPIResponse = &APIResponse{Operation: "DeleteUserById", Method: localVarHttpMethod, RequestURL: localVarURL.String()}
+	if localVarHttpResponse != nil {
+		localVarAPIResponse.Response = localVarHttpResponse.RawResponse
+		localVarAPIResponse.Payload = localVarHttpResponse.Body()
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+
 	if err != nil {
-		return successPayload, nil, err
+		return successPayload, localVarAPIResponse, err
 	}
-
-	 localVarHttpResponse, err := a.client.callAPI(r)
-	 if err != nil || localVarHttpResponse == nil {
-		  return successPayload, localVarHttpResponse, err
-	 }
-	 defer localVarHttpResponse.Body.Close()
-	 if localVarHttpResponse.StatusCode >= 300 {
-		return successPayload, localVarHttpResponse, reportError(localVarHttpResponse.Status)
-	 }
-	
-	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
-	 	return successPayload, localVarHttpResponse, err
-	}
-
-
-	return successPayload, localVarHttpResponse, err
+	err = json.Unmarshal(localVarHttpResponse.Body(), &successPayload)
+	return successPayload, localVarAPIResponse, err
 }
 
-/* UserApiService Get user by id
- Get user by id
- * @param ctx context.Context Authentication Context 
- @param id id of User
- @return UserResult*/
-func (a *UserApiService) GetUserById(ctx context.Context, id int64) (UserResult,  *http.Response, error) {
-	var (
-		localVarHttpMethod = strings.ToUpper("Get")
-		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
-	 	successPayload  UserResult
-	)
+/**
+ * Get user by id
+ * Get user by id
+ *
+ * @param id id of User
+ * @return *UserResult
+ */
+func (a UserApi) GetUserById(id int64) (*UserResult, *APIResponse, error) {
 
+	var localVarHttpMethod = strings.ToUpper("Get")
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/users/{id}"
+	localVarPath := a.Configuration.BasePath + "/users/{id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if id < 0 {
-			return successPayload, nil, reportError("id must be greater than 0")
+	localVarFormParams := make(map[string]string)
+	var localVarPostBody interface{}
+	var localVarFileName string
+	var localVarFileBytes []byte
+	// authentication '(API Key)' required
+	// set key with prefix in header
+	localVarHeaderParams["api-key"] = a.Configuration.GetAPIKeyWithPrefix("api-key")
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		localVarHeaderParams[key] = a.Configuration.DefaultHeader[key]
 	}
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
 	// set Content-Type header
-	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
 	if localVarHttpContentType != "" {
 		localVarHeaderParams["Content-Type"] = localVarHttpContentType
 	}
-
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
 		"application/json",
 		}
 
 	// set Accept header
-	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	if ctx != nil {
-		// API Key Authentication
-		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
-			var key string
-			if auth.Prefix != "" {
-				key = auth.Prefix + " " + auth.Key
-			} else {
-				key = auth.Key
-			}
-			localVarHeaderParams["api-key"] = key
-		}
+	var successPayload = new(UserResult)
+	localVarHttpResponse, err := a.Configuration.APIClient.CallAPI(localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+
+	var localVarURL, _ = url.Parse(localVarPath)
+	localVarURL.RawQuery = localVarQueryParams.Encode()
+	var localVarAPIResponse = &APIResponse{Operation: "GetUserById", Method: localVarHttpMethod, RequestURL: localVarURL.String()}
+	if localVarHttpResponse != nil {
+		localVarAPIResponse.Response = localVarHttpResponse.RawResponse
+		localVarAPIResponse.Payload = localVarHttpResponse.Body()
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+
 	if err != nil {
-		return successPayload, nil, err
+		return successPayload, localVarAPIResponse, err
 	}
-
-	 localVarHttpResponse, err := a.client.callAPI(r)
-	 if err != nil || localVarHttpResponse == nil {
-		  return successPayload, localVarHttpResponse, err
-	 }
-	 defer localVarHttpResponse.Body.Close()
-	 if localVarHttpResponse.StatusCode >= 300 {
-		return successPayload, localVarHttpResponse, reportError(localVarHttpResponse.Status)
-	 }
-	
-	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
-	 	return successPayload, localVarHttpResponse, err
-	}
-
-
-	return successPayload, localVarHttpResponse, err
+	err = json.Unmarshal(localVarHttpResponse.Body(), &successPayload)
+	return successPayload, localVarAPIResponse, err
 }
 
-/* UserApiService Invite user by mail
- Invite user by mail
- * @param ctx context.Context Authentication Context 
- @param data Data **(Required)**
- @return InviteUserSuccess*/
-func (a *UserApiService) InviteUserByMail(ctx context.Context, data InviteUserData) (InviteUserSuccess,  *http.Response, error) {
-	var (
-		localVarHttpMethod = strings.ToUpper("Post")
-		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
-	 	successPayload  InviteUserSuccess
-	)
+/**
+ * Invite user by mail
+ * Invite user by mail
+ *
+ * @param data Data **(Required)**
+ * @return *InviteUserSuccess
+ */
+func (a UserApi) InviteUserByMail(data InviteUserData) (*InviteUserSuccess, *APIResponse, error) {
 
+	var localVarHttpMethod = strings.ToUpper("Post")
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/users/invite"
+	localVarPath := a.Configuration.BasePath + "/users/invite"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
+	localVarFormParams := make(map[string]string)
+	var localVarPostBody interface{}
+	var localVarFileName string
+	var localVarFileBytes []byte
+	// authentication '(API Key)' required
+	// set key with prefix in header
+	localVarHeaderParams["api-key"] = a.Configuration.GetAPIKeyWithPrefix("api-key")
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		localVarHeaderParams[key] = a.Configuration.DefaultHeader[key]
+	}
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
 	// set Content-Type header
-	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
 	if localVarHttpContentType != "" {
 		localVarHeaderParams["Content-Type"] = localVarHttpContentType
 	}
-
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
 		"application/json",
 		}
 
 	// set Accept header
-	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	// body params
 	localVarPostBody = &data
-	if ctx != nil {
-		// API Key Authentication
-		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
-			var key string
-			if auth.Prefix != "" {
-				key = auth.Prefix + " " + auth.Key
-			} else {
-				key = auth.Key
-			}
-			localVarHeaderParams["api-key"] = key
-		}
+	var successPayload = new(InviteUserSuccess)
+	localVarHttpResponse, err := a.Configuration.APIClient.CallAPI(localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+
+	var localVarURL, _ = url.Parse(localVarPath)
+	localVarURL.RawQuery = localVarQueryParams.Encode()
+	var localVarAPIResponse = &APIResponse{Operation: "InviteUserByMail", Method: localVarHttpMethod, RequestURL: localVarURL.String()}
+	if localVarHttpResponse != nil {
+		localVarAPIResponse.Response = localVarHttpResponse.RawResponse
+		localVarAPIResponse.Payload = localVarHttpResponse.Body()
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+
 	if err != nil {
-		return successPayload, nil, err
+		return successPayload, localVarAPIResponse, err
 	}
-
-	 localVarHttpResponse, err := a.client.callAPI(r)
-	 if err != nil || localVarHttpResponse == nil {
-		  return successPayload, localVarHttpResponse, err
-	 }
-	 defer localVarHttpResponse.Body.Close()
-	 if localVarHttpResponse.StatusCode >= 300 {
-		return successPayload, localVarHttpResponse, reportError(localVarHttpResponse.Status)
-	 }
-	
-	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
-	 	return successPayload, localVarHttpResponse, err
-	}
-
-
-	return successPayload, localVarHttpResponse, err
+	err = json.Unmarshal(localVarHttpResponse.Body(), &successPayload)
+	return successPayload, localVarAPIResponse, err
 }
 
-/* UserApiService Get all users.
- List all users.
- * @param ctx context.Context Authentication Context 
- @param optional (nil or map[string]interface{}) with one or more of:
-     @param "page" (int64) Current page *(Optional)*
-     @param "roleId" (int64) Search on Role ID *(Optional)*
- @return UserResults*/
-func (a *UserApiService) ListUsers(ctx context.Context, localVarOptionals map[string]interface{}) (UserResults,  *http.Response, error) {
-	var (
-		localVarHttpMethod = strings.ToUpper("Get")
-		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
-	 	successPayload  UserResults
-	)
+/**
+ * Get all users.
+ * List all users.
+ *
+ * @param page Current page *(Optional)*
+ * @param roleId Search on Role ID *(Optional)*
+ * @return *UserResults
+ */
+func (a UserApi) ListUsers(page int64, roleId int64) (*UserResults, *APIResponse, error) {
 
+	var localVarHttpMethod = strings.ToUpper("Get")
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/users"
+	localVarPath := a.Configuration.BasePath + "/users"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarFormParams := make(map[string]string)
+	var localVarPostBody interface{}
+	var localVarFileName string
+	var localVarFileBytes []byte
+	// authentication '(API Key)' required
+	// set key with prefix in header
+	localVarHeaderParams["api-key"] = a.Configuration.GetAPIKeyWithPrefix("api-key")
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		localVarHeaderParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	localVarQueryParams.Add("page", a.Configuration.APIClient.ParameterToString(page, ""))
+	localVarQueryParams.Add("role_id", a.Configuration.APIClient.ParameterToString(roleId, ""))
 
-	if err := typeCheckParameter(localVarOptionals["page"], "int64", "page"); err != nil {
-		return successPayload, nil, err
-	}
-	if err := typeCheckParameter(localVarOptionals["roleId"], "int64", "roleId"); err != nil {
-		return successPayload, nil, err
-	}
-
-	if localVarTempParam, localVarOk := localVarOptionals["page"].(int64); localVarOk {
-		localVarQueryParams.Add("page", parameterToString(localVarTempParam, ""))
-	}
-	if localVarTempParam, localVarOk := localVarOptionals["roleId"].(int64); localVarOk {
-		localVarQueryParams.Add("role_id", parameterToString(localVarTempParam, ""))
-	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
 	// set Content-Type header
-	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
 	if localVarHttpContentType != "" {
 		localVarHeaderParams["Content-Type"] = localVarHttpContentType
 	}
-
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
 		"application/json",
 		}
 
 	// set Accept header
-	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	if ctx != nil {
-		// API Key Authentication
-		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
-			var key string
-			if auth.Prefix != "" {
-				key = auth.Prefix + " " + auth.Key
-			} else {
-				key = auth.Key
-			}
-			localVarHeaderParams["api-key"] = key
-		}
+	var successPayload = new(UserResults)
+	localVarHttpResponse, err := a.Configuration.APIClient.CallAPI(localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+
+	var localVarURL, _ = url.Parse(localVarPath)
+	localVarURL.RawQuery = localVarQueryParams.Encode()
+	var localVarAPIResponse = &APIResponse{Operation: "ListUsers", Method: localVarHttpMethod, RequestURL: localVarURL.String()}
+	if localVarHttpResponse != nil {
+		localVarAPIResponse.Response = localVarHttpResponse.RawResponse
+		localVarAPIResponse.Payload = localVarHttpResponse.Body()
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+
 	if err != nil {
-		return successPayload, nil, err
+		return successPayload, localVarAPIResponse, err
 	}
-
-	 localVarHttpResponse, err := a.client.callAPI(r)
-	 if err != nil || localVarHttpResponse == nil {
-		  return successPayload, localVarHttpResponse, err
-	 }
-	 defer localVarHttpResponse.Body.Close()
-	 if localVarHttpResponse.StatusCode >= 300 {
-		return successPayload, localVarHttpResponse, reportError(localVarHttpResponse.Status)
-	 }
-	
-	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
-	 	return successPayload, localVarHttpResponse, err
-	}
-
-
-	return successPayload, localVarHttpResponse, err
+	err = json.Unmarshal(localVarHttpResponse.Body(), &successPayload)
+	return successPayload, localVarAPIResponse, err
 }
 

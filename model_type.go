@@ -26,7 +26,7 @@ type ModelType struct {
 
 	UpdatedAt time.Time `json:"updated_at,omitempty"`
 
-	Options *ModelTypeOptions `json:"options,omitempty"`
+	Options ModelTypeOptions `json:"options,omitempty"`
 
 	Order int64 `json:"order,omitempty"`
 

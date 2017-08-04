@@ -18,5 +18,5 @@ type ModelTypeRelationsPrograms struct {
 
 	Operation string `json:"operation,omitempty"`
 
-	Params *ModelTypeRelationsCampaignsParams `json:"params,omitempty"`
+	Params ModelTypeRelationsCampaignsParams `json:"params,omitempty"`
 }

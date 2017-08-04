@@ -12,17 +12,18 @@ Method | HTTP request | Description
 
 
 # **CreateStory**
-> PostSuccess CreateStory(ctx, data)
-Create story.
+> PostSuccess CreateStory($data)
 
 Create story.
 
-### Required Parameters
+Create story.
+
+
+### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context containing the authentication | nil if no authentication
-  **data** | [**StoryDataInput**](StoryDataInput.md)| Data **(Required)** | 
+ **data** | [**StoryDataInput**](StoryDataInput.md)| Data **(Required)** | 
 
 ### Return type
 
@@ -40,17 +41,18 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **DeleteStoryById**
-> Success DeleteStoryById(ctx, id)
-Delete story by id
+> Success DeleteStoryById($id)
 
 Delete story by id
 
-### Required Parameters
+Delete story by id
+
+
+### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context containing the authentication | nil if no authentication
-  **id** | **int64**| ID of Story **(Required)** | 
+ **id** | **int64**| ID of Story **(Required)** | 
 
 ### Return type
 
@@ -68,26 +70,19 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetStoryById**
-> StoryResult GetStoryById(ctx, id, optional)
-Get story by id
+> StoryResult GetStoryById($id, $externalStationId)
 
 Get story by id
 
-### Required Parameters
+Get story by id
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context containing the authentication | nil if no authentication
-  **id** | **int64**| ID of Story **(Required)** | 
- **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
 
-### Optional Parameters
-Optional parameters are passed through a map[string]interface{}.
+### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int64**| ID of Story **(Required)** | 
- **externalStationId** | **int64**| Query on a different (content providing) station *(Optional)* | 
+ **externalStationId** | **int64**| Query on a different (content providing) station *(Optional)* | [optional] 
 
 ### Return type
 
@@ -105,28 +100,22 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ListStories**
-> StoryResults ListStories(ctx, optional)
+> StoryResults ListStories($page, $modelTypeId, $tagId, $itemId, $externalStationId)
+
 Get all stories.
 
 List all stories.
 
-### Required Parameters
+
+### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context containing the authentication | nil if no authentication
- **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
-
-### Optional Parameters
-Optional parameters are passed through a map[string]interface{}.
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **page** | **int64**| Current page *(Optional)* | [default to 1]
- **modelTypeId** | **int64**| Search on ModelType ID *(Optional)* | 
- **tagId** | **int64**| Search on Tag ID *(Optional)* &#x60;(Relation)&#x60; | 
- **itemId** | **int64**| Search on Item ID *(Optional)* &#x60;(Relation)&#x60; | 
- **externalStationId** | **int64**| Query on a different (content providing) station *(Optional)* | 
+ **page** | **int64**| Current page *(Optional)* | [optional] [default to 1]
+ **modelTypeId** | **int64**| Search on ModelType ID *(Optional)* | [optional] 
+ **tagId** | **int64**| Search on Tag ID *(Optional)* &#x60;(Relation)&#x60; | [optional] 
+ **itemId** | **int64**| Search on Item ID *(Optional)* &#x60;(Relation)&#x60; | [optional] 
+ **externalStationId** | **int64**| Query on a different (content providing) station *(Optional)* | [optional] 
 
 ### Return type
 
@@ -144,26 +133,19 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **UpdateStoryByID**
-> Success UpdateStoryByID(ctx, id, optional)
-Update story by id
+> Success UpdateStoryByID($id, $data)
 
 Update story by id
 
-### Required Parameters
+Update story by id
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context containing the authentication | nil if no authentication
-  **id** | **int64**| ID of Story **(Required)** | 
- **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
 
-### Optional Parameters
-Optional parameters are passed through a map[string]interface{}.
+### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int64**| ID of Story **(Required)** | 
- **data** | [**StoryDataInput**](StoryDataInput.md)| Data *(Optional)* | 
+ **data** | [**StoryDataInput**](StoryDataInput.md)| Data *(Optional)* | [optional] 
 
 ### Return type
 

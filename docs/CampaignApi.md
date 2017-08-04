@@ -12,17 +12,18 @@ Method | HTTP request | Description
 
 
 # **CreateCampaign**
-> PostSuccess CreateCampaign(ctx, data)
-Create campaign.
+> PostSuccess CreateCampaign($data)
 
 Create campaign.
 
-### Required Parameters
+Create campaign.
+
+
+### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context containing the authentication | nil if no authentication
-  **data** | [**CampaignDataInput**](CampaignDataInput.md)| Data **(Required)** | 
+ **data** | [**CampaignDataInput**](CampaignDataInput.md)| Data **(Required)** | 
 
 ### Return type
 
@@ -40,17 +41,18 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **DeleteCampaignById**
-> Success DeleteCampaignById(ctx, id)
-Delete campaign by id
+> Success DeleteCampaignById($id)
 
 Delete campaign by id
 
-### Required Parameters
+Delete campaign by id
+
+
+### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context containing the authentication | nil if no authentication
-  **id** | **int64**| ID of Campaign **(Required)** | 
+ **id** | **int64**| ID of Campaign **(Required)** | 
 
 ### Return type
 
@@ -68,26 +70,19 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetCampaignById**
-> CampaignResult GetCampaignById(ctx, id, optional)
-Get campaign by id
+> CampaignResult GetCampaignById($id, $externalStationId)
 
 Get campaign by id
 
-### Required Parameters
+Get campaign by id
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context containing the authentication | nil if no authentication
-  **id** | **int64**| ID of Campaign **(Required)** | 
- **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
 
-### Optional Parameters
-Optional parameters are passed through a map[string]interface{}.
+### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int64**| ID of Campaign **(Required)** | 
- **externalStationId** | **int64**| Query on a different (content providing) station *(Optional)* | 
+ **externalStationId** | **int64**| Query on a different (content providing) station *(Optional)* | [optional] 
 
 ### Return type
 
@@ -105,29 +100,23 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ListCampaigns**
-> CampaignResults ListCampaigns(ctx, optional)
+> CampaignResults ListCampaigns($page, $modelTypeId, $itemId, $startMin, $startMax, $externalStationId)
+
 Get all campaigns.
 
 List all campaigns.
 
-### Required Parameters
+
+### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context containing the authentication | nil if no authentication
- **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
-
-### Optional Parameters
-Optional parameters are passed through a map[string]interface{}.
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **page** | **int64**| Current page *(Optional)* | 
- **modelTypeId** | **int64**| Search on ModelType ID *(Optional)* | 
- **itemId** | **int64**| Search on Item ID *(Optional)* &#x60;(Relation)&#x60; | 
- **startMin** | **time.Time**| Minimum start date *(Optional)* | 
- **startMax** | **time.Time**| Maximum start date *(Optional)* | 
- **externalStationId** | **int64**| Query on a different (content providing) station *(Optional)* | 
+ **page** | **int64**| Current page *(Optional)* | [optional] 
+ **modelTypeId** | **int64**| Search on ModelType ID *(Optional)* | [optional] 
+ **itemId** | **int64**| Search on Item ID *(Optional)* &#x60;(Relation)&#x60; | [optional] 
+ **startMin** | **time.Time**| Minimum start date *(Optional)* | [optional] 
+ **startMax** | **time.Time**| Maximum start date *(Optional)* | [optional] 
+ **externalStationId** | **int64**| Query on a different (content providing) station *(Optional)* | [optional] 
 
 ### Return type
 
@@ -145,26 +134,19 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **UpdateCampaignByID**
-> Success UpdateCampaignByID(ctx, id, optional)
-Update campaign by id
+> Success UpdateCampaignByID($id, $data)
 
 Update campaign by id
 
-### Required Parameters
+Update campaign by id
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context containing the authentication | nil if no authentication
-  **id** | **int64**| ID of Campaign **(Required)** | 
- **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
 
-### Optional Parameters
-Optional parameters are passed through a map[string]interface{}.
+### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int64**| ID of Campaign **(Required)** | 
- **data** | [**CampaignDataInput**](CampaignDataInput.md)| Data *(Optional)* | 
+ **data** | [**CampaignDataInput**](CampaignDataInput.md)| Data *(Optional)* | [optional] 
 
 ### Return type
 

@@ -8,18 +8,19 @@ Method | HTTP request | Description
 
 
 # **GetStringsByName**
-> TextString GetStringsByName(ctx, name, fullModel)
-Get Strings (formatted)
+> TextString GetStringsByName($name, $fullModel)
 
 Get Strings (formatted)
 
-### Required Parameters
+Get Strings (formatted)
+
+
+### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context containing the authentication | nil if no authentication
-  **name** | **string**| Name of Strings **(Required)** | 
-  **fullModel** | **bool**| Full model or content only **(Required)** | [default to true]
+ **name** | **string**| Name of Strings **(Required)** | 
+ **fullModel** | **bool**| Full model or content only **(Required)** | [default to true]
 
 ### Return type
 

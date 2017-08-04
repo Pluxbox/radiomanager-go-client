@@ -12,7 +12,7 @@ package radiomanagerclient
 
 type GenreRelations struct {
 
-	Broadcasts *GenreRelationsBroadcasts `json:"broadcasts,omitempty"`
+	Broadcasts GenreRelationsBroadcasts `json:"broadcasts,omitempty"`
 
-	Programs *GenreRelationsPrograms `json:"programs,omitempty"`
+	Programs GenreRelationsPrograms `json:"programs,omitempty"`
 }

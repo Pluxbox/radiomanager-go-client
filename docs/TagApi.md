@@ -12,17 +12,18 @@ Method | HTTP request | Description
 
 
 # **CreateTag**
-> PostSuccess CreateTag(ctx, data)
-Create tag.
+> PostSuccess CreateTag($data)
 
 Create tag.
 
-### Required Parameters
+Create tag.
+
+
+### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context containing the authentication | nil if no authentication
-  **data** | [**TagDataInput**](TagDataInput.md)| Data **(Required)** | 
+ **data** | [**TagDataInput**](TagDataInput.md)| Data **(Required)** | 
 
 ### Return type
 
@@ -40,17 +41,18 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **DeleteTagById**
-> Success DeleteTagById(ctx, id)
-Delete tag by id
+> Success DeleteTagById($id)
 
 Delete tag by id
 
-### Required Parameters
+Delete tag by id
+
+
+### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context containing the authentication | nil if no authentication
-  **id** | **int64**| ID of Tag **(Required)** | 
+ **id** | **int64**| ID of Tag **(Required)** | 
 
 ### Return type
 
@@ -68,26 +70,19 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetTagById**
-> TagResult GetTagById(ctx, id, optional)
-Get tags by id
+> TagResult GetTagById($id, $externalStationId)
 
 Get tags by id
 
-### Required Parameters
+Get tags by id
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context containing the authentication | nil if no authentication
-  **id** | **int64**| ID of Tag **(Required)** | 
- **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
 
-### Optional Parameters
-Optional parameters are passed through a map[string]interface{}.
+### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int64**| ID of Tag **(Required)** | 
- **externalStationId** | **int64**| Query on a different (content providing) station *(Optional)* | 
+ **externalStationId** | **int64**| Query on a different (content providing) station *(Optional)* | [optional] 
 
 ### Return type
 
@@ -105,29 +100,23 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ListTags**
-> TagResults ListTags(ctx, optional)
+> TagResults ListTags($page, $programId, $itemId, $broadcastId, $contactId, $externalStationId)
+
 Get a list of all the tags currently in your station.
 
 Get a list of all the tags currently in your station. This feature supports pagination and will give a maximum results of 50 tags back.
 
-### Required Parameters
+
+### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context containing the authentication | nil if no authentication
- **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
-
-### Optional Parameters
-Optional parameters are passed through a map[string]interface{}.
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **page** | **int64**| Current page *(Optional)* | 
- **programId** | **int64**| Search on Program ID *(Optional)* &#x60;(Relation)&#x60; | 
- **itemId** | **int64**| Search on Item ID *(Optional)* &#x60;(Relation)&#x60; | 
- **broadcastId** | **int64**| Search on Broadcast ID *(Optional)* &#x60;(Relation)&#x60; | 
- **contactId** | **int64**| Search on Contact ID *(Optional)* &#x60;(Relation)&#x60; | 
- **externalStationId** | **int64**| Query on a different (content providing) station *(Optional)* | 
+ **page** | **int64**| Current page *(Optional)* | [optional] 
+ **programId** | **int64**| Search on Program ID *(Optional)* &#x60;(Relation)&#x60; | [optional] 
+ **itemId** | **int64**| Search on Item ID *(Optional)* &#x60;(Relation)&#x60; | [optional] 
+ **broadcastId** | **int64**| Search on Broadcast ID *(Optional)* &#x60;(Relation)&#x60; | [optional] 
+ **contactId** | **int64**| Search on Contact ID *(Optional)* &#x60;(Relation)&#x60; | [optional] 
+ **externalStationId** | **int64**| Query on a different (content providing) station *(Optional)* | [optional] 
 
 ### Return type
 
@@ -145,26 +134,19 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **UpdateTagByID**
-> Success UpdateTagByID(ctx, id, optional)
-Update tag by id
+> Success UpdateTagByID($id, $data)
 
 Update tag by id
 
-### Required Parameters
+Update tag by id
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context containing the authentication | nil if no authentication
-  **id** | **int64**| ID of Tag **(Required)** | 
- **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
 
-### Optional Parameters
-Optional parameters are passed through a map[string]interface{}.
+### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int64**| ID of Tag **(Required)** | 
- **data** | [**TagDataInput**](TagDataInput.md)| Data *(Optional)* | 
+ **data** | [**TagDataInput**](TagDataInput.md)| Data *(Optional)* | [optional] 
 
 ### Return type
 

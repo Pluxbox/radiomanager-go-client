@@ -12,94 +12,92 @@ package radiomanagerclient
 
 import (
 	"net/url"
-	"net/http"
 	"strings"
-	"golang.org/x/net/context"
 	"encoding/json"
 )
 
-// Linger please
-var (
-	_ context.Context
-)
+type ExternalMessageApi struct {
+	Configuration *Configuration
+}
 
-type ExternalMessageApiService service
+func NewExternalMessageApi() *ExternalMessageApi {
+	configuration := NewConfiguration()
+	return &ExternalMessageApi{
+		Configuration: configuration,
+	}
+}
 
+func NewExternalMessageApiWithBasePath(basePath string) *ExternalMessageApi {
+	configuration := NewConfiguration()
+	configuration.BasePath = basePath
 
-/* ExternalMessageApiService Queue External Message.
- Queue External Message.
- * @param ctx context.Context Authentication Context 
- @param message Data **(Required)**
- @return interface{}*/
-func (a *ExternalMessageApiService) QueueExternalMessage(ctx context.Context, message ExternalMessageQueueData) (interface{},  *http.Response, error) {
-	var (
-		localVarHttpMethod = strings.ToUpper("Post")
-		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
-	 	successPayload  interface{}
-	)
+	return &ExternalMessageApi{
+		Configuration: configuration,
+	}
+}
 
+/**
+ * Queue External Message.
+ * Queue External Message.
+ *
+ * @param message Data **(Required)**
+ * @return *interface{}
+ */
+func (a ExternalMessageApi) QueueExternalMessage(message ExternalMessageQueueData) (*interface{}, *APIResponse, error) {
+
+	var localVarHttpMethod = strings.ToUpper("Post")
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/externalmessagequeue"
+	localVarPath := a.Configuration.BasePath + "/externalmessagequeue"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
+	localVarFormParams := make(map[string]string)
+	var localVarPostBody interface{}
+	var localVarFileName string
+	var localVarFileBytes []byte
+	// authentication '(API Key)' required
+	// set key with prefix in header
+	localVarHeaderParams["api-key"] = a.Configuration.GetAPIKeyWithPrefix("api-key")
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		localVarHeaderParams[key] = a.Configuration.DefaultHeader[key]
+	}
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
 	// set Content-Type header
-	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
 	if localVarHttpContentType != "" {
 		localVarHeaderParams["Content-Type"] = localVarHttpContentType
 	}
-
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
 		"application/json",
 		}
 
 	// set Accept header
-	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	// body params
 	localVarPostBody = &message
-	if ctx != nil {
-		// API Key Authentication
-		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
-			var key string
-			if auth.Prefix != "" {
-				key = auth.Prefix + " " + auth.Key
-			} else {
-				key = auth.Key
-			}
-			localVarHeaderParams["api-key"] = key
-		}
+	var successPayload = new(interface{})
+	localVarHttpResponse, err := a.Configuration.APIClient.CallAPI(localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+
+	var localVarURL, _ = url.Parse(localVarPath)
+	localVarURL.RawQuery = localVarQueryParams.Encode()
+	var localVarAPIResponse = &APIResponse{Operation: "QueueExternalMessage", Method: localVarHttpMethod, RequestURL: localVarURL.String()}
+	if localVarHttpResponse != nil {
+		localVarAPIResponse.Response = localVarHttpResponse.RawResponse
+		localVarAPIResponse.Payload = localVarHttpResponse.Body()
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+
 	if err != nil {
-		return successPayload, nil, err
+		return successPayload, localVarAPIResponse, err
 	}
-
-	 localVarHttpResponse, err := a.client.callAPI(r)
-	 if err != nil || localVarHttpResponse == nil {
-		  return successPayload, localVarHttpResponse, err
-	 }
-	 defer localVarHttpResponse.Body.Close()
-	 if localVarHttpResponse.StatusCode >= 300 {
-		return successPayload, localVarHttpResponse, reportError(localVarHttpResponse.Status)
-	 }
-	
-	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
-	 	return successPayload, localVarHttpResponse, err
-	}
-
-
-	return successPayload, localVarHttpResponse, err
+	err = json.Unmarshal(localVarHttpResponse.Body(), &successPayload)
+	return successPayload, localVarAPIResponse, err
 }
 

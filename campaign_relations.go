@@ -12,7 +12,7 @@ package radiomanagerclient
 
 type CampaignRelations struct {
 
-	Items *CampaignRelationsItems `json:"items,omitempty"`
+	Items CampaignRelationsItems `json:"items,omitempty"`
 
-	ModelType *BroadcastRelationsModelType `json:"model_type,omitempty"`
+	ModelType BroadcastRelationsModelType `json:"model_type,omitempty"`
 }

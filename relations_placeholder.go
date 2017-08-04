@@ -22,5 +22,5 @@ type RelationsPlaceholder struct {
 	Operation string `json:"operation"`
 
 	// PARAMS
-	Params *interface{} `json:"params"`
+	Params interface{} `json:"params"`
 }

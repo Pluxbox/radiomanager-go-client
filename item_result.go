@@ -40,7 +40,7 @@ type ItemResult struct {
 
 	ExternalId int64 `json:"external_id"`
 
-	FieldValues *ImportItemFieldValues `json:"field_values,omitempty"`
+	FieldValues ImportItemFieldValues `json:"field_values,omitempty"`
 
 	Title string `json:"title,omitempty"`
 
@@ -66,17 +66,17 @@ type ItemResult struct {
 
 	Details string `json:"details,omitempty"`
 
-	Block *ItemRelationsBlock `json:"block,omitempty"`
+	Block ItemRelationsBlock `json:"block,omitempty"`
 
-	Broadcast *BlockRelationsBroadcast `json:"broadcast,omitempty"`
+	Broadcast BlockRelationsBroadcast `json:"broadcast,omitempty"`
 
-	Program *ItemRelationsProgram `json:"program,omitempty"`
+	Program ItemRelationsProgram `json:"program,omitempty"`
 
-	Contacts *ItemRelationsContacts `json:"contacts,omitempty"`
+	Contacts ItemRelationsContacts `json:"contacts,omitempty"`
 
-	Tags *ItemRelationsTags `json:"tags,omitempty"`
+	Tags ItemRelationsTags `json:"tags,omitempty"`
 
-	Campaign *ItemRelationsCampaign `json:"campaign,omitempty"`
+	Campaign ItemRelationsCampaign `json:"campaign,omitempty"`
 
-	ModelType *BroadcastRelationsModelType `json:"model_type,omitempty"`
+	ModelType BroadcastRelationsModelType `json:"model_type,omitempty"`
 }

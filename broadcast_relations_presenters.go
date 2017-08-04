@@ -18,5 +18,5 @@ type BroadcastRelationsPresenters struct {
 
 	Operation string `json:"operation,omitempty"`
 
-	Params *BroadcastRelationsItemsParams `json:"params,omitempty"`
+	Params BroadcastRelationsItemsParams `json:"params,omitempty"`
 }

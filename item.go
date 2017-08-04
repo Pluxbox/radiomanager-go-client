@@ -22,7 +22,7 @@ type Item struct {
 
 	ExternalId int64 `json:"external_id"`
 
-	FieldValues *ImportItemFieldValues `json:"field_values,omitempty"`
+	FieldValues ImportItemFieldValues `json:"field_values,omitempty"`
 
 	Title string `json:"title,omitempty"`
 

@@ -18,5 +18,5 @@ type BlockRelationsItems struct {
 
 	Operation string `json:"operation,omitempty"`
 
-	Params *BlockRelationsItemsParams `json:"params,omitempty"`
+	Params BlockRelationsItemsParams `json:"params,omitempty"`
 }

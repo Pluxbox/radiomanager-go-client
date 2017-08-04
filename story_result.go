@@ -30,15 +30,15 @@ type StoryResult struct {
 
 	Recommended bool `json:"recommended,omitempty"`
 
-	FieldValues *interface{} `json:"field_values,omitempty"`
+	FieldValues interface{} `json:"field_values,omitempty"`
 
 	Name string `json:"name"`
 
 	Description string `json:"description,omitempty"`
 
-	Tags *StoryRelationsTags `json:"tags,omitempty"`
+	Tags StoryRelationsTags `json:"tags,omitempty"`
 
-	Items *StoryRelationsItems `json:"items,omitempty"`
+	Items StoryRelationsItems `json:"items,omitempty"`
 
-	ModelType *BroadcastRelationsModelType `json:"model_type,omitempty"`
+	ModelType BroadcastRelationsModelType `json:"model_type,omitempty"`
 }

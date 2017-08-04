@@ -12,11 +12,11 @@ package radiomanagerclient
 
 type TagRelations struct {
 
-	Broadcasts *TagRelationsBroadcasts `json:"broadcasts,omitempty"`
+	Broadcasts TagRelationsBroadcasts `json:"broadcasts,omitempty"`
 
-	Programs *TagRelationsPrograms `json:"programs,omitempty"`
+	Programs TagRelationsPrograms `json:"programs,omitempty"`
 
-	Contacts *TagRelationsContacts `json:"contacts,omitempty"`
+	Contacts TagRelationsContacts `json:"contacts,omitempty"`
 
-	Items *TagRelationsItems `json:"items,omitempty"`
+	Items TagRelationsItems `json:"items,omitempty"`
 }

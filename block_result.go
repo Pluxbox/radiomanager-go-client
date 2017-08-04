@@ -39,9 +39,9 @@ type BlockResult struct {
 
 	ExternalStationId int64 `json:"_external_station_id,omitempty"`
 
-	Items *BlockRelationsItems `json:"items,omitempty"`
+	Items BlockRelationsItems `json:"items,omitempty"`
 
-	Broadcast *BlockRelationsBroadcast `json:"broadcast,omitempty"`
+	Broadcast BlockRelationsBroadcast `json:"broadcast,omitempty"`
 
-	Program *BlockRelationsProgram `json:"program,omitempty"`
+	Program BlockRelationsProgram `json:"program,omitempty"`
 }

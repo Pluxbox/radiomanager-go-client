@@ -32,7 +32,7 @@ type BroadcastResult struct {
 
 	StationId int64 `json:"station_id,omitempty"`
 
-	FieldValues *BroadcastFieldValues `json:"field_values,omitempty"`
+	FieldValues BroadcastFieldValues `json:"field_values,omitempty"`
 
 	Title string `json:"title,omitempty"`
 
@@ -70,15 +70,15 @@ type BroadcastResult struct {
 
 	PtyCodeId int64 `json:"pty_code_id,omitempty"`
 
-	Items *BroadcastRelationsItems `json:"items,omitempty"`
+	Items BroadcastRelationsItems `json:"items,omitempty"`
 
-	Blocks *BroadcastRelationsBlocks `json:"blocks,omitempty"`
+	Blocks BroadcastRelationsBlocks `json:"blocks,omitempty"`
 
-	Program *BlockRelationsProgram `json:"program,omitempty"`
+	Program BlockRelationsProgram `json:"program,omitempty"`
 
-	Tags *BroadcastRelationsTags `json:"tags,omitempty"`
+	Tags BroadcastRelationsTags `json:"tags,omitempty"`
 
-	Presenters *BroadcastRelationsPresenters `json:"presenters,omitempty"`
+	Presenters BroadcastRelationsPresenters `json:"presenters,omitempty"`
 
-	ModelType *BroadcastRelationsModelType `json:"model_type,omitempty"`
+	ModelType BroadcastRelationsModelType `json:"model_type,omitempty"`
 }

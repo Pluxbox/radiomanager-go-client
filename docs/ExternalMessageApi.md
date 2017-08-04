@@ -8,17 +8,18 @@ Method | HTTP request | Description
 
 
 # **QueueExternalMessage**
-> interface{} QueueExternalMessage(ctx, message)
-Queue External Message.
+> interface{} QueueExternalMessage($message)
 
 Queue External Message.
 
-### Required Parameters
+Queue External Message.
+
+
+### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context containing the authentication | nil if no authentication
-  **message** | [**ExternalMessageQueueData**](ExternalMessageQueueData.md)| Data **(Required)** | 
+ **message** | [**ExternalMessageQueueData**](ExternalMessageQueueData.md)| Data **(Required)** | 
 
 ### Return type
 

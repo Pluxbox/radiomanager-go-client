@@ -12,17 +12,18 @@ Method | HTTP request | Description
 
 
 # **CreateProgram**
-> PostSuccess CreateProgram(ctx, data)
-Create program.
+> PostSuccess CreateProgram($data)
 
 Create program.
 
-### Required Parameters
+Create program.
+
+
+### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context containing the authentication | nil if no authentication
-  **data** | [**ProgramDataInput**](ProgramDataInput.md)| Data **(Required)** | 
+ **data** | [**ProgramDataInput**](ProgramDataInput.md)| Data **(Required)** | 
 
 ### Return type
 
@@ -40,17 +41,18 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **DeleteProgramById**
-> Success DeleteProgramById(ctx, id)
-Delete program by id
+> Success DeleteProgramById($id)
 
 Delete program by id
 
-### Required Parameters
+Delete program by id
+
+
+### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context containing the authentication | nil if no authentication
-  **id** | **int64**| ID of program **(Required)** | 
+ **id** | **int64**| ID of program **(Required)** | 
 
 ### Return type
 
@@ -68,26 +70,19 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetProgramById**
-> ProgramResult GetProgramById(ctx, id, optional)
-Get program by id
+> ProgramResult GetProgramById($id, $externalStationId)
 
 Get program by id
 
-### Required Parameters
+Get program by id
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context containing the authentication | nil if no authentication
-  **id** | **int64**| ID of Program **(Required)** | 
- **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
 
-### Optional Parameters
-Optional parameters are passed through a map[string]interface{}.
+### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int64**| ID of Program **(Required)** | 
- **externalStationId** | **int64**| Query on a different (content providing) station *(Optional)* | 
+ **externalStationId** | **int64**| Query on a different (content providing) station *(Optional)* | [optional] 
 
 ### Return type
 
@@ -105,32 +100,26 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ListPrograms**
-> ProgramResults ListPrograms(ctx, optional)
+> ProgramResults ListPrograms($page, $genreId, $modelTypeId, $presenterId, $tagId, $broadcastId, $itemId, $blockId, $externalStationId)
+
 Get all programs.
 
 List all programs.
 
-### Required Parameters
+
+### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context containing the authentication | nil if no authentication
- **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
-
-### Optional Parameters
-Optional parameters are passed through a map[string]interface{}.
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **page** | **int64**| Current page *(Optional)* | 
- **genreId** | **int64**| Search on Genre ID *(Optional)* | 
- **modelTypeId** | **int64**| Search on ModelType ID *(Optional)* | 
- **presenterId** | **int64**| Search on Presenter ID *(Optional)* &#x60;(Relation)&#x60; | 
- **tagId** | **int64**| Search on Tag ID *(Optional)* &#x60;(Relation)&#x60; | 
- **broadcastId** | **int64**| Search on Broadcast ID *(Optional)* &#x60;(Relation)&#x60; | 
- **itemId** | **int64**| Search on Item ID *(Optional)* &#x60;(Relation)&#x60; | 
- **blockId** | **int64**| Search on Block ID *(Optional)* &#x60;(Relation)&#x60; | 
- **externalStationId** | **int64**| Query on a different (content providing) station *(Optional)* | 
+ **page** | **int64**| Current page *(Optional)* | [optional] 
+ **genreId** | **int64**| Search on Genre ID *(Optional)* | [optional] 
+ **modelTypeId** | **int64**| Search on ModelType ID *(Optional)* | [optional] 
+ **presenterId** | **int64**| Search on Presenter ID *(Optional)* &#x60;(Relation)&#x60; | [optional] 
+ **tagId** | **int64**| Search on Tag ID *(Optional)* &#x60;(Relation)&#x60; | [optional] 
+ **broadcastId** | **int64**| Search on Broadcast ID *(Optional)* &#x60;(Relation)&#x60; | [optional] 
+ **itemId** | **int64**| Search on Item ID *(Optional)* &#x60;(Relation)&#x60; | [optional] 
+ **blockId** | **int64**| Search on Block ID *(Optional)* &#x60;(Relation)&#x60; | [optional] 
+ **externalStationId** | **int64**| Query on a different (content providing) station *(Optional)* | [optional] 
 
 ### Return type
 
@@ -148,26 +137,19 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **UpdateProgramByID**
-> Success UpdateProgramByID(ctx, id, optional)
-Update program by id
+> Success UpdateProgramByID($id, $data)
 
 Update program by id
 
-### Required Parameters
+Update program by id
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context containing the authentication | nil if no authentication
-  **id** | **int64**| ID of Program **(Required)** | 
- **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
 
-### Optional Parameters
-Optional parameters are passed through a map[string]interface{}.
+### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int64**| ID of Program **(Required)** | 
- **data** | [**ProgramDataInput**](ProgramDataInput.md)| Data *(Optional)* | 
+ **data** | [**ProgramDataInput**](ProgramDataInput.md)| Data *(Optional)* | [optional] 
 
 ### Return type
 

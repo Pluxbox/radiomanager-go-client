@@ -38,9 +38,9 @@ type PresenterResult struct {
 
 	Name string `json:"name,omitempty"`
 
-	Programs *PresenterRelationsPrograms `json:"programs,omitempty"`
+	Programs PresenterRelationsPrograms `json:"programs,omitempty"`
 
-	Broadcasts *PresenterRelationsBroadcasts `json:"broadcasts,omitempty"`
+	Broadcasts PresenterRelationsBroadcasts `json:"broadcasts,omitempty"`
 
-	ModelType *BroadcastRelationsModelType `json:"model_type,omitempty"`
+	ModelType BroadcastRelationsModelType `json:"model_type,omitempty"`
 }

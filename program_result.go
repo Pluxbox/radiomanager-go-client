@@ -28,7 +28,7 @@ type ProgramResult struct {
 
 	ModelTypeId int64 `json:"model_type_id"`
 
-	FieldValues *ProgramFieldValues `json:"field_values,omitempty"`
+	FieldValues ProgramFieldValues `json:"field_values,omitempty"`
 
 	Title string `json:"title"`
 
@@ -52,15 +52,15 @@ type ProgramResult struct {
 
 	PtyCodeId int64 `json:"pty_code_id,omitempty"`
 
-	Items *ProgramRelationsItems `json:"items,omitempty"`
+	Items ProgramRelationsItems `json:"items,omitempty"`
 
-	Blocks *ProgramRelationsBlocks `json:"blocks,omitempty"`
+	Blocks ProgramRelationsBlocks `json:"blocks,omitempty"`
 
-	Broadcasts *ProgramRelationsBroadcasts `json:"broadcasts,omitempty"`
+	Broadcasts ProgramRelationsBroadcasts `json:"broadcasts,omitempty"`
 
-	Presenters *ProgramRelationsPresenters `json:"presenters,omitempty"`
+	Presenters ProgramRelationsPresenters `json:"presenters,omitempty"`
 
-	Tags *ProgramRelationsTags `json:"tags,omitempty"`
+	Tags ProgramRelationsTags `json:"tags,omitempty"`
 
-	ModelType *BroadcastRelationsModelType `json:"model_type,omitempty"`
+	ModelType BroadcastRelationsModelType `json:"model_type,omitempty"`
 }

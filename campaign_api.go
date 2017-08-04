@@ -12,464 +12,365 @@ package radiomanagerclient
 
 import (
 	"net/url"
-	"net/http"
 	"strings"
-	"golang.org/x/net/context"
 	"time"
 	"encoding/json"
 	"fmt"
 )
 
-// Linger please
-var (
-	_ context.Context
-)
+type CampaignApi struct {
+	Configuration *Configuration
+}
 
-type CampaignApiService service
+func NewCampaignApi() *CampaignApi {
+	configuration := NewConfiguration()
+	return &CampaignApi{
+		Configuration: configuration,
+	}
+}
 
+func NewCampaignApiWithBasePath(basePath string) *CampaignApi {
+	configuration := NewConfiguration()
+	configuration.BasePath = basePath
 
-/* CampaignApiService Create campaign.
- Create campaign.
- * @param ctx context.Context Authentication Context 
- @param data Data **(Required)**
- @return PostSuccess*/
-func (a *CampaignApiService) CreateCampaign(ctx context.Context, data CampaignDataInput) (PostSuccess,  *http.Response, error) {
-	var (
-		localVarHttpMethod = strings.ToUpper("Post")
-		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
-	 	successPayload  PostSuccess
-	)
+	return &CampaignApi{
+		Configuration: configuration,
+	}
+}
 
+/**
+ * Create campaign.
+ * Create campaign.
+ *
+ * @param data Data **(Required)**
+ * @return *PostSuccess
+ */
+func (a CampaignApi) CreateCampaign(data CampaignDataInput) (*PostSuccess, *APIResponse, error) {
+
+	var localVarHttpMethod = strings.ToUpper("Post")
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/campaigns"
+	localVarPath := a.Configuration.BasePath + "/campaigns"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
+	localVarFormParams := make(map[string]string)
+	var localVarPostBody interface{}
+	var localVarFileName string
+	var localVarFileBytes []byte
+	// authentication '(API Key)' required
+	// set key with prefix in header
+	localVarHeaderParams["api-key"] = a.Configuration.GetAPIKeyWithPrefix("api-key")
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		localVarHeaderParams[key] = a.Configuration.DefaultHeader[key]
+	}
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
 	// set Content-Type header
-	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
 	if localVarHttpContentType != "" {
 		localVarHeaderParams["Content-Type"] = localVarHttpContentType
 	}
-
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
 		"application/json",
 		}
 
 	// set Accept header
-	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	// body params
 	localVarPostBody = &data
-	if ctx != nil {
-		// API Key Authentication
-		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
-			var key string
-			if auth.Prefix != "" {
-				key = auth.Prefix + " " + auth.Key
-			} else {
-				key = auth.Key
-			}
-			localVarHeaderParams["api-key"] = key
-		}
+	var successPayload = new(PostSuccess)
+	localVarHttpResponse, err := a.Configuration.APIClient.CallAPI(localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+
+	var localVarURL, _ = url.Parse(localVarPath)
+	localVarURL.RawQuery = localVarQueryParams.Encode()
+	var localVarAPIResponse = &APIResponse{Operation: "CreateCampaign", Method: localVarHttpMethod, RequestURL: localVarURL.String()}
+	if localVarHttpResponse != nil {
+		localVarAPIResponse.Response = localVarHttpResponse.RawResponse
+		localVarAPIResponse.Payload = localVarHttpResponse.Body()
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+
 	if err != nil {
-		return successPayload, nil, err
+		return successPayload, localVarAPIResponse, err
 	}
-
-	 localVarHttpResponse, err := a.client.callAPI(r)
-	 if err != nil || localVarHttpResponse == nil {
-		  return successPayload, localVarHttpResponse, err
-	 }
-	 defer localVarHttpResponse.Body.Close()
-	 if localVarHttpResponse.StatusCode >= 300 {
-		return successPayload, localVarHttpResponse, reportError(localVarHttpResponse.Status)
-	 }
-	
-	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
-	 	return successPayload, localVarHttpResponse, err
-	}
-
-
-	return successPayload, localVarHttpResponse, err
+	err = json.Unmarshal(localVarHttpResponse.Body(), &successPayload)
+	return successPayload, localVarAPIResponse, err
 }
 
-/* CampaignApiService Delete campaign by id
- Delete campaign by id
- * @param ctx context.Context Authentication Context 
- @param id ID of Campaign **(Required)**
- @return Success*/
-func (a *CampaignApiService) DeleteCampaignById(ctx context.Context, id int64) (Success,  *http.Response, error) {
-	var (
-		localVarHttpMethod = strings.ToUpper("Delete")
-		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
-	 	successPayload  Success
-	)
+/**
+ * Delete campaign by id
+ * Delete campaign by id
+ *
+ * @param id ID of Campaign **(Required)**
+ * @return *Success
+ */
+func (a CampaignApi) DeleteCampaignById(id int64) (*Success, *APIResponse, error) {
 
+	var localVarHttpMethod = strings.ToUpper("Delete")
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/campaigns/{id}"
+	localVarPath := a.Configuration.BasePath + "/campaigns/{id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if id < 0 {
-			return successPayload, nil, reportError("id must be greater than 0")
+	localVarFormParams := make(map[string]string)
+	var localVarPostBody interface{}
+	var localVarFileName string
+	var localVarFileBytes []byte
+	// authentication '(API Key)' required
+	// set key with prefix in header
+	localVarHeaderParams["api-key"] = a.Configuration.GetAPIKeyWithPrefix("api-key")
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		localVarHeaderParams[key] = a.Configuration.DefaultHeader[key]
 	}
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
 	// set Content-Type header
-	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
 	if localVarHttpContentType != "" {
 		localVarHeaderParams["Content-Type"] = localVarHttpContentType
 	}
-
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
 		"application/json",
 		}
 
 	// set Accept header
-	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	if ctx != nil {
-		// API Key Authentication
-		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
-			var key string
-			if auth.Prefix != "" {
-				key = auth.Prefix + " " + auth.Key
-			} else {
-				key = auth.Key
-			}
-			localVarHeaderParams["api-key"] = key
-		}
+	var successPayload = new(Success)
+	localVarHttpResponse, err := a.Configuration.APIClient.CallAPI(localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+
+	var localVarURL, _ = url.Parse(localVarPath)
+	localVarURL.RawQuery = localVarQueryParams.Encode()
+	var localVarAPIResponse = &APIResponse{Operation: "DeleteCampaignById", Method: localVarHttpMethod, RequestURL: localVarURL.String()}
+	if localVarHttpResponse != nil {
+		localVarAPIResponse.Response = localVarHttpResponse.RawResponse
+		localVarAPIResponse.Payload = localVarHttpResponse.Body()
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+
 	if err != nil {
-		return successPayload, nil, err
+		return successPayload, localVarAPIResponse, err
 	}
-
-	 localVarHttpResponse, err := a.client.callAPI(r)
-	 if err != nil || localVarHttpResponse == nil {
-		  return successPayload, localVarHttpResponse, err
-	 }
-	 defer localVarHttpResponse.Body.Close()
-	 if localVarHttpResponse.StatusCode >= 300 {
-		return successPayload, localVarHttpResponse, reportError(localVarHttpResponse.Status)
-	 }
-	
-	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
-	 	return successPayload, localVarHttpResponse, err
-	}
-
-
-	return successPayload, localVarHttpResponse, err
+	err = json.Unmarshal(localVarHttpResponse.Body(), &successPayload)
+	return successPayload, localVarAPIResponse, err
 }
 
-/* CampaignApiService Get campaign by id
- Get campaign by id
- * @param ctx context.Context Authentication Context 
- @param id ID of Campaign **(Required)**
- @param optional (nil or map[string]interface{}) with one or more of:
-     @param "externalStationId" (int64) Query on a different (content providing) station *(Optional)*
- @return CampaignResult*/
-func (a *CampaignApiService) GetCampaignById(ctx context.Context, id int64, localVarOptionals map[string]interface{}) (CampaignResult,  *http.Response, error) {
-	var (
-		localVarHttpMethod = strings.ToUpper("Get")
-		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
-	 	successPayload  CampaignResult
-	)
+/**
+ * Get campaign by id
+ * Get campaign by id
+ *
+ * @param id ID of Campaign **(Required)**
+ * @param externalStationId Query on a different (content providing) station *(Optional)*
+ * @return *CampaignResult
+ */
+func (a CampaignApi) GetCampaignById(id int64, externalStationId int64) (*CampaignResult, *APIResponse, error) {
 
+	var localVarHttpMethod = strings.ToUpper("Get")
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/campaigns/{id}"
+	localVarPath := a.Configuration.BasePath + "/campaigns/{id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarFormParams := make(map[string]string)
+	var localVarPostBody interface{}
+	var localVarFileName string
+	var localVarFileBytes []byte
+	// authentication '(API Key)' required
+	// set key with prefix in header
+	localVarHeaderParams["api-key"] = a.Configuration.GetAPIKeyWithPrefix("api-key")
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		localVarHeaderParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	localVarQueryParams.Add("_external_station_id", a.Configuration.APIClient.ParameterToString(externalStationId, ""))
 
-	if id < 0 {
-			return successPayload, nil, reportError("id must be greater than 0")
-	}
-	if err := typeCheckParameter(localVarOptionals["externalStationId"], "int64", "externalStationId"); err != nil {
-		return successPayload, nil, err
-	}
-
-	if localVarTempParam, localVarOk := localVarOptionals["externalStationId"].(int64); localVarOk {
-		localVarQueryParams.Add("_external_station_id", parameterToString(localVarTempParam, ""))
-	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
 	// set Content-Type header
-	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
 	if localVarHttpContentType != "" {
 		localVarHeaderParams["Content-Type"] = localVarHttpContentType
 	}
-
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
 		"application/json",
 		}
 
 	// set Accept header
-	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	if ctx != nil {
-		// API Key Authentication
-		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
-			var key string
-			if auth.Prefix != "" {
-				key = auth.Prefix + " " + auth.Key
-			} else {
-				key = auth.Key
-			}
-			localVarHeaderParams["api-key"] = key
-		}
+	var successPayload = new(CampaignResult)
+	localVarHttpResponse, err := a.Configuration.APIClient.CallAPI(localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+
+	var localVarURL, _ = url.Parse(localVarPath)
+	localVarURL.RawQuery = localVarQueryParams.Encode()
+	var localVarAPIResponse = &APIResponse{Operation: "GetCampaignById", Method: localVarHttpMethod, RequestURL: localVarURL.String()}
+	if localVarHttpResponse != nil {
+		localVarAPIResponse.Response = localVarHttpResponse.RawResponse
+		localVarAPIResponse.Payload = localVarHttpResponse.Body()
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+
 	if err != nil {
-		return successPayload, nil, err
+		return successPayload, localVarAPIResponse, err
 	}
-
-	 localVarHttpResponse, err := a.client.callAPI(r)
-	 if err != nil || localVarHttpResponse == nil {
-		  return successPayload, localVarHttpResponse, err
-	 }
-	 defer localVarHttpResponse.Body.Close()
-	 if localVarHttpResponse.StatusCode >= 300 {
-		return successPayload, localVarHttpResponse, reportError(localVarHttpResponse.Status)
-	 }
-	
-	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
-	 	return successPayload, localVarHttpResponse, err
-	}
-
-
-	return successPayload, localVarHttpResponse, err
+	err = json.Unmarshal(localVarHttpResponse.Body(), &successPayload)
+	return successPayload, localVarAPIResponse, err
 }
 
-/* CampaignApiService Get all campaigns.
- List all campaigns.
- * @param ctx context.Context Authentication Context 
- @param optional (nil or map[string]interface{}) with one or more of:
-     @param "page" (int64) Current page *(Optional)*
-     @param "modelTypeId" (int64) Search on ModelType ID *(Optional)*
-     @param "itemId" (int64) Search on Item ID *(Optional)* &#x60;(Relation)&#x60;
-     @param "startMin" (time.Time) Minimum start date *(Optional)*
-     @param "startMax" (time.Time) Maximum start date *(Optional)*
-     @param "externalStationId" (int64) Query on a different (content providing) station *(Optional)*
- @return CampaignResults*/
-func (a *CampaignApiService) ListCampaigns(ctx context.Context, localVarOptionals map[string]interface{}) (CampaignResults,  *http.Response, error) {
-	var (
-		localVarHttpMethod = strings.ToUpper("Get")
-		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
-	 	successPayload  CampaignResults
-	)
+/**
+ * Get all campaigns.
+ * List all campaigns.
+ *
+ * @param page Current page *(Optional)*
+ * @param modelTypeId Search on ModelType ID *(Optional)*
+ * @param itemId Search on Item ID *(Optional)* &#x60;(Relation)&#x60;
+ * @param startMin Minimum start date *(Optional)*
+ * @param startMax Maximum start date *(Optional)*
+ * @param externalStationId Query on a different (content providing) station *(Optional)*
+ * @return *CampaignResults
+ */
+func (a CampaignApi) ListCampaigns(page int64, modelTypeId int64, itemId int64, startMin time.Time, startMax time.Time, externalStationId int64) (*CampaignResults, *APIResponse, error) {
 
+	var localVarHttpMethod = strings.ToUpper("Get")
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/campaigns"
+	localVarPath := a.Configuration.BasePath + "/campaigns"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
+	localVarFormParams := make(map[string]string)
+	var localVarPostBody interface{}
+	var localVarFileName string
+	var localVarFileBytes []byte
+	// authentication '(API Key)' required
+	// set key with prefix in header
+	localVarHeaderParams["api-key"] = a.Configuration.GetAPIKeyWithPrefix("api-key")
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		localVarHeaderParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	localVarQueryParams.Add("page", a.Configuration.APIClient.ParameterToString(page, ""))
+	localVarQueryParams.Add("model_type_id", a.Configuration.APIClient.ParameterToString(modelTypeId, ""))
+	localVarQueryParams.Add("item_id", a.Configuration.APIClient.ParameterToString(itemId, ""))
+	localVarQueryParams.Add("start-min", a.Configuration.APIClient.ParameterToString(startMin, ""))
+	localVarQueryParams.Add("start-max", a.Configuration.APIClient.ParameterToString(startMax, ""))
+	localVarQueryParams.Add("_external_station_id", a.Configuration.APIClient.ParameterToString(externalStationId, ""))
 
-	if err := typeCheckParameter(localVarOptionals["page"], "int64", "page"); err != nil {
-		return successPayload, nil, err
-	}
-	if err := typeCheckParameter(localVarOptionals["modelTypeId"], "int64", "modelTypeId"); err != nil {
-		return successPayload, nil, err
-	}
-	if err := typeCheckParameter(localVarOptionals["itemId"], "int64", "itemId"); err != nil {
-		return successPayload, nil, err
-	}
-	if err := typeCheckParameter(localVarOptionals["startMin"], "time.Time", "startMin"); err != nil {
-		return successPayload, nil, err
-	}
-	if err := typeCheckParameter(localVarOptionals["startMax"], "time.Time", "startMax"); err != nil {
-		return successPayload, nil, err
-	}
-	if err := typeCheckParameter(localVarOptionals["externalStationId"], "int64", "externalStationId"); err != nil {
-		return successPayload, nil, err
-	}
-
-	if localVarTempParam, localVarOk := localVarOptionals["page"].(int64); localVarOk {
-		localVarQueryParams.Add("page", parameterToString(localVarTempParam, ""))
-	}
-	if localVarTempParam, localVarOk := localVarOptionals["modelTypeId"].(int64); localVarOk {
-		localVarQueryParams.Add("model_type_id", parameterToString(localVarTempParam, ""))
-	}
-	if localVarTempParam, localVarOk := localVarOptionals["itemId"].(int64); localVarOk {
-		localVarQueryParams.Add("item_id", parameterToString(localVarTempParam, ""))
-	}
-	if localVarTempParam, localVarOk := localVarOptionals["startMin"].(time.Time); localVarOk {
-		localVarQueryParams.Add("start-min", parameterToString(localVarTempParam, ""))
-	}
-	if localVarTempParam, localVarOk := localVarOptionals["startMax"].(time.Time); localVarOk {
-		localVarQueryParams.Add("start-max", parameterToString(localVarTempParam, ""))
-	}
-	if localVarTempParam, localVarOk := localVarOptionals["externalStationId"].(int64); localVarOk {
-		localVarQueryParams.Add("_external_station_id", parameterToString(localVarTempParam, ""))
-	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
 	// set Content-Type header
-	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
 	if localVarHttpContentType != "" {
 		localVarHeaderParams["Content-Type"] = localVarHttpContentType
 	}
-
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
 		"application/json",
 		}
 
 	// set Accept header
-	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	if ctx != nil {
-		// API Key Authentication
-		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
-			var key string
-			if auth.Prefix != "" {
-				key = auth.Prefix + " " + auth.Key
-			} else {
-				key = auth.Key
-			}
-			localVarHeaderParams["api-key"] = key
-		}
+	var successPayload = new(CampaignResults)
+	localVarHttpResponse, err := a.Configuration.APIClient.CallAPI(localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+
+	var localVarURL, _ = url.Parse(localVarPath)
+	localVarURL.RawQuery = localVarQueryParams.Encode()
+	var localVarAPIResponse = &APIResponse{Operation: "ListCampaigns", Method: localVarHttpMethod, RequestURL: localVarURL.String()}
+	if localVarHttpResponse != nil {
+		localVarAPIResponse.Response = localVarHttpResponse.RawResponse
+		localVarAPIResponse.Payload = localVarHttpResponse.Body()
 	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+
 	if err != nil {
-		return successPayload, nil, err
+		return successPayload, localVarAPIResponse, err
 	}
-
-	 localVarHttpResponse, err := a.client.callAPI(r)
-	 if err != nil || localVarHttpResponse == nil {
-		  return successPayload, localVarHttpResponse, err
-	 }
-	 defer localVarHttpResponse.Body.Close()
-	 if localVarHttpResponse.StatusCode >= 300 {
-		return successPayload, localVarHttpResponse, reportError(localVarHttpResponse.Status)
-	 }
-	
-	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
-	 	return successPayload, localVarHttpResponse, err
-	}
-
-
-	return successPayload, localVarHttpResponse, err
+	err = json.Unmarshal(localVarHttpResponse.Body(), &successPayload)
+	return successPayload, localVarAPIResponse, err
 }
 
-/* CampaignApiService Update campaign by id
- Update campaign by id
- * @param ctx context.Context Authentication Context 
- @param id ID of Campaign **(Required)**
- @param optional (nil or map[string]interface{}) with one or more of:
-     @param "data" (CampaignDataInput) Data *(Optional)*
- @return Success*/
-func (a *CampaignApiService) UpdateCampaignByID(ctx context.Context, id int64, localVarOptionals map[string]interface{}) (Success,  *http.Response, error) {
-	var (
-		localVarHttpMethod = strings.ToUpper("Patch")
-		localVarPostBody interface{}
-		localVarFileName string
-		localVarFileBytes []byte
-	 	successPayload  Success
-	)
+/**
+ * Update campaign by id
+ * Update campaign by id
+ *
+ * @param id ID of Campaign **(Required)**
+ * @param data Data *(Optional)*
+ * @return *Success
+ */
+func (a CampaignApi) UpdateCampaignByID(id int64, data CampaignDataInput) (*Success, *APIResponse, error) {
 
+	var localVarHttpMethod = strings.ToUpper("Patch")
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/campaigns/{id}"
+	localVarPath := a.Configuration.BasePath + "/campaigns/{id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", fmt.Sprintf("%v", id), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if id < 0 {
-			return successPayload, nil, reportError("id must be greater than 0")
+	localVarFormParams := make(map[string]string)
+	var localVarPostBody interface{}
+	var localVarFileName string
+	var localVarFileBytes []byte
+	// authentication '(API Key)' required
+	// set key with prefix in header
+	localVarHeaderParams["api-key"] = a.Configuration.GetAPIKeyWithPrefix("api-key")
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		localVarHeaderParams[key] = a.Configuration.DefaultHeader[key]
 	}
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
 
 	// set Content-Type header
-	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
 	if localVarHttpContentType != "" {
 		localVarHeaderParams["Content-Type"] = localVarHttpContentType
 	}
-
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
 		"application/json",
 		}
 
 	// set Accept header
-	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
 	// body params
-	if localVarTempParam, localVarOk := localVarOptionals["data"].(CampaignDataInput); localVarOk {
-		localVarPostBody = &localVarTempParam
+	localVarPostBody = &data
+	var successPayload = new(Success)
+	localVarHttpResponse, err := a.Configuration.APIClient.CallAPI(localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+
+	var localVarURL, _ = url.Parse(localVarPath)
+	localVarURL.RawQuery = localVarQueryParams.Encode()
+	var localVarAPIResponse = &APIResponse{Operation: "UpdateCampaignByID", Method: localVarHttpMethod, RequestURL: localVarURL.String()}
+	if localVarHttpResponse != nil {
+		localVarAPIResponse.Response = localVarHttpResponse.RawResponse
+		localVarAPIResponse.Payload = localVarHttpResponse.Body()
 	}
-	if ctx != nil {
-		// API Key Authentication
-		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
-			var key string
-			if auth.Prefix != "" {
-				key = auth.Prefix + " " + auth.Key
-			} else {
-				key = auth.Key
-			}
-			localVarHeaderParams["api-key"] = key
-		}
-	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+
 	if err != nil {
-		return successPayload, nil, err
+		return successPayload, localVarAPIResponse, err
 	}
-
-	 localVarHttpResponse, err := a.client.callAPI(r)
-	 if err != nil || localVarHttpResponse == nil {
-		  return successPayload, localVarHttpResponse, err
-	 }
-	 defer localVarHttpResponse.Body.Close()
-	 if localVarHttpResponse.StatusCode >= 300 {
-		return successPayload, localVarHttpResponse, reportError(localVarHttpResponse.Status)
-	 }
-	
-	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
-	 	return successPayload, localVarHttpResponse, err
-	}
-
-
-	return successPayload, localVarHttpResponse, err
+	err = json.Unmarshal(localVarHttpResponse.Body(), &successPayload)
+	return successPayload, localVarAPIResponse, err
 }
 

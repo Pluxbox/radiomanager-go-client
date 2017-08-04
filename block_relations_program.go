@@ -18,5 +18,5 @@ type BlockRelationsProgram struct {
 
 	Operation string `json:"operation,omitempty"`
 
-	Params *BlockRelationsBroadcastParams `json:"params,omitempty"`
+	Params BlockRelationsBroadcastParams `json:"params,omitempty"`
 }

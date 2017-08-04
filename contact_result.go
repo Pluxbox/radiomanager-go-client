@@ -28,7 +28,7 @@ type ContactResult struct {
 
 	ModelTypeId int64 `json:"model_type_id"`
 
-	FieldValues *ContactFieldValues `json:"field_values,omitempty"`
+	FieldValues ContactFieldValues `json:"field_values,omitempty"`
 
 	Email string `json:"email,omitempty"`
 
@@ -38,9 +38,9 @@ type ContactResult struct {
 
 	Phone string `json:"phone,omitempty"`
 
-	Tags *ContactRelationsTags `json:"tags,omitempty"`
+	Tags ContactRelationsTags `json:"tags,omitempty"`
 
-	Items *ContactRelationsItems `json:"items,omitempty"`
+	Items ContactRelationsItems `json:"items,omitempty"`
 
-	ModelType *BroadcastRelationsModelType `json:"model_type,omitempty"`
+	ModelType BroadcastRelationsModelType `json:"model_type,omitempty"`
 }

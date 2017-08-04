@@ -12,15 +12,15 @@ package radiomanagerclient
 
 type ModelTypeRelations struct {
 
-	Campaigns *ModelTypeRelationsCampaigns `json:"campaigns,omitempty"`
+	Campaigns ModelTypeRelationsCampaigns `json:"campaigns,omitempty"`
 
-	Broadcasts *ModelTypeRelationsBroadcasts `json:"broadcasts,omitempty"`
+	Broadcasts ModelTypeRelationsBroadcasts `json:"broadcasts,omitempty"`
 
-	Programs *ModelTypeRelationsPrograms `json:"programs,omitempty"`
+	Programs ModelTypeRelationsPrograms `json:"programs,omitempty"`
 
-	Contacts *ModelTypeRelationsContacts `json:"contacts,omitempty"`
+	Contacts ModelTypeRelationsContacts `json:"contacts,omitempty"`
 
-	Presenters *ModelTypeRelationsPresenters `json:"presenters,omitempty"`
+	Presenters ModelTypeRelationsPresenters `json:"presenters,omitempty"`
 
-	Items *ModelTypeRelationsItems `json:"items,omitempty"`
+	Items ModelTypeRelationsItems `json:"items,omitempty"`
 }

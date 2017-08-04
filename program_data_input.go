@@ -14,7 +14,7 @@ type ProgramDataInput struct {
 
 	ModelTypeId int64 `json:"model_type_id"`
 
-	FieldValues *ProgramFieldValues `json:"field_values,omitempty"`
+	FieldValues ProgramFieldValues `json:"field_values,omitempty"`
 
 	Title string `json:"title"`
 

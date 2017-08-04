@@ -12,9 +12,9 @@ package radiomanagerclient
 
 type ContactRelations struct {
 
-	Tags *ContactRelationsTags `json:"tags,omitempty"`
+	Tags ContactRelationsTags `json:"tags,omitempty"`
 
-	Items *ContactRelationsItems `json:"items,omitempty"`
+	Items ContactRelationsItems `json:"items,omitempty"`
 
-	ModelType *BroadcastRelationsModelType `json:"model_type,omitempty"`
+	ModelType BroadcastRelationsModelType `json:"model_type,omitempty"`
 }

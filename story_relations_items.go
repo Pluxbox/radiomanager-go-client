@@ -18,5 +18,5 @@ type StoryRelationsItems struct {
 
 	Operation string `json:"operation,omitempty"`
 
-	Params *StoryRelationsTagsParams `json:"params,omitempty"`
+	Params StoryRelationsTagsParams `json:"params,omitempty"`
 }

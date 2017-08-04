@@ -20,9 +20,9 @@ type GenreResult struct {
 
 	Name string `json:"name"`
 
-	Broadcasts *GenreRelationsBroadcasts `json:"broadcasts,omitempty"`
+	Broadcasts GenreRelationsBroadcasts `json:"broadcasts,omitempty"`
 
-	Programs *GenreRelationsPrograms `json:"programs,omitempty"`
+	Programs GenreRelationsPrograms `json:"programs,omitempty"`
 
 	ExternalStationId int64 `json:"_external_station_id,omitempty"`
 }

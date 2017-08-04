@@ -18,17 +18,18 @@ Method | HTTP request | Description
 
 
 # **CreateBroadcast**
-> PostSuccess CreateBroadcast(ctx, data)
-Create broadcast.
+> PostSuccess CreateBroadcast($data)
 
 Create broadcast.
 
-### Required Parameters
+Create broadcast.
+
+
+### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context containing the authentication | nil if no authentication
-  **data** | [**BroadcastDataInput**](BroadcastDataInput.md)| Data **(Required)** | 
+ **data** | [**BroadcastDataInput**](BroadcastDataInput.md)| Data **(Required)** | 
 
 ### Return type
 
@@ -46,17 +47,18 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **DeleteBroadcastById**
-> Success DeleteBroadcastById(ctx, id)
-Delete broadcast by id
+> Success DeleteBroadcastById($id)
 
 Delete broadcast by id
 
-### Required Parameters
+Delete broadcast by id
+
+
+### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context containing the authentication | nil if no authentication
-  **id** | **int64**| ID of Broadcast **(Required)** | 
+ **id** | **int64**| ID of Broadcast **(Required)** | 
 
 ### Return type
 
@@ -74,26 +76,19 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetBroadcastById**
-> BroadcastResult GetBroadcastById(ctx, id, optional)
-Get broadcast by id
+> BroadcastResult GetBroadcastById($id, $externalStationId)
 
 Get broadcast by id
 
-### Required Parameters
+Get broadcast by id
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context containing the authentication | nil if no authentication
-  **id** | **int64**| ID of Broadcast **(Required)** | 
- **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
 
-### Optional Parameters
-Optional parameters are passed through a map[string]interface{}.
+### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int64**| ID of Broadcast **(Required)** | 
- **externalStationId** | **int64**| Query on a different (content providing) station *(Optional)* | 
+ **externalStationId** | **int64**| Query on a different (content providing) station *(Optional)* | [optional] 
 
 ### Return type
 
@@ -111,12 +106,14 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetCurrentBroadcast**
-> Broadcast GetCurrentBroadcast(ctx, )
-Get current Broadcast
+> Broadcast GetCurrentBroadcast()
 
 Get current Broadcast
 
-### Required Parameters
+Get current Broadcast
+
+
+### Parameters
 This endpoint does not need any parameter.
 
 ### Return type
@@ -135,24 +132,18 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetDailyEPG**
-> EpgBroadcast GetDailyEPG(ctx, optional)
+> EpgBroadcast GetDailyEPG($date)
+
 Get daily EPG
 
 Get current Broadcast
 
-### Required Parameters
+
+### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context containing the authentication | nil if no authentication
- **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
-
-### Optional Parameters
-Optional parameters are passed through a map[string]interface{}.
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **date** | **time.Time**| Date *(Optional)* | 
+ **date** | **time.Time**| Date *(Optional)* | [optional] 
 
 ### Return type
 
@@ -170,24 +161,18 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetEPGByDate**
-> EpgBroadcast GetEPGByDate(ctx, optional)
-Get EPG by date
+> EpgBroadcast GetEPGByDate($date)
 
 Get EPG by date
 
-### Required Parameters
+Get EPG by date
+
+
+### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context containing the authentication | nil if no authentication
- **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
-
-### Optional Parameters
-Optional parameters are passed through a map[string]interface{}.
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **date** | **time.Time**| Date *(Optional)* | 
+ **date** | **time.Time**| Date *(Optional)* | [optional] 
 
 ### Return type
 
@@ -205,12 +190,14 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetNextBroadcast**
-> Broadcast GetNextBroadcast(ctx, )
-Get next Broadcast
+> Broadcast GetNextBroadcast()
 
 Get next Broadcast
 
-### Required Parameters
+Get next Broadcast
+
+
+### Parameters
 This endpoint does not need any parameter.
 
 ### Return type
@@ -229,24 +216,18 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetWeeklyEPG**
-> EpgBroadcast GetWeeklyEPG(ctx, optional)
-Get weekly EPG
+> EpgBroadcast GetWeeklyEPG($date)
 
 Get weekly EPG
 
-### Required Parameters
+Get weekly EPG
+
+
+### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context containing the authentication | nil if no authentication
- **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
-
-### Optional Parameters
-Optional parameters are passed through a map[string]interface{}.
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **date** | **string**| Date *(Optional)* | 
+ **date** | **string**| Date *(Optional)* | [optional] 
 
 ### Return type
 
@@ -264,34 +245,28 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ListBroadcasts**
-> BroadcastResults ListBroadcasts(ctx, optional)
+> BroadcastResults ListBroadcasts($page, $startMin, $startMax, $modelTypeId, $tagId, $presenterId, $itemId, $blockId, $genreId, $programId, $externalStationId)
+
 Get all broadcasts.
 
 List all broadcasts.
 
-### Required Parameters
+
+### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context containing the authentication | nil if no authentication
- **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
-
-### Optional Parameters
-Optional parameters are passed through a map[string]interface{}.
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **page** | **int64**| Current page *(Optional)* | [default to 1]
- **startMin** | **time.Time**| Minimum start date *(Optional)* | 
- **startMax** | **time.Time**| Maximum start date *(Optional)* | 
- **modelTypeId** | **int64**| Search on ModelType ID *(Optional)* | 
- **tagId** | **int64**| Search on Tag ID *(Optional)* &#x60;(Relation)&#x60; | 
- **presenterId** | **int64**| Search on Presenter ID *(Optional)* &#x60;(Relation)&#x60; | 
- **itemId** | **int64**| Search on Item ID *(Optional)* &#x60;(Relation)&#x60; | 
- **blockId** | **int64**| Search on Block ID *(Optional)* &#x60;(Relation)&#x60; | 
- **genreId** | **int64**| Search on Genre ID *(Optional)* &#x60;(Relation)&#x60; | 
- **programId** | **int64**| Search on Program ID *(Optional)* &#x60;(Relation)&#x60; | 
- **externalStationId** | **int64**| Query on a different (content providing) station *(Optional)* | 
+ **page** | **int64**| Current page *(Optional)* | [optional] [default to 1]
+ **startMin** | **time.Time**| Minimum start date *(Optional)* | [optional] 
+ **startMax** | **time.Time**| Maximum start date *(Optional)* | [optional] 
+ **modelTypeId** | **int64**| Search on ModelType ID *(Optional)* | [optional] 
+ **tagId** | **int64**| Search on Tag ID *(Optional)* &#x60;(Relation)&#x60; | [optional] 
+ **presenterId** | **int64**| Search on Presenter ID *(Optional)* &#x60;(Relation)&#x60; | [optional] 
+ **itemId** | **int64**| Search on Item ID *(Optional)* &#x60;(Relation)&#x60; | [optional] 
+ **blockId** | **int64**| Search on Block ID *(Optional)* &#x60;(Relation)&#x60; | [optional] 
+ **genreId** | **int64**| Search on Genre ID *(Optional)* &#x60;(Relation)&#x60; | [optional] 
+ **programId** | **int64**| Search on Program ID *(Optional)* &#x60;(Relation)&#x60; | [optional] 
+ **externalStationId** | **int64**| Query on a different (content providing) station *(Optional)* | [optional] 
 
 ### Return type
 
@@ -309,28 +284,21 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **PrintBroadcastById**
-> EpgBroadcast PrintBroadcastById(ctx, id, optional)
-Print Broadcast by id
+> EpgBroadcast PrintBroadcastById($id, $programId, $presenterId, $tagId)
 
 Print Broadcast by id
 
-### Required Parameters
+Print Broadcast by id
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context containing the authentication | nil if no authentication
-  **id** | **int64**| ID of Broadcast **(Required)** | 
- **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
 
-### Optional Parameters
-Optional parameters are passed through a map[string]interface{}.
+### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int64**| ID of Broadcast **(Required)** | 
- **programId** | **int64**| Search on Program ID *(Optional)* &#x60;(Relation)&#x60; | 
- **presenterId** | **int64**| Search on Presenter ID *(Optional)* &#x60;(Relation)&#x60; | 
- **tagId** | **int64**| Search on Tag ID *(Optional)* &#x60;(Relation)&#x60; | 
+ **programId** | **int64**| Search on Program ID *(Optional)* &#x60;(Relation)&#x60; | [optional] 
+ **presenterId** | **int64**| Search on Presenter ID *(Optional)* &#x60;(Relation)&#x60; | [optional] 
+ **tagId** | **int64**| Search on Tag ID *(Optional)* &#x60;(Relation)&#x60; | [optional] 
 
 ### Return type
 
@@ -348,26 +316,19 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **UpdateBroadcastByID**
-> Success UpdateBroadcastByID(ctx, id, optional)
-Update broadcast by id
+> Success UpdateBroadcastByID($id, $data)
 
 Update broadcast by id
 
-### Required Parameters
+Update broadcast by id
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context containing the authentication | nil if no authentication
-  **id** | **int64**| ID of Broadcast **(Required)** | 
- **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
 
-### Optional Parameters
-Optional parameters are passed through a map[string]interface{}.
+### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int64**| ID of Broadcast **(Required)** | 
- **data** | [**BroadcastDataInput**](BroadcastDataInput.md)| Data *(Optional)* | 
+ **data** | [**BroadcastDataInput**](BroadcastDataInput.md)| Data *(Optional)* | [optional] 
 
 ### Return type
 

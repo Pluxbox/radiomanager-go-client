@@ -21,6 +21,4 @@ type StoryDataInput struct {
 	Name string `json:"name"`
 
 	Description string `json:"description,omitempty"`
-
-	Tags []int32 `json:"tags,omitempty"`
 }

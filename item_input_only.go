@@ -12,7 +12,7 @@ package radiomanagerclient
 
 type ItemInputOnly struct {
 
-	PreviousId int64 `json:"previous_id,omitempty"`
+	PreviousId int64 `json:"_previous_id,omitempty"`
 
 	Contacts []int32 `json:"contacts,omitempty"`
 

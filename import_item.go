@@ -18,7 +18,7 @@ type ImportItem struct {
 
 	ModelTypeId int64 `json:"model_type_id"`
 
-	ExternalId int64 `json:"external_id"`
+	ExternalId string `json:"external_id"`
 
 	FieldValues ImportItemFieldValues `json:"field_values,omitempty"`
 

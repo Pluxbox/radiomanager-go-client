@@ -20,7 +20,7 @@ type Item struct {
 
 	BlockId int64 `json:"block_id,omitempty"`
 
-	ExternalId int64 `json:"external_id"`
+	ExternalId string `json:"external_id,omitempty"`
 
 	FieldValues ImportItemFieldValues `json:"field_values,omitempty"`
 

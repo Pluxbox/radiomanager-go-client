@@ -1,6 +1,6 @@
 # \TagApi
 
-All URIs are relative to *https://staging.radiomanager.pluxbox.com/api/v2*
+All URIs are relative to *https://radiomanager.pb/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -100,7 +100,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ListTags**
-> TagResults ListTags($page, $programId, $itemId, $broadcastId, $contactId, $externalStationId)
+> TagResults ListTags($page, $programId, $itemId, $broadcastId, $contactId, $limit, $orderBy, $orderDirection, $externalStationId)
 
 Get a list of all the tags currently in your station.
 
@@ -116,6 +116,9 @@ Name | Type | Description  | Notes
  **itemId** | **int64**| Search on Item ID *(Optional)* &#x60;(Relation)&#x60; | [optional] 
  **broadcastId** | **int64**| Search on Broadcast ID *(Optional)* &#x60;(Relation)&#x60; | [optional] 
  **contactId** | **int64**| Search on Contact ID *(Optional)* &#x60;(Relation)&#x60; | [optional] 
+ **limit** | **int64**| Results per page *(Optional)* | [optional] 
+ **orderBy** | **string**| Field to order the results *(Optional)* | [optional] 
+ **orderDirection** | **string**| Direction of ordering *(Optional)* | [optional] 
  **externalStationId** | **int64**| Query on a different (content providing) station *(Optional)* | [optional] 
 
 ### Return type

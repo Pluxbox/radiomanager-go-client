@@ -1,6 +1,6 @@
 # \ItemApi
 
-All URIs are relative to *https://staging.radiomanager.pluxbox.com/api/v2*
+All URIs are relative to *https://radiomanager.pb/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -162,7 +162,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ListItems**
-> ItemResults ListItems($page, $orderBy, $orderDirection, $startMin, $startMax, $durationMin, $durationMax, $status, $modelTypeId, $programDraftId, $userDraftId, $stationDraftId, $blockId, $broadcastId, $campaignId, $contactId, $programId, $tagId, $externalStationId)
+> ItemResults ListItems($page, $blockId, $broadcastId, $modelTypeId, $tagId, $campaignId, $contactId, $programDraftId, $userDraftId, $stationDraftId, $programId, $startMin, $startMax, $durationMin, $durationMax, $status, $limit, $orderBy, $orderDirection, $externalStationId)
 
 Get a list of all the items currently in your station.
 
@@ -174,23 +174,24 @@ Get a list of all the items currently in your station. This feature supports pag
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int64**| Current page *(Optional)* | [optional] 
- **orderBy** | **string**| Field to order the results *(Optional)* | [optional] 
- **orderDirection** | **string**| Direction of ordering *(Optional)* | [optional] 
+ **blockId** | **int64**| Search on Block ID *(Optional)* &#x60;(Relation)&#x60; | [optional] 
+ **broadcastId** | **int64**| Search on Broadcast ID *(Optional)* &#x60;(Relation)&#x60; | [optional] 
+ **modelTypeId** | **int64**| Search on ModelType ID *(Optional)* &#x60;(Relation)&#x60; | [optional] 
+ **tagId** | **int64**| Search on Tag ID *(Optional)* &#x60;(Relation)&#x60; | [optional] 
+ **campaignId** | **int64**| Search on Campaign ID *(Optional)* &#x60;(Relation)&#x60; | [optional] 
+ **contactId** | **int64**| Search on Contact ID *(Optional)* &#x60;(Relation)&#x60; | [optional] 
+ **programDraftId** | **int64**| Search on Program Draft ID *(Optional)* | [optional] 
+ **userDraftId** | **int64**| Search on User Draft ID *(Optional)* | [optional] 
+ **stationDraftId** | **int64**| Search on Station Draft ID *(Optional)* | [optional] 
+ **programId** | **int64**| Search on Program ID *(Optional)* &#x60;(Relation)&#x60; | [optional] 
  **startMin** | **time.Time**| Minimum start date *(Optional)* | [optional] 
  **startMax** | **time.Time**| Maximum start date *(Optional)* | [optional] 
  **durationMin** | **int32**| Minimum duration (seconds) *(Optional)* | [optional] 
  **durationMax** | **int32**| Maximum duration (seconds) *(Optional)* | [optional] 
  **status** | **string**| Play Status of item *(Optional)* | [optional] 
- **modelTypeId** | **int64**| Search on ModelType ID *(Optional)* | [optional] 
- **programDraftId** | **int64**| Search on Program Draft ID *(Optional)* | [optional] 
- **userDraftId** | **int64**| Search on User Draft ID *(Optional)* | [optional] 
- **stationDraftId** | **int64**| Search on Station Draft ID *(Optional)* | [optional] 
- **blockId** | **int64**| Search on Block ID *(Optional)* &#x60;(Relation)&#x60; | [optional] 
- **broadcastId** | **int64**| Search on Broadcast ID *(Optional)* &#x60;(Relation)&#x60; | [optional] 
- **campaignId** | **int64**| Search on Campaign ID *(Optional)* &#x60;(Relation)&#x60; | [optional] 
- **contactId** | **int64**| Search on Contact ID *(Optional)* &#x60;(Relation)&#x60; | [optional] 
- **programId** | **int64**| Search on Program ID *(Optional)* &#x60;(Relation)&#x60; | [optional] 
- **tagId** | **int64**| Search on Tag ID *(Optional)* &#x60;(Relation)&#x60; | [optional] 
+ **limit** | **int64**| Results per page *(Optional)* | [optional] 
+ **orderBy** | **string**| Field to order the results *(Optional)* | [optional] 
+ **orderDirection** | **string**| Direction of ordering *(Optional)* | [optional] 
  **externalStationId** | **int64**| Query on a different (content providing) station *(Optional)* | [optional] 
 
 ### Return type

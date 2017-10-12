@@ -1,6 +1,6 @@
 # \BroadcastApi
 
-All URIs are relative to *https://staging.radiomanager.pluxbox.com/api/v2*
+All URIs are relative to *https://radiomanager.pb/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -132,7 +132,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetDailyEPG**
-> EpgBroadcast GetDailyEPG($date)
+> EpgBroadcast GetDailyEPG($date, $withunpublished)
 
 Get daily EPG
 
@@ -144,6 +144,7 @@ Get current Broadcast
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **date** | **time.Time**| Date *(Optional)* | [optional] 
+ **withunpublished** | **bool**| Show Unpublished *(Optional)* | [optional] 
 
 ### Return type
 
@@ -161,7 +162,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetEPGByDate**
-> EpgBroadcast GetEPGByDate($date)
+> EpgBroadcast GetEPGByDate($date, $withunpublished)
 
 Get EPG by date
 
@@ -173,6 +174,7 @@ Get EPG by date
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **date** | **time.Time**| Date *(Optional)* | [optional] 
+ **withunpublished** | **bool**| Show Unpublished *(Optional)* | [optional] 
 
 ### Return type
 
@@ -216,7 +218,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetWeeklyEPG**
-> EpgBroadcast GetWeeklyEPG($date)
+> EpgBroadcast GetWeeklyEPG($date, $withunpublished)
 
 Get weekly EPG
 
@@ -228,6 +230,7 @@ Get weekly EPG
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **date** | **string**| Date *(Optional)* | [optional] 
+ **withunpublished** | **bool**| Show Unpublished *(Optional)* | [optional] 
 
 ### Return type
 
@@ -245,7 +248,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ListBroadcasts**
-> BroadcastResults ListBroadcasts($page, $startMin, $startMax, $modelTypeId, $tagId, $presenterId, $itemId, $blockId, $genreId, $programId, $externalStationId)
+> BroadcastResults ListBroadcasts($page, $programId, $blockId, $modelTypeId, $tagId, $presenterId, $genreId, $itemId, $startMin, $startMax, $limit, $orderBy, $orderDirection, $externalStationId)
 
 Get all broadcasts.
 
@@ -257,15 +260,18 @@ List all broadcasts.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int64**| Current page *(Optional)* | [optional] [default to 1]
- **startMin** | **time.Time**| Minimum start date *(Optional)* | [optional] 
- **startMax** | **time.Time**| Maximum start date *(Optional)* | [optional] 
- **modelTypeId** | **int64**| Search on ModelType ID *(Optional)* | [optional] 
+ **programId** | **int64**| Search on Program ID *(Optional)* &#x60;(Relation)&#x60; | [optional] 
+ **blockId** | **int64**| Search on Block ID *(Optional)* &#x60;(Relation)&#x60; | [optional] 
+ **modelTypeId** | **int64**| Search on ModelType ID *(Optional)* &#x60;(Relation)&#x60; | [optional] 
  **tagId** | **int64**| Search on Tag ID *(Optional)* &#x60;(Relation)&#x60; | [optional] 
  **presenterId** | **int64**| Search on Presenter ID *(Optional)* &#x60;(Relation)&#x60; | [optional] 
- **itemId** | **int64**| Search on Item ID *(Optional)* &#x60;(Relation)&#x60; | [optional] 
- **blockId** | **int64**| Search on Block ID *(Optional)* &#x60;(Relation)&#x60; | [optional] 
  **genreId** | **int64**| Search on Genre ID *(Optional)* &#x60;(Relation)&#x60; | [optional] 
- **programId** | **int64**| Search on Program ID *(Optional)* &#x60;(Relation)&#x60; | [optional] 
+ **itemId** | **int64**| Search on Item ID *(Optional)* &#x60;(Relation)&#x60; | [optional] 
+ **startMin** | **time.Time**| Minimum start date *(Optional)* | [optional] 
+ **startMax** | **time.Time**| Maximum start date *(Optional)* | [optional] 
+ **limit** | **int64**| Results per page *(Optional)* | [optional] 
+ **orderBy** | **string**| Field to order the results *(Optional)* | [optional] 
+ **orderDirection** | **string**| Direction of ordering *(Optional)* | [optional] 
  **externalStationId** | **int64**| Query on a different (content providing) station *(Optional)* | [optional] 
 
 ### Return type

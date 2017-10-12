@@ -1,6 +1,6 @@
 # \BlockApi
 
-All URIs are relative to *https://staging.radiomanager.pluxbox.com/api/v2*
+All URIs are relative to *https://radiomanager.pb/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -93,7 +93,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ListBlocks**
-> BlockResults ListBlocks($page, $startMin, $startMax, $broadcastId, $programId, $itemId, $externalStationId)
+> BlockResults ListBlocks($page, $broadcastId, $itemId, $programId, $startMin, $startMax, $limit, $orderBy, $orderDirection, $externalStationId)
 
 Get a list of all blocks currently in your station.
 
@@ -105,11 +105,14 @@ Get a list of all blocks currently in your station. This feature supports pagina
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int64**| Current page *(Optional)* | [optional] [default to 1]
+ **broadcastId** | **int64**| Search on Broadcast ID *(Optional)* &#x60;(Relation)&#x60; | [optional] 
+ **itemId** | **int64**| Search on Item ID *(Optional)* &#x60;(Relation)&#x60; | [optional] 
+ **programId** | **int64**| Search on Program ID *(Optional)* &#x60;(Relation)&#x60; | [optional] 
  **startMin** | **time.Time**| Minimum start date *(Optional)* | [optional] 
  **startMax** | **time.Time**| Maximum start date *(Optional)* | [optional] 
- **broadcastId** | **int64**| Search on Broadcast ID *(Optional)* &#x60;(Relation)&#x60; | [optional] 
- **programId** | **int64**| Search on Program ID *(Optional)* &#x60;(Relation)&#x60; | [optional] 
- **itemId** | **int64**| Search on Item ID *(Optional)* &#x60;(Relation)&#x60; | [optional] 
+ **limit** | **int64**| Results per page *(Optional)* | [optional] 
+ **orderBy** | **string**| Field to order the results *(Optional)* | [optional] 
+ **orderDirection** | **string**| Direction of ordering *(Optional)* | [optional] 
  **externalStationId** | **int64**| Query on a different (content providing) station *(Optional)* | [optional] 
 
 ### Return type

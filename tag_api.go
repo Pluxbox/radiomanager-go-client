@@ -241,10 +241,13 @@ func (a TagApi) GetTagById(id int64, externalStationId int64) (*TagResult, *APIR
  * @param itemId Search on Item ID *(Optional)* &#x60;(Relation)&#x60;
  * @param broadcastId Search on Broadcast ID *(Optional)* &#x60;(Relation)&#x60;
  * @param contactId Search on Contact ID *(Optional)* &#x60;(Relation)&#x60;
+ * @param limit Results per page *(Optional)*
+ * @param orderBy Field to order the results *(Optional)*
+ * @param orderDirection Direction of ordering *(Optional)*
  * @param externalStationId Query on a different (content providing) station *(Optional)*
  * @return *TagResults
  */
-func (a TagApi) ListTags(page int64, programId int64, itemId int64, broadcastId int64, contactId int64, externalStationId int64) (*TagResults, *APIResponse, error) {
+func (a TagApi) ListTags(page int64, programId int64, itemId int64, broadcastId int64, contactId int64, limit int64, orderBy string, orderDirection string, externalStationId int64) (*TagResults, *APIResponse, error) {
 
 	var localVarHttpMethod = strings.ToUpper("Get")
 	// create path and map variables
@@ -268,6 +271,9 @@ func (a TagApi) ListTags(page int64, programId int64, itemId int64, broadcastId 
 	localVarQueryParams.Add("item_id", a.Configuration.APIClient.ParameterToString(itemId, ""))
 	localVarQueryParams.Add("broadcast_id", a.Configuration.APIClient.ParameterToString(broadcastId, ""))
 	localVarQueryParams.Add("contact_id", a.Configuration.APIClient.ParameterToString(contactId, ""))
+	localVarQueryParams.Add("limit", a.Configuration.APIClient.ParameterToString(limit, ""))
+	localVarQueryParams.Add("order-by", a.Configuration.APIClient.ParameterToString(orderBy, ""))
+	localVarQueryParams.Add("order-direction", a.Configuration.APIClient.ParameterToString(orderDirection, ""))
 	localVarQueryParams.Add("_external_station_id", a.Configuration.APIClient.ParameterToString(externalStationId, ""))
 
 	// to determine the Content-Type header

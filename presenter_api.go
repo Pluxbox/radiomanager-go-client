@@ -237,13 +237,16 @@ func (a PresenterApi) GetPresenterById(id int64, externalStationId int64) (*Pres
  * List all presenters.
  *
  * @param page Current page *(Optional)*
- * @param modelTypeId Search on ModelType ID (Optional)
  * @param programId Search on Program ID *(Optional)* &#x60;(Relation)&#x60;
  * @param broadcastId Search on Broadcast ID *(Optional)* &#x60;(Relation)&#x60;
+ * @param modelTypeId Search on ModelType ID (Optional)
+ * @param limit Results per page *(Optional)*
+ * @param orderBy Field to order the results *(Optional)*
+ * @param orderDirection Direction of ordering *(Optional)*
  * @param externalStationId Query on a different (content providing) station *(Optional)*
  * @return *PresenterResults
  */
-func (a PresenterApi) ListPresenters(page int64, modelTypeId int64, programId int64, broadcastId int64, externalStationId int64) (*PresenterResults, *APIResponse, error) {
+func (a PresenterApi) ListPresenters(page int64, programId int64, broadcastId int64, modelTypeId int64, limit int64, orderBy string, orderDirection string, externalStationId int64) (*PresenterResults, *APIResponse, error) {
 
 	var localVarHttpMethod = strings.ToUpper("Get")
 	// create path and map variables
@@ -263,9 +266,12 @@ func (a PresenterApi) ListPresenters(page int64, modelTypeId int64, programId in
 		localVarHeaderParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	localVarQueryParams.Add("page", a.Configuration.APIClient.ParameterToString(page, ""))
-	localVarQueryParams.Add("model_type_id", a.Configuration.APIClient.ParameterToString(modelTypeId, ""))
 	localVarQueryParams.Add("program_id", a.Configuration.APIClient.ParameterToString(programId, ""))
 	localVarQueryParams.Add("broadcast_id", a.Configuration.APIClient.ParameterToString(broadcastId, ""))
+	localVarQueryParams.Add("model_type_id", a.Configuration.APIClient.ParameterToString(modelTypeId, ""))
+	localVarQueryParams.Add("limit", a.Configuration.APIClient.ParameterToString(limit, ""))
+	localVarQueryParams.Add("order-by", a.Configuration.APIClient.ParameterToString(orderBy, ""))
+	localVarQueryParams.Add("order-direction", a.Configuration.APIClient.ParameterToString(orderDirection, ""))
 	localVarQueryParams.Add("_external_station_id", a.Configuration.APIClient.ParameterToString(externalStationId, ""))
 
 	// to determine the Content-Type header

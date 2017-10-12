@@ -236,9 +236,12 @@ func (a UserApi) InviteUserByMail(data InviteUserData) (*InviteUserSuccess, *API
  *
  * @param page Current page *(Optional)*
  * @param roleId Search on Role ID *(Optional)*
+ * @param limit Results per page *(Optional)*
+ * @param orderBy Field to order the results *(Optional)*
+ * @param orderDirection Direction of ordering *(Optional)*
  * @return *UserResults
  */
-func (a UserApi) ListUsers(page int64, roleId int64) (*UserResults, *APIResponse, error) {
+func (a UserApi) ListUsers(page int64, roleId int64, limit int64, orderBy string, orderDirection string) (*UserResults, *APIResponse, error) {
 
 	var localVarHttpMethod = strings.ToUpper("Get")
 	// create path and map variables
@@ -259,6 +262,9 @@ func (a UserApi) ListUsers(page int64, roleId int64) (*UserResults, *APIResponse
 	}
 	localVarQueryParams.Add("page", a.Configuration.APIClient.ParameterToString(page, ""))
 	localVarQueryParams.Add("role_id", a.Configuration.APIClient.ParameterToString(roleId, ""))
+	localVarQueryParams.Add("limit", a.Configuration.APIClient.ParameterToString(limit, ""))
+	localVarQueryParams.Add("order-by", a.Configuration.APIClient.ParameterToString(orderBy, ""))
+	localVarQueryParams.Add("order-direction", a.Configuration.APIClient.ParameterToString(orderDirection, ""))
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }

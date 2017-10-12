@@ -233,15 +233,18 @@ func (a BlockApi) GetNextBlock() (*BlockResult, *APIResponse, error) {
  * Get a list of all blocks currently in your station. This feature supports pagination and will give a maximum of 50 blocks back.
  *
  * @param page Current page *(Optional)*
+ * @param broadcastId Search on Broadcast ID *(Optional)* &#x60;(Relation)&#x60;
+ * @param itemId Search on Item ID *(Optional)* &#x60;(Relation)&#x60;
+ * @param programId Search on Program ID *(Optional)* &#x60;(Relation)&#x60;
  * @param startMin Minimum start date *(Optional)*
  * @param startMax Maximum start date *(Optional)*
- * @param broadcastId Search on Broadcast ID *(Optional)* &#x60;(Relation)&#x60;
- * @param programId Search on Program ID *(Optional)* &#x60;(Relation)&#x60;
- * @param itemId Search on Item ID *(Optional)* &#x60;(Relation)&#x60;
+ * @param limit Results per page *(Optional)*
+ * @param orderBy Field to order the results *(Optional)*
+ * @param orderDirection Direction of ordering *(Optional)*
  * @param externalStationId Query on a different (content providing) station *(Optional)*
  * @return *BlockResults
  */
-func (a BlockApi) ListBlocks(page int64, startMin time.Time, startMax time.Time, broadcastId int64, programId int64, itemId int64, externalStationId int64) (*BlockResults, *APIResponse, error) {
+func (a BlockApi) ListBlocks(page int64, broadcastId int64, itemId int64, programId int64, startMin time.Time, startMax time.Time, limit int64, orderBy string, orderDirection string, externalStationId int64) (*BlockResults, *APIResponse, error) {
 
 	var localVarHttpMethod = strings.ToUpper("Get")
 	// create path and map variables
@@ -261,11 +264,14 @@ func (a BlockApi) ListBlocks(page int64, startMin time.Time, startMax time.Time,
 		localVarHeaderParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	localVarQueryParams.Add("page", a.Configuration.APIClient.ParameterToString(page, ""))
+	localVarQueryParams.Add("broadcast_id", a.Configuration.APIClient.ParameterToString(broadcastId, ""))
+	localVarQueryParams.Add("item_id", a.Configuration.APIClient.ParameterToString(itemId, ""))
+	localVarQueryParams.Add("program_id", a.Configuration.APIClient.ParameterToString(programId, ""))
 	localVarQueryParams.Add("start-min", a.Configuration.APIClient.ParameterToString(startMin, ""))
 	localVarQueryParams.Add("start-max", a.Configuration.APIClient.ParameterToString(startMax, ""))
-	localVarQueryParams.Add("broadcast_id", a.Configuration.APIClient.ParameterToString(broadcastId, ""))
-	localVarQueryParams.Add("program_id", a.Configuration.APIClient.ParameterToString(programId, ""))
-	localVarQueryParams.Add("item_id", a.Configuration.APIClient.ParameterToString(itemId, ""))
+	localVarQueryParams.Add("limit", a.Configuration.APIClient.ParameterToString(limit, ""))
+	localVarQueryParams.Add("order-by", a.Configuration.APIClient.ParameterToString(orderBy, ""))
+	localVarQueryParams.Add("order-direction", a.Configuration.APIClient.ParameterToString(orderDirection, ""))
 	localVarQueryParams.Add("_external_station_id", a.Configuration.APIClient.ParameterToString(externalStationId, ""))
 
 	// to determine the Content-Type header

@@ -1,29 +1,26 @@
-# \ExternalMessageApi
+# \StationApi
 
 All URIs are relative to *https://radiomanager.pb/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**QueueExternalMessage**](ExternalMessageApi.md#QueueExternalMessage) | **Post** /externalmessagequeue | Queue External Message.
+[**GetStation**](StationApi.md#GetStation) | **Get** /station | Get own station only
 
 
-# **QueueExternalMessage**
-> interface{} QueueExternalMessage($message)
+# **GetStation**
+> StationResult GetStation()
 
-Queue External Message.
+Get own station only
 
-Queue External Message.
+Get own station only
 
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **message** | [**ExternalMessageQueueData**](ExternalMessageQueueData.md)| Data **(Required)** | 
+This endpoint does not need any parameter.
 
 ### Return type
 
-[**interface{}**](interface{}.md)
+[**StationResult**](StationResult.md)
 
 ### Authorization
 

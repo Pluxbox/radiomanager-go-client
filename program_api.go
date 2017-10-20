@@ -237,17 +237,20 @@ func (a ProgramApi) GetProgramById(id int64, externalStationId int64) (*ProgramR
  * List all programs.
  *
  * @param page Current page *(Optional)*
- * @param genreId Search on Genre ID *(Optional)*
- * @param modelTypeId Search on ModelType ID *(Optional)*
- * @param presenterId Search on Presenter ID *(Optional)* &#x60;(Relation)&#x60;
- * @param tagId Search on Tag ID *(Optional)* &#x60;(Relation)&#x60;
  * @param broadcastId Search on Broadcast ID *(Optional)* &#x60;(Relation)&#x60;
- * @param itemId Search on Item ID *(Optional)* &#x60;(Relation)&#x60;
+ * @param modelTypeId Search on ModelType ID *(Optional)* &#x60;(Relation)&#x60;
+ * @param tagId Search on Tag ID *(Optional)* &#x60;(Relation)&#x60;
+ * @param presenterId Search on Presenter ID *(Optional)* &#x60;(Relation)&#x60;
+ * @param genreId Search on Genre ID *(Optional)*
  * @param blockId Search on Block ID *(Optional)* &#x60;(Relation)&#x60;
+ * @param itemId Search on Item ID *(Optional)* &#x60;(Relation)&#x60;
+ * @param limit Results per page *(Optional)*
+ * @param orderBy Field to order the results *(Optional)*
+ * @param orderDirection Direction of ordering *(Optional)*
  * @param externalStationId Query on a different (content providing) station *(Optional)*
  * @return *ProgramResults
  */
-func (a ProgramApi) ListPrograms(page int64, genreId int64, modelTypeId int64, presenterId int64, tagId int64, broadcastId int64, itemId int64, blockId int64, externalStationId int64) (*ProgramResults, *APIResponse, error) {
+func (a ProgramApi) ListPrograms(page int64, broadcastId int64, modelTypeId int64, tagId int64, presenterId int64, genreId int64, blockId int64, itemId int64, limit int64, orderBy string, orderDirection string, externalStationId int64) (*ProgramResults, *APIResponse, error) {
 
 	var localVarHttpMethod = strings.ToUpper("Get")
 	// create path and map variables
@@ -267,13 +270,16 @@ func (a ProgramApi) ListPrograms(page int64, genreId int64, modelTypeId int64, p
 		localVarHeaderParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	localVarQueryParams.Add("page", a.Configuration.APIClient.ParameterToString(page, ""))
-	localVarQueryParams.Add("genre_id", a.Configuration.APIClient.ParameterToString(genreId, ""))
-	localVarQueryParams.Add("model_type_id", a.Configuration.APIClient.ParameterToString(modelTypeId, ""))
-	localVarQueryParams.Add("presenter_id", a.Configuration.APIClient.ParameterToString(presenterId, ""))
-	localVarQueryParams.Add("tag_id", a.Configuration.APIClient.ParameterToString(tagId, ""))
 	localVarQueryParams.Add("broadcast_id", a.Configuration.APIClient.ParameterToString(broadcastId, ""))
-	localVarQueryParams.Add("item_id", a.Configuration.APIClient.ParameterToString(itemId, ""))
+	localVarQueryParams.Add("model_type_id", a.Configuration.APIClient.ParameterToString(modelTypeId, ""))
+	localVarQueryParams.Add("tag_id", a.Configuration.APIClient.ParameterToString(tagId, ""))
+	localVarQueryParams.Add("presenter_id", a.Configuration.APIClient.ParameterToString(presenterId, ""))
+	localVarQueryParams.Add("genre_id", a.Configuration.APIClient.ParameterToString(genreId, ""))
 	localVarQueryParams.Add("block_id", a.Configuration.APIClient.ParameterToString(blockId, ""))
+	localVarQueryParams.Add("item_id", a.Configuration.APIClient.ParameterToString(itemId, ""))
+	localVarQueryParams.Add("limit", a.Configuration.APIClient.ParameterToString(limit, ""))
+	localVarQueryParams.Add("order-by", a.Configuration.APIClient.ParameterToString(orderBy, ""))
+	localVarQueryParams.Add("order-direction", a.Configuration.APIClient.ParameterToString(orderDirection, ""))
 	localVarQueryParams.Add("_external_station_id", a.Configuration.APIClient.ParameterToString(externalStationId, ""))
 
 	// to determine the Content-Type header

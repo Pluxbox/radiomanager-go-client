@@ -368,27 +368,28 @@ func (a ItemApi) GetItemById(id int64, externalStationId int64) (*ItemResult, *A
  * Get a list of all the items currently in your station. This feature supports pagination and will give a maximum results of 50 items back.
  *
  * @param page Current page *(Optional)*
- * @param orderBy Field to order the results *(Optional)*
- * @param orderDirection Direction of ordering *(Optional)*
+ * @param blockId Search on Block ID *(Optional)* &#x60;(Relation)&#x60;
+ * @param broadcastId Search on Broadcast ID *(Optional)* &#x60;(Relation)&#x60;
+ * @param modelTypeId Search on ModelType ID *(Optional)* &#x60;(Relation)&#x60;
+ * @param tagId Search on Tag ID *(Optional)* &#x60;(Relation)&#x60;
+ * @param campaignId Search on Campaign ID *(Optional)* &#x60;(Relation)&#x60;
+ * @param contactId Search on Contact ID *(Optional)* &#x60;(Relation)&#x60;
+ * @param programDraftId Search on Program Draft ID *(Optional)*
+ * @param userDraftId Search on User Draft ID *(Optional)*
+ * @param stationDraftId Search on Station Draft ID *(Optional)*
+ * @param programId Search on Program ID *(Optional)* &#x60;(Relation)&#x60;
  * @param startMin Minimum start date *(Optional)*
  * @param startMax Maximum start date *(Optional)*
  * @param durationMin Minimum duration (seconds) *(Optional)*
  * @param durationMax Maximum duration (seconds) *(Optional)*
  * @param status Play Status of item *(Optional)*
- * @param modelTypeId Search on ModelType ID *(Optional)*
- * @param programDraftId Search on Program Draft ID *(Optional)*
- * @param userDraftId Search on User Draft ID *(Optional)*
- * @param stationDraftId Search on Station Draft ID *(Optional)*
- * @param blockId Search on Block ID *(Optional)* &#x60;(Relation)&#x60;
- * @param broadcastId Search on Broadcast ID *(Optional)* &#x60;(Relation)&#x60;
- * @param campaignId Search on Campaign ID *(Optional)* &#x60;(Relation)&#x60;
- * @param contactId Search on Contact ID *(Optional)* &#x60;(Relation)&#x60;
- * @param programId Search on Program ID *(Optional)* &#x60;(Relation)&#x60;
- * @param tagId Search on Tag ID *(Optional)* &#x60;(Relation)&#x60;
+ * @param limit Results per page *(Optional)*
+ * @param orderBy Field to order the results *(Optional)*
+ * @param orderDirection Direction of ordering *(Optional)*
  * @param externalStationId Query on a different (content providing) station *(Optional)*
  * @return *ItemResults
  */
-func (a ItemApi) ListItems(page int64, orderBy string, orderDirection string, startMin time.Time, startMax time.Time, durationMin int32, durationMax int32, status string, modelTypeId int64, programDraftId int64, userDraftId int64, stationDraftId int64, blockId int64, broadcastId int64, campaignId int64, contactId int64, programId int64, tagId int64, externalStationId int64) (*ItemResults, *APIResponse, error) {
+func (a ItemApi) ListItems(page int64, blockId int64, broadcastId int64, modelTypeId int64, tagId int64, campaignId int64, contactId int64, programDraftId int64, userDraftId int64, stationDraftId int64, programId int64, startMin time.Time, startMax time.Time, durationMin int32, durationMax int32, status string, limit int64, orderBy string, orderDirection string, externalStationId int64) (*ItemResults, *APIResponse, error) {
 
 	var localVarHttpMethod = strings.ToUpper("Get")
 	// create path and map variables
@@ -408,23 +409,24 @@ func (a ItemApi) ListItems(page int64, orderBy string, orderDirection string, st
 		localVarHeaderParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	localVarQueryParams.Add("page", a.Configuration.APIClient.ParameterToString(page, ""))
-	localVarQueryParams.Add("order-by", a.Configuration.APIClient.ParameterToString(orderBy, ""))
-	localVarQueryParams.Add("order-direction", a.Configuration.APIClient.ParameterToString(orderDirection, ""))
+	localVarQueryParams.Add("block_id", a.Configuration.APIClient.ParameterToString(blockId, ""))
+	localVarQueryParams.Add("broadcast_id", a.Configuration.APIClient.ParameterToString(broadcastId, ""))
+	localVarQueryParams.Add("model_type_id", a.Configuration.APIClient.ParameterToString(modelTypeId, ""))
+	localVarQueryParams.Add("tag_id", a.Configuration.APIClient.ParameterToString(tagId, ""))
+	localVarQueryParams.Add("campaign_id", a.Configuration.APIClient.ParameterToString(campaignId, ""))
+	localVarQueryParams.Add("contact_id", a.Configuration.APIClient.ParameterToString(contactId, ""))
+	localVarQueryParams.Add("program_draft_id", a.Configuration.APIClient.ParameterToString(programDraftId, ""))
+	localVarQueryParams.Add("user_draft_id", a.Configuration.APIClient.ParameterToString(userDraftId, ""))
+	localVarQueryParams.Add("station_draft_id", a.Configuration.APIClient.ParameterToString(stationDraftId, ""))
+	localVarQueryParams.Add("program_id", a.Configuration.APIClient.ParameterToString(programId, ""))
 	localVarQueryParams.Add("start-min", a.Configuration.APIClient.ParameterToString(startMin, ""))
 	localVarQueryParams.Add("start-max", a.Configuration.APIClient.ParameterToString(startMax, ""))
 	localVarQueryParams.Add("duration-min", a.Configuration.APIClient.ParameterToString(durationMin, ""))
 	localVarQueryParams.Add("duration-max", a.Configuration.APIClient.ParameterToString(durationMax, ""))
 	localVarQueryParams.Add("status", a.Configuration.APIClient.ParameterToString(status, ""))
-	localVarQueryParams.Add("model_type_id", a.Configuration.APIClient.ParameterToString(modelTypeId, ""))
-	localVarQueryParams.Add("program_draft_id", a.Configuration.APIClient.ParameterToString(programDraftId, ""))
-	localVarQueryParams.Add("user_draft_id", a.Configuration.APIClient.ParameterToString(userDraftId, ""))
-	localVarQueryParams.Add("station_draft_id", a.Configuration.APIClient.ParameterToString(stationDraftId, ""))
-	localVarQueryParams.Add("block_id", a.Configuration.APIClient.ParameterToString(blockId, ""))
-	localVarQueryParams.Add("broadcast_id", a.Configuration.APIClient.ParameterToString(broadcastId, ""))
-	localVarQueryParams.Add("campaign_id", a.Configuration.APIClient.ParameterToString(campaignId, ""))
-	localVarQueryParams.Add("contact_id", a.Configuration.APIClient.ParameterToString(contactId, ""))
-	localVarQueryParams.Add("program_id", a.Configuration.APIClient.ParameterToString(programId, ""))
-	localVarQueryParams.Add("tag_id", a.Configuration.APIClient.ParameterToString(tagId, ""))
+	localVarQueryParams.Add("limit", a.Configuration.APIClient.ParameterToString(limit, ""))
+	localVarQueryParams.Add("order-by", a.Configuration.APIClient.ParameterToString(orderBy, ""))
+	localVarQueryParams.Add("order-direction", a.Configuration.APIClient.ParameterToString(orderDirection, ""))
 	localVarQueryParams.Add("_external_station_id", a.Configuration.APIClient.ParameterToString(externalStationId, ""))
 
 	// to determine the Content-Type header

@@ -108,17 +108,20 @@ func (a ModelTypeApi) GetModelTypeById(id int64, externalStationId int64) (*Mode
  * List all modelTypes.
  *
  * @param page Current page *(Optional)*
- * @param model 
  * @param programId Search on Program ID *(Optional)*
  * @param broadcastId Search on Broadcast ID *(Optional)*
  * @param itemId Search on Item ID *(Optional)*
  * @param campaignId Search on Campaign ID *(Optional)*
  * @param presenterId Search on Presenter ID *(Optional)*
  * @param contactId Search on Contact ID *(Optional)*
+ * @param model Search Modeltypes for certain Model *(Optional)*
+ * @param limit Results per page *(Optional)*
+ * @param orderBy Field to order the results *(Optional)*
+ * @param orderDirection Direction of ordering *(Optional)*
  * @param externalStationId Query on a different (content providing) station *(Optional)*
  * @return *ModelTypeResults
  */
-func (a ModelTypeApi) ListModelTypes(page int64, model string, programId int64, broadcastId int64, itemId int64, campaignId int64, presenterId int64, contactId int64, externalStationId int64) (*ModelTypeResults, *APIResponse, error) {
+func (a ModelTypeApi) ListModelTypes(page int64, programId int64, broadcastId int64, itemId int64, campaignId int64, presenterId int64, contactId int64, model string, limit int64, orderBy string, orderDirection string, externalStationId int64) (*ModelTypeResults, *APIResponse, error) {
 
 	var localVarHttpMethod = strings.ToUpper("Get")
 	// create path and map variables
@@ -138,13 +141,16 @@ func (a ModelTypeApi) ListModelTypes(page int64, model string, programId int64, 
 		localVarHeaderParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	localVarQueryParams.Add("page", a.Configuration.APIClient.ParameterToString(page, ""))
-	localVarQueryParams.Add("model", a.Configuration.APIClient.ParameterToString(model, ""))
 	localVarQueryParams.Add("program_id", a.Configuration.APIClient.ParameterToString(programId, ""))
 	localVarQueryParams.Add("broadcast_id", a.Configuration.APIClient.ParameterToString(broadcastId, ""))
 	localVarQueryParams.Add("item_id", a.Configuration.APIClient.ParameterToString(itemId, ""))
 	localVarQueryParams.Add("campaign_id", a.Configuration.APIClient.ParameterToString(campaignId, ""))
 	localVarQueryParams.Add("presenter_id", a.Configuration.APIClient.ParameterToString(presenterId, ""))
 	localVarQueryParams.Add("contact_id", a.Configuration.APIClient.ParameterToString(contactId, ""))
+	localVarQueryParams.Add("model", a.Configuration.APIClient.ParameterToString(model, ""))
+	localVarQueryParams.Add("limit", a.Configuration.APIClient.ParameterToString(limit, ""))
+	localVarQueryParams.Add("order-by", a.Configuration.APIClient.ParameterToString(orderBy, ""))
+	localVarQueryParams.Add("order-direction", a.Configuration.APIClient.ParameterToString(orderDirection, ""))
 	localVarQueryParams.Add("_external_station_id", a.Configuration.APIClient.ParameterToString(externalStationId, ""))
 
 	// to determine the Content-Type header

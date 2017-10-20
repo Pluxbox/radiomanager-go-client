@@ -1,6 +1,6 @@
 # \ModelTypeApi
 
-All URIs are relative to *https://staging.radiomanager.pluxbox.com/api/v2*
+All URIs are relative to *https://staging.radiomanager.io/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -39,7 +39,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ListModelTypes**
-> ModelTypeResults ListModelTypes($page, $model, $programId, $broadcastId, $itemId, $campaignId, $presenterId, $contactId, $externalStationId)
+> ModelTypeResults ListModelTypes($page, $programId, $broadcastId, $itemId, $campaignId, $presenterId, $contactId, $model, $limit, $orderBy, $orderDirection, $externalStationId)
 
 Get all modelTypes.
 
@@ -51,13 +51,16 @@ List all modelTypes.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int64**| Current page *(Optional)* | [optional] 
- **model** | **string**|  | [optional] 
  **programId** | **int64**| Search on Program ID *(Optional)* | [optional] 
  **broadcastId** | **int64**| Search on Broadcast ID *(Optional)* | [optional] 
  **itemId** | **int64**| Search on Item ID *(Optional)* | [optional] 
  **campaignId** | **int64**| Search on Campaign ID *(Optional)* | [optional] 
  **presenterId** | **int64**| Search on Presenter ID *(Optional)* | [optional] 
  **contactId** | **int64**| Search on Contact ID *(Optional)* | [optional] 
+ **model** | **string**| Search Modeltypes for certain Model *(Optional)* | [optional] 
+ **limit** | **int64**| Results per page *(Optional)* | [optional] 
+ **orderBy** | **string**| Field to order the results *(Optional)* | [optional] 
+ **orderDirection** | **string**| Direction of ordering *(Optional)* | [optional] 
  **externalStationId** | **int64**| Query on a different (content providing) station *(Optional)* | [optional] 
 
 ### Return type

@@ -1,6 +1,6 @@
 # \UserApi
 
-All URIs are relative to *https://staging.radiomanager.pluxbox.com/api/v2*
+All URIs are relative to *https://staging.radiomanager.io/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -98,7 +98,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ListUsers**
-> UserResults ListUsers($page, $roleId)
+> UserResults ListUsers($page, $roleId, $limit, $orderBy, $orderDirection)
 
 Get all users.
 
@@ -111,6 +111,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int64**| Current page *(Optional)* | [optional] [default to 1]
  **roleId** | **int64**| Search on Role ID *(Optional)* | [optional] 
+ **limit** | **int64**| Results per page *(Optional)* | [optional] 
+ **orderBy** | **string**| Field to order the results *(Optional)* | [optional] 
+ **orderDirection** | **string**| Direction of ordering *(Optional)* | [optional] 
 
 ### Return type
 

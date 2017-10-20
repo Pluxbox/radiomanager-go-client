@@ -238,14 +238,17 @@ func (a CampaignApi) GetCampaignById(id int64, externalStationId int64) (*Campai
  * List all campaigns.
  *
  * @param page Current page *(Optional)*
- * @param modelTypeId Search on ModelType ID *(Optional)*
  * @param itemId Search on Item ID *(Optional)* &#x60;(Relation)&#x60;
+ * @param modelTypeId Search on ModelType ID *(Optional)* &#x60;(Relation)&#x60;
  * @param startMin Minimum start date *(Optional)*
  * @param startMax Maximum start date *(Optional)*
+ * @param limit Results per page *(Optional)*
+ * @param orderBy Field to order the results *(Optional)*
+ * @param orderDirection Direction of ordering *(Optional)*
  * @param externalStationId Query on a different (content providing) station *(Optional)*
  * @return *CampaignResults
  */
-func (a CampaignApi) ListCampaigns(page int64, modelTypeId int64, itemId int64, startMin time.Time, startMax time.Time, externalStationId int64) (*CampaignResults, *APIResponse, error) {
+func (a CampaignApi) ListCampaigns(page int64, itemId int64, modelTypeId int64, startMin time.Time, startMax time.Time, limit int64, orderBy string, orderDirection string, externalStationId int64) (*CampaignResults, *APIResponse, error) {
 
 	var localVarHttpMethod = strings.ToUpper("Get")
 	// create path and map variables
@@ -265,10 +268,13 @@ func (a CampaignApi) ListCampaigns(page int64, modelTypeId int64, itemId int64, 
 		localVarHeaderParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	localVarQueryParams.Add("page", a.Configuration.APIClient.ParameterToString(page, ""))
-	localVarQueryParams.Add("model_type_id", a.Configuration.APIClient.ParameterToString(modelTypeId, ""))
 	localVarQueryParams.Add("item_id", a.Configuration.APIClient.ParameterToString(itemId, ""))
+	localVarQueryParams.Add("model_type_id", a.Configuration.APIClient.ParameterToString(modelTypeId, ""))
 	localVarQueryParams.Add("start-min", a.Configuration.APIClient.ParameterToString(startMin, ""))
 	localVarQueryParams.Add("start-max", a.Configuration.APIClient.ParameterToString(startMax, ""))
+	localVarQueryParams.Add("limit", a.Configuration.APIClient.ParameterToString(limit, ""))
+	localVarQueryParams.Add("order-by", a.Configuration.APIClient.ParameterToString(orderBy, ""))
+	localVarQueryParams.Add("order-direction", a.Configuration.APIClient.ParameterToString(orderDirection, ""))
 	localVarQueryParams.Add("_external_station_id", a.Configuration.APIClient.ParameterToString(externalStationId, ""))
 
 	// to determine the Content-Type header

@@ -1,18 +1,18 @@
-# \VisualSlideApi
+# \StationApi
 
 All URIs are relative to *https://staging.radiomanager.io/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetVisualSlide**](VisualSlideApi.md#GetVisualSlide) | **Get** /visual | Get Visual Slide Image as Base64
+[**GetStation**](StationApi.md#GetStation) | **Get** /station | Get own station only
 
 
-# **GetVisualSlide**
-> VisualResult GetVisualSlide()
+# **GetStation**
+> StationResult GetStation()
 
-Get Visual Slide Image as Base64
+Get own station only
 
-Get Visual Slide Image as Base64
+Get own station only
 
 
 ### Parameters
@@ -20,7 +20,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**VisualResult**](VisualResult.md)
+[**StationResult**](StationResult.md)
 
 ### Authorization
 

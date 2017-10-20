@@ -111,10 +111,13 @@ func (a GenreApi) GetGenreById(id int64, externalStationId int64) (*GenreResult,
  * @param parentId Search on Parent ID of Genre *(Optional)*
  * @param programId Search on Program ID *(Optional)* &#x60;(Relation)&#x60;
  * @param broadcastId Search on Broadcast ID *(Optional)* &#x60;(Relation)&#x60;
+ * @param limit Results per page *(Optional)*
+ * @param orderBy Field to order the results *(Optional)*
+ * @param orderDirection Direction of ordering *(Optional)*
  * @param externalStationId Query on a different (content providing) station *(Optional)*
  * @return *GenreResults
  */
-func (a GenreApi) ListGenres(page int64, parentId int64, programId int64, broadcastId int64, externalStationId int64) (*GenreResults, *APIResponse, error) {
+func (a GenreApi) ListGenres(page int64, parentId int64, programId int64, broadcastId int64, limit int64, orderBy string, orderDirection string, externalStationId int64) (*GenreResults, *APIResponse, error) {
 
 	var localVarHttpMethod = strings.ToUpper("Get")
 	// create path and map variables
@@ -137,6 +140,9 @@ func (a GenreApi) ListGenres(page int64, parentId int64, programId int64, broadc
 	localVarQueryParams.Add("parent_id", a.Configuration.APIClient.ParameterToString(parentId, ""))
 	localVarQueryParams.Add("program_id", a.Configuration.APIClient.ParameterToString(programId, ""))
 	localVarQueryParams.Add("broadcast_id", a.Configuration.APIClient.ParameterToString(broadcastId, ""))
+	localVarQueryParams.Add("limit", a.Configuration.APIClient.ParameterToString(limit, ""))
+	localVarQueryParams.Add("order-by", a.Configuration.APIClient.ParameterToString(orderBy, ""))
+	localVarQueryParams.Add("order-direction", a.Configuration.APIClient.ParameterToString(orderDirection, ""))
 	localVarQueryParams.Add("_external_station_id", a.Configuration.APIClient.ParameterToString(externalStationId, ""))
 
 	// to determine the Content-Type header

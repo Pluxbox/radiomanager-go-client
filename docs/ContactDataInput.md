@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ModelTypeId** | **int64** |  | [default to null]
-**FieldValues** | [**ContactFieldValues**](Contact_field_values.md) |  | [optional] [default to null]
+**FieldValues** | [**interface{}**](interface{}.md) |  | [optional] [default to null]
 **Email** | **string** |  | [optional] [default to null]
 **Firstname** | **string** |  | [default to null]
 **Lastname** | **string** |  | [default to null]

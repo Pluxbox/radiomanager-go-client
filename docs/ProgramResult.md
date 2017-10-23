@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **DeletedAt** | [**time.Time**](time.Time.md) |  | [default to null]
 **ExternalStationId** | **int64** |  | [optional] [default to null]
 **ModelTypeId** | **int64** |  | [default to null]
-**FieldValues** | [**ProgramFieldValues**](Program_field_values.md) |  | [optional] [default to null]
+**FieldValues** | [**interface{}**](interface{}.md) |  | [optional] [default to null]
 **Title** | **string** |  | [default to null]
 **Disabled** | **bool** |  | [optional] [default to null]
 **GenreId** | **int64** |  | [optional] [default to null]

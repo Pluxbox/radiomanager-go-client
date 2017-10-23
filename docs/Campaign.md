@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ModelTypeId** | **int64** |  | [default to null]
-**FieldValues** | [**[]interface{}**](interface{}.md) |  | [optional] [default to null]
+**FieldValues** | [**interface{}**](interface{}.md) |  | [optional] [default to null]
 **Title** | **string** |  | [optional] [default to null]
 **Start** | [**time.Time**](time.Time.md) |  | [default to null]
 **Stop** | [**time.Time**](time.Time.md) |  | [default to null]

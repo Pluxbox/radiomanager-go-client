@@ -22,7 +22,7 @@ type BroadcastDataInput struct {
 
 	StationId int64 `json:"station_id,omitempty"`
 
-	FieldValues BroadcastFieldValues `json:"field_values,omitempty"`
+	FieldValues interface{} `json:"field_values,omitempty"`
 
 	Title string `json:"title,omitempty"`
 

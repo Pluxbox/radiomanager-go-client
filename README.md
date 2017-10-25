@@ -1,11 +1,12 @@
-# Pluxbox RadioManager Client
+# Go API client for radiomanagerclient
 
-Pluxbox RadioManager gives you the power, flexibility and speed you always wanted in a lightweight and easy-to-use web-based radio solution. With Pluxbox RadioManager you can organise your radio workflow and automate your omnichannel communication with your listeners. We offer wide range specialised services for the radio and connections like Hybrid Radio, Visual Radio, your website and social media without losing focus on your broadcast. For more information visit https://pluxbox.com
+Pluxbox RadioManager gives you the power, flexibility and speed you always wanted in a lightweight and easy-to-use web-based radio solution. With Pluxbox RadioManager you can organise your radio workflow and automate your omnichannel communication with your listeners. We offer wide range specialised services for the radio and connections like Hybrid Radio, Visual Radio, your website and social media without losing focus on your broadcast. For more information visit: pluxbox.com
 
 ## Overview
-
 - API version: 2.0
-- For more information, please visit [https://pluxbox.com](https://pluxbox.com)
+- Package version: 1.1.1
+- Build package: io.swagger.codegen.languages.GoClientCodegen
+For more information, please visit [https://pluxbox.com](https://pluxbox.com)
 
 ## Installation
 Put the package under your project folder and add the following in import:
@@ -15,7 +16,7 @@ Put the package under your project folder and add the following in import:
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://staging.radiomanager.pluxbox.com/api/v2*
+All URIs are relative to *https://radiomanager.io/api/v2*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -44,7 +45,6 @@ Class | Method | HTTP request | Description
 *ContactApi* | [**GetContactById**](docs/ContactApi.md#getcontactbyid) | **Get** /contacts/{id} | Get contact by id
 *ContactApi* | [**ListContacts**](docs/ContactApi.md#listcontacts) | **Get** /contacts | Get all contacts.
 *ContactApi* | [**UpdateContactByID**](docs/ContactApi.md#updatecontactbyid) | **Patch** /contacts/{id} | Update contact by id
-*ExternalMessageApi* | [**QueueExternalMessage**](docs/ExternalMessageApi.md#queueexternalmessage) | **Post** /externalmessagequeue | Queue External Message.
 *GenreApi* | [**GetGenreById**](docs/GenreApi.md#getgenrebyid) | **Get** /genres/{id} | Get genre by id
 *GenreApi* | [**ListGenres**](docs/GenreApi.md#listgenres) | **Get** /genres | List all genres.
 *ItemApi* | [**CreateItem**](docs/ItemApi.md#createitem) | **Post** /items | Create an new item.
@@ -68,6 +68,12 @@ Class | Method | HTTP request | Description
 *ProgramApi* | [**GetProgramById**](docs/ProgramApi.md#getprogrambyid) | **Get** /programs/{id} | Get program by id
 *ProgramApi* | [**ListPrograms**](docs/ProgramApi.md#listprograms) | **Get** /programs | Get all programs.
 *ProgramApi* | [**UpdateProgramByID**](docs/ProgramApi.md#updateprogrambyid) | **Patch** /programs/{id} | Update program by id
+*StationApi* | [**GetStation**](docs/StationApi.md#getstation) | **Get** /station | Get own station only
+*StoryApi* | [**CreateStory**](docs/StoryApi.md#createstory) | **Post** /stories | Create story.
+*StoryApi* | [**DeleteStoryById**](docs/StoryApi.md#deletestorybyid) | **Delete** /stories/{id} | Delete story by id
+*StoryApi* | [**GetStoryById**](docs/StoryApi.md#getstorybyid) | **Get** /stories/{id} | Get story by id
+*StoryApi* | [**ListStories**](docs/StoryApi.md#liststories) | **Get** /stories | Get all stories.
+*StoryApi* | [**UpdateStoryByID**](docs/StoryApi.md#updatestorybyid) | **Patch** /stories/{id} | Update story by id
 *StringApi* | [**GetStringsByName**](docs/StringApi.md#getstringsbyname) | **Get** /strings/{name} | Get Strings (formatted)
 *TagApi* | [**CreateTag**](docs/TagApi.md#createtag) | **Post** /tags | Create tag.
 *TagApi* | [**DeleteTagById**](docs/TagApi.md#deletetagbyid) | **Delete** /tags/{id} | Delete tag by id
@@ -78,7 +84,6 @@ Class | Method | HTTP request | Description
 *UserApi* | [**GetUserById**](docs/UserApi.md#getuserbyid) | **Get** /users/{id} | Get user by id
 *UserApi* | [**InviteUserByMail**](docs/UserApi.md#inviteuserbymail) | **Post** /users/invite | Invite user by mail
 *UserApi* | [**ListUsers**](docs/UserApi.md#listusers) | **Get** /users | Get all users.
-*VisualSlideApi* | [**DownloadVisualSlide**](docs/VisualSlideApi.md#downloadvisualslide) | **Get** /visual/image | Get Visual Slide Image as JPEG
 *VisualSlideApi* | [**GetVisualSlide**](docs/VisualSlideApi.md#getvisualslide) | **Get** /visual | Get Visual Slide Image as Base64
 
 
@@ -93,7 +98,8 @@ Class | Method | HTTP request | Description
  - [BlockRelationsProgram](docs/BlockRelationsProgram.md)
  - [BlockResults](docs/BlockResults.md)
  - [Broadcast](docs/Broadcast.md)
- - [BroadcastFieldValues](docs/BroadcastFieldValues.md)
+ - [BroadcastEpgDay](docs/BroadcastEpgDay.md)
+ - [BroadcastEpgRelations](docs/BroadcastEpgRelations.md)
  - [BroadcastInputOnly](docs/BroadcastInputOnly.md)
  - [BroadcastOutputOnly](docs/BroadcastOutputOnly.md)
  - [BroadcastRelations](docs/BroadcastRelations.md)
@@ -111,7 +117,6 @@ Class | Method | HTTP request | Description
  - [CampaignRelationsItemsParams](docs/CampaignRelationsItemsParams.md)
  - [CampaignResults](docs/CampaignResults.md)
  - [Contact](docs/Contact.md)
- - [ContactFieldValues](docs/ContactFieldValues.md)
  - [ContactOutputOnly](docs/ContactOutputOnly.md)
  - [ContactRelations](docs/ContactRelations.md)
  - [ContactRelationsItems](docs/ContactRelationsItems.md)
@@ -120,8 +125,7 @@ Class | Method | HTTP request | Description
  - [ContactResults](docs/ContactResults.md)
  - [Data](docs/Data.md)
  - [Data1](docs/Data1.md)
- - [EpgBroadcast](docs/EpgBroadcast.md)
- - [ExternalMessageQueueData](docs/ExternalMessageQueueData.md)
+ - [EpgResults](docs/EpgResults.md)
  - [Forbidden](docs/Forbidden.md)
  - [Genre](docs/Genre.md)
  - [GenreOutputOnly](docs/GenreOutputOnly.md)
@@ -131,7 +135,6 @@ Class | Method | HTTP request | Description
  - [GenreRelationsPrograms](docs/GenreRelationsPrograms.md)
  - [GenreResults](docs/GenreResults.md)
  - [ImportItem](docs/ImportItem.md)
- - [ImportItemFieldValues](docs/ImportItemFieldValues.md)
  - [InlineResponse202](docs/InlineResponse202.md)
  - [InternalServerError](docs/InternalServerError.md)
  - [InviteUserData](docs/InviteUserData.md)
@@ -169,7 +172,6 @@ Class | Method | HTTP request | Description
  - [PresenterRelationsProgramsParams](docs/PresenterRelationsProgramsParams.md)
  - [PresenterResults](docs/PresenterResults.md)
  - [Program](docs/Program.md)
- - [ProgramFieldValues](docs/ProgramFieldValues.md)
  - [ProgramInputOnly](docs/ProgramInputOnly.md)
  - [ProgramOutputOnly](docs/ProgramOutputOnly.md)
  - [ProgramRelations](docs/ProgramRelations.md)
@@ -182,6 +184,16 @@ Class | Method | HTTP request | Description
  - [ProgramResults](docs/ProgramResults.md)
  - [ReadOnly](docs/ReadOnly.md)
  - [RelationsPlaceholder](docs/RelationsPlaceholder.md)
+ - [StationResult](docs/StationResult.md)
+ - [StationResultStation](docs/StationResultStation.md)
+ - [Story](docs/Story.md)
+ - [StoryInputOnly](docs/StoryInputOnly.md)
+ - [StoryOutputOnly](docs/StoryOutputOnly.md)
+ - [StoryRelations](docs/StoryRelations.md)
+ - [StoryRelationsItems](docs/StoryRelationsItems.md)
+ - [StoryRelationsTags](docs/StoryRelationsTags.md)
+ - [StoryRelationsTagsParams](docs/StoryRelationsTagsParams.md)
+ - [StoryResults](docs/StoryResults.md)
  - [Success](docs/Success.md)
  - [Tag](docs/Tag.md)
  - [TagOutputOnly](docs/TagOutputOnly.md)
@@ -201,6 +213,7 @@ Class | Method | HTTP request | Description
  - [VisualResult](docs/VisualResult.md)
  - [BlockResult](docs/BlockResult.md)
  - [BroadcastDataInput](docs/BroadcastDataInput.md)
+ - [BroadcastEpgResult](docs/BroadcastEpgResult.md)
  - [BroadcastResult](docs/BroadcastResult.md)
  - [CampaignDataInput](docs/CampaignDataInput.md)
  - [CampaignResult](docs/CampaignResult.md)
@@ -211,9 +224,12 @@ Class | Method | HTTP request | Description
  - [ItemResult](docs/ItemResult.md)
  - [ModelTypeResult](docs/ModelTypeResult.md)
  - [PresenterDataInput](docs/PresenterDataInput.md)
+ - [PresenterEpgResult](docs/PresenterEpgResult.md)
  - [PresenterResult](docs/PresenterResult.md)
  - [ProgramDataInput](docs/ProgramDataInput.md)
  - [ProgramResult](docs/ProgramResult.md)
+ - [StoryDataInput](docs/StoryDataInput.md)
+ - [StoryResult](docs/StoryResult.md)
  - [TagDataInput](docs/TagDataInput.md)
  - [TagResult](docs/TagResult.md)
 

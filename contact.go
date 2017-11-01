@@ -15,7 +15,7 @@ type Contact struct {
 
 	ModelTypeId int64 `json:"model_type_id"`
 
-	FieldValues ContactFieldValues `json:"field_values,omitempty"`
+	FieldValues interface{} `json:"field_values,omitempty"`
 
 	Email string `json:"email,omitempty"`
 

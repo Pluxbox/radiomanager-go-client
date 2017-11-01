@@ -1,6 +1,6 @@
 # \BroadcastApi
 
-All URIs are relative to *https://radiomanager.pb/api/v2*
+All URIs are relative to *https://staging.radiomanager.io/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -106,7 +106,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetCurrentBroadcast**
-> Broadcast GetCurrentBroadcast()
+> BroadcastResult GetCurrentBroadcast($withunpublished)
 
 Get current Broadcast
 
@@ -114,11 +114,14 @@ Get current Broadcast
 
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **withunpublished** | **bool**| Show Unpublished *(Optional)* | [optional] 
 
 ### Return type
 
-[**Broadcast**](Broadcast.md)
+[**BroadcastResult**](BroadcastResult.md)
 
 ### Authorization
 
@@ -132,7 +135,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetDailyEPG**
-> EpgBroadcast GetDailyEPG($date, $withunpublished)
+> EpgResults GetDailyEPG($date, $withunpublished)
 
 Get daily EPG
 
@@ -148,7 +151,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EpgBroadcast**](EPG_Broadcast.md)
+[**EpgResults**](EPGResults.md)
 
 ### Authorization
 
@@ -162,7 +165,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetEPGByDate**
-> EpgBroadcast GetEPGByDate($date, $withunpublished)
+> EpgResults GetEPGByDate($date, $withunpublished)
 
 Get EPG by date
 
@@ -178,7 +181,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EpgBroadcast**](EPG_Broadcast.md)
+[**EpgResults**](EPGResults.md)
 
 ### Authorization
 
@@ -192,7 +195,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetNextBroadcast**
-> Broadcast GetNextBroadcast()
+> BroadcastResult GetNextBroadcast($withunpublished)
 
 Get next Broadcast
 
@@ -200,11 +203,14 @@ Get next Broadcast
 
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **withunpublished** | **bool**| Show Unpublished *(Optional)* | [optional] 
 
 ### Return type
 
-[**Broadcast**](Broadcast.md)
+[**BroadcastResult**](BroadcastResult.md)
 
 ### Authorization
 
@@ -218,7 +224,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetWeeklyEPG**
-> EpgBroadcast GetWeeklyEPG($date, $withunpublished)
+> EpgResults GetWeeklyEPG($date, $withunpublished)
 
 Get weekly EPG
 
@@ -234,7 +240,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EpgBroadcast**](EPG_Broadcast.md)
+[**EpgResults**](EPGResults.md)
 
 ### Authorization
 
@@ -290,7 +296,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **PrintBroadcastById**
-> EpgBroadcast PrintBroadcastById($id, $programId, $presenterId, $tagId)
+> EpgResults PrintBroadcastById($id, $programId, $presenterId, $tagId)
 
 Print Broadcast by id
 
@@ -308,7 +314,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EpgBroadcast**](EPG_Broadcast.md)
+[**EpgResults**](EPGResults.md)
 
 ### Authorization
 

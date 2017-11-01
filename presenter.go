@@ -14,7 +14,7 @@ type Presenter struct {
 
 	ModelTypeId int64 `json:"model_type_id"`
 
-	FieldValues []interface{} `json:"field_values,omitempty"`
+	FieldValues interface{} `json:"field_values,omitempty"`
 
 	Firstname string `json:"firstname,omitempty"`
 

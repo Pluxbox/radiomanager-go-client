@@ -20,7 +20,7 @@ type ImportItem struct {
 
 	ExternalId string `json:"external_id"`
 
-	FieldValues ImportItemFieldValues `json:"field_values,omitempty"`
+	FieldValues interface{} `json:"field_values,omitempty"`
 
 	Title string `json:"title,omitempty"`
 

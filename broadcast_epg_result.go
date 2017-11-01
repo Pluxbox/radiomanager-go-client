@@ -14,7 +14,17 @@ import (
 	"time"
 )
 
-type BroadcastDataInput struct {
+type BroadcastEpgResult struct {
+
+	Id int64 `json:"id"`
+
+	UpdatedAt time.Time `json:"updated_at"`
+
+	CreatedAt time.Time `json:"created_at"`
+
+	DeletedAt time.Time `json:"deleted_at"`
+
+	ExternalStationId int64 `json:"_external_station_id,omitempty"`
 
 	ProgramId int64 `json:"program_id,omitempty"`
 
@@ -60,7 +70,15 @@ type BroadcastDataInput struct {
 
 	PtyCodeId int64 `json:"pty_code_id,omitempty"`
 
-	Tags []int32 `json:"tags,omitempty"`
+	Items BroadcastRelationsItems `json:"items,omitempty"`
 
-	Presenters []int32 `json:"presenters,omitempty"`
+	Blocks BroadcastRelationsBlocks `json:"blocks,omitempty"`
+
+	Program BlockRelationsProgram `json:"program,omitempty"`
+
+	Tags BroadcastRelationsTags `json:"tags,omitempty"`
+
+	Presenters []PresenterEpgResult `json:"presenters,omitempty"`
+
+	ModelType BroadcastRelationsModelType `json:"model_type,omitempty"`
 }

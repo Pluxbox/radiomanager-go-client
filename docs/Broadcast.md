@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 **ProgramId** | **int64** |  | [optional] [default to null]
 **ModelTypeId** | **int64** |  | [optional] [default to null]
 **StationId** | **int64** |  | [optional] [default to null]
-**FieldValues** | [**BroadcastFieldValues**](Broadcast_field_values.md) |  | [optional] [default to null]
+**FieldValues** | [**interface{}**](interface{}.md) |  | [optional] [default to null]
 **Title** | **string** |  | [optional] [default to null]
 **Start** | [**time.Time**](time.Time.md) |  | [optional] [default to null]
 **Stop** | [**time.Time**](time.Time.md) |  | [optional] [default to null]

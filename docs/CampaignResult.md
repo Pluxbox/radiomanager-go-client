@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **Item** | [**[]Item**](Item.md) |  | [optional] [default to null]
 **ExternalStationId** | **int64** |  | [optional] [default to null]
 **ModelTypeId** | **int64** |  | [default to null]
-**FieldValues** | [**[]interface{}**](interface{}.md) |  | [optional] [default to null]
+**FieldValues** | [**interface{}**](interface{}.md) |  | [optional] [default to null]
 **Title** | **string** |  | [optional] [default to null]
 **Start** | [**time.Time**](time.Time.md) |  | [default to null]
 **Stop** | [**time.Time**](time.Time.md) |  | [default to null]

@@ -28,7 +28,7 @@ type ProgramResult struct {
 
 	ModelTypeId int64 `json:"model_type_id"`
 
-	FieldValues ProgramFieldValues `json:"field_values,omitempty"`
+	FieldValues interface{} `json:"field_values,omitempty"`
 
 	Title string `json:"title"`
 

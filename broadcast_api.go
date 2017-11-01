@@ -237,9 +237,10 @@ func (a BroadcastApi) GetBroadcastById(id int64, externalStationId int64) (*Broa
  * Get current Broadcast
  * Get current Broadcast
  *
- * @return *Broadcast
+ * @param withunpublished Show Unpublished *(Optional)*
+ * @return *BroadcastResult
  */
-func (a BroadcastApi) GetCurrentBroadcast() (*Broadcast, *APIResponse, error) {
+func (a BroadcastApi) GetCurrentBroadcast(withunpublished bool) (*BroadcastResult, *APIResponse, error) {
 
 	var localVarHttpMethod = strings.ToUpper("Get")
 	// create path and map variables
@@ -258,6 +259,7 @@ func (a BroadcastApi) GetCurrentBroadcast() (*Broadcast, *APIResponse, error) {
 	for key := range a.Configuration.DefaultHeader {
 		localVarHeaderParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	localVarQueryParams.Add("withunpublished", a.Configuration.APIClient.ParameterToString(withunpublished, ""))
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -277,7 +279,7 @@ func (a BroadcastApi) GetCurrentBroadcast() (*Broadcast, *APIResponse, error) {
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload = new(Broadcast)
+	var successPayload = new(BroadcastResult)
 	localVarHttpResponse, err := a.Configuration.APIClient.CallAPI(localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 
 	var localVarURL, _ = url.Parse(localVarPath)
@@ -301,9 +303,9 @@ func (a BroadcastApi) GetCurrentBroadcast() (*Broadcast, *APIResponse, error) {
  *
  * @param date Date *(Optional)*
  * @param withunpublished Show Unpublished *(Optional)*
- * @return *EpgBroadcast
+ * @return *EpgResults
  */
-func (a BroadcastApi) GetDailyEPG(date time.Time, withunpublished bool) (*EpgBroadcast, *APIResponse, error) {
+func (a BroadcastApi) GetDailyEPG(date time.Time, withunpublished bool) (*EpgResults, *APIResponse, error) {
 
 	var localVarHttpMethod = strings.ToUpper("Get")
 	// create path and map variables
@@ -343,7 +345,7 @@ func (a BroadcastApi) GetDailyEPG(date time.Time, withunpublished bool) (*EpgBro
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload = new(EpgBroadcast)
+	var successPayload = new(EpgResults)
 	localVarHttpResponse, err := a.Configuration.APIClient.CallAPI(localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 
 	var localVarURL, _ = url.Parse(localVarPath)
@@ -367,9 +369,9 @@ func (a BroadcastApi) GetDailyEPG(date time.Time, withunpublished bool) (*EpgBro
  *
  * @param date Date *(Optional)*
  * @param withunpublished Show Unpublished *(Optional)*
- * @return *EpgBroadcast
+ * @return *EpgResults
  */
-func (a BroadcastApi) GetEPGByDate(date time.Time, withunpublished bool) (*EpgBroadcast, *APIResponse, error) {
+func (a BroadcastApi) GetEPGByDate(date time.Time, withunpublished bool) (*EpgResults, *APIResponse, error) {
 
 	var localVarHttpMethod = strings.ToUpper("Get")
 	// create path and map variables
@@ -409,7 +411,7 @@ func (a BroadcastApi) GetEPGByDate(date time.Time, withunpublished bool) (*EpgBr
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload = new(EpgBroadcast)
+	var successPayload = new(EpgResults)
 	localVarHttpResponse, err := a.Configuration.APIClient.CallAPI(localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 
 	var localVarURL, _ = url.Parse(localVarPath)
@@ -431,9 +433,10 @@ func (a BroadcastApi) GetEPGByDate(date time.Time, withunpublished bool) (*EpgBr
  * Get next Broadcast
  * Get next Broadcast
  *
- * @return *Broadcast
+ * @param withunpublished Show Unpublished *(Optional)*
+ * @return *BroadcastResult
  */
-func (a BroadcastApi) GetNextBroadcast() (*Broadcast, *APIResponse, error) {
+func (a BroadcastApi) GetNextBroadcast(withunpublished bool) (*BroadcastResult, *APIResponse, error) {
 
 	var localVarHttpMethod = strings.ToUpper("Get")
 	// create path and map variables
@@ -452,6 +455,7 @@ func (a BroadcastApi) GetNextBroadcast() (*Broadcast, *APIResponse, error) {
 	for key := range a.Configuration.DefaultHeader {
 		localVarHeaderParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	localVarQueryParams.Add("withunpublished", a.Configuration.APIClient.ParameterToString(withunpublished, ""))
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -471,7 +475,7 @@ func (a BroadcastApi) GetNextBroadcast() (*Broadcast, *APIResponse, error) {
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload = new(Broadcast)
+	var successPayload = new(BroadcastResult)
 	localVarHttpResponse, err := a.Configuration.APIClient.CallAPI(localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 
 	var localVarURL, _ = url.Parse(localVarPath)
@@ -495,9 +499,9 @@ func (a BroadcastApi) GetNextBroadcast() (*Broadcast, *APIResponse, error) {
  *
  * @param date Date *(Optional)*
  * @param withunpublished Show Unpublished *(Optional)*
- * @return *EpgBroadcast
+ * @return *EpgResults
  */
-func (a BroadcastApi) GetWeeklyEPG(date string, withunpublished bool) (*EpgBroadcast, *APIResponse, error) {
+func (a BroadcastApi) GetWeeklyEPG(date string, withunpublished bool) (*EpgResults, *APIResponse, error) {
 
 	var localVarHttpMethod = strings.ToUpper("Get")
 	// create path and map variables
@@ -537,7 +541,7 @@ func (a BroadcastApi) GetWeeklyEPG(date string, withunpublished bool) (*EpgBroad
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload = new(EpgBroadcast)
+	var successPayload = new(EpgResults)
 	localVarHttpResponse, err := a.Configuration.APIClient.CallAPI(localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 
 	var localVarURL, _ = url.Parse(localVarPath)
@@ -653,9 +657,9 @@ func (a BroadcastApi) ListBroadcasts(page int64, programId int64, blockId int64,
  * @param programId Search on Program ID *(Optional)* &#x60;(Relation)&#x60;
  * @param presenterId Search on Presenter ID *(Optional)* &#x60;(Relation)&#x60;
  * @param tagId Search on Tag ID *(Optional)* &#x60;(Relation)&#x60;
- * @return *EpgBroadcast
+ * @return *EpgResults
  */
-func (a BroadcastApi) PrintBroadcastById(id int64, programId int64, presenterId int64, tagId int64) (*EpgBroadcast, *APIResponse, error) {
+func (a BroadcastApi) PrintBroadcastById(id int64, programId int64, presenterId int64, tagId int64) (*EpgResults, *APIResponse, error) {
 
 	var localVarHttpMethod = strings.ToUpper("Get")
 	// create path and map variables
@@ -697,7 +701,7 @@ func (a BroadcastApi) PrintBroadcastById(id int64, programId int64, presenterId 
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload = new(EpgBroadcast)
+	var successPayload = new(EpgResults)
 	localVarHttpResponse, err := a.Configuration.APIClient.CallAPI(localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 
 	var localVarURL, _ = url.Parse(localVarPath)

@@ -34,7 +34,7 @@ type StationResultStation struct {
 
 	Email string `json:"email,omitempty"`
 
-	Keywords string `json:"keywords,omitempty"`
+	Keywords []string `json:"keywords,omitempty"`
 
 	Description string `json:"description,omitempty"`
 
@@ -63,6 +63,8 @@ type StationResultStation struct {
 	PtyType string `json:"pty_type,omitempty"`
 
 	StationKey string `json:"station_key,omitempty"`
+
+	Timezone string `json:"timezone,omitempty"`
 
 	TrialDate time.Time `json:"trial_date,omitempty"`
 }

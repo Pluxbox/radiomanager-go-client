@@ -14,17 +14,7 @@ import (
 	"time"
 )
 
-type PresenterResult struct {
-
-	Id int64 `json:"id"`
-
-	UpdatedAt time.Time `json:"updated_at"`
-
-	CreatedAt time.Time `json:"created_at"`
-
-	DeletedAt time.Time `json:"deleted_at"`
-
-	ExternalStationId int64 `json:"_external_station_id,omitempty"`
+type PresenterEpgResult struct {
 
 	ModelTypeId int64 `json:"model_type_id"`
 
@@ -38,9 +28,13 @@ type PresenterResult struct {
 
 	Name string `json:"name,omitempty"`
 
-	Programs PresenterRelationsPrograms `json:"programs,omitempty"`
+	Id int64 `json:"id"`
 
-	Broadcasts PresenterRelationsBroadcasts `json:"broadcasts,omitempty"`
+	UpdatedAt time.Time `json:"updated_at"`
 
-	ModelType BroadcastRelationsModelType `json:"model_type,omitempty"`
+	CreatedAt time.Time `json:"created_at"`
+
+	DeletedAt time.Time `json:"deleted_at"`
+
+	ExternalStationId int64 `json:"_external_station_id,omitempty"`
 }

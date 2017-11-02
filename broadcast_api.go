@@ -237,9 +237,10 @@ func (a BroadcastApi) GetBroadcastById(id int64, externalStationId int64) (*Broa
  * Get current Broadcast
  * Get current Broadcast
  *
- * @return *Broadcast
+ * @param withunpublished Show Unpublished *(Optional)*
+ * @return *BroadcastResult
  */
-func (a BroadcastApi) GetCurrentBroadcast() (*Broadcast, *APIResponse, error) {
+func (a BroadcastApi) GetCurrentBroadcast(withunpublished bool) (*BroadcastResult, *APIResponse, error) {
 
 	var localVarHttpMethod = strings.ToUpper("Get")
 	// create path and map variables
@@ -258,6 +259,7 @@ func (a BroadcastApi) GetCurrentBroadcast() (*Broadcast, *APIResponse, error) {
 	for key := range a.Configuration.DefaultHeader {
 		localVarHeaderParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	localVarQueryParams.Add("withunpublished", a.Configuration.APIClient.ParameterToString(withunpublished, ""))
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -277,7 +279,7 @@ func (a BroadcastApi) GetCurrentBroadcast() (*Broadcast, *APIResponse, error) {
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload = new(Broadcast)
+	var successPayload = new(BroadcastResult)
 	localVarHttpResponse, err := a.Configuration.APIClient.CallAPI(localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 
 	var localVarURL, _ = url.Parse(localVarPath)
@@ -431,9 +433,10 @@ func (a BroadcastApi) GetEPGByDate(date time.Time, withunpublished bool) (*EpgRe
  * Get next Broadcast
  * Get next Broadcast
  *
- * @return *Broadcast
+ * @param withunpublished Show Unpublished *(Optional)*
+ * @return *BroadcastResult
  */
-func (a BroadcastApi) GetNextBroadcast() (*Broadcast, *APIResponse, error) {
+func (a BroadcastApi) GetNextBroadcast(withunpublished bool) (*BroadcastResult, *APIResponse, error) {
 
 	var localVarHttpMethod = strings.ToUpper("Get")
 	// create path and map variables
@@ -452,6 +455,7 @@ func (a BroadcastApi) GetNextBroadcast() (*Broadcast, *APIResponse, error) {
 	for key := range a.Configuration.DefaultHeader {
 		localVarHeaderParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	localVarQueryParams.Add("withunpublished", a.Configuration.APIClient.ParameterToString(withunpublished, ""))
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -471,7 +475,7 @@ func (a BroadcastApi) GetNextBroadcast() (*Broadcast, *APIResponse, error) {
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload = new(Broadcast)
+	var successPayload = new(BroadcastResult)
 	localVarHttpResponse, err := a.Configuration.APIClient.CallAPI(localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 
 	var localVarURL, _ = url.Parse(localVarPath)

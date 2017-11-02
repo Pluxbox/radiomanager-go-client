@@ -4,7 +4,7 @@ Pluxbox RadioManager gives you the power, flexibility and speed you always wante
 
 ## Overview
 - API version: 2.0
-- Package version: 1.1.1
+- Package version: 1.1.2
 - Build package: io.swagger.codegen.languages.GoClientCodegen
 For more information, please visit [https://pluxbox.com](https://pluxbox.com)
 

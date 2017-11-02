@@ -106,7 +106,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetCurrentBroadcast**
-> Broadcast GetCurrentBroadcast()
+> BroadcastResult GetCurrentBroadcast($withunpublished)
 
 Get current Broadcast
 
@@ -114,11 +114,14 @@ Get current Broadcast
 
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **withunpublished** | **bool**| Show Unpublished *(Optional)* | [optional] 
 
 ### Return type
 
-[**Broadcast**](Broadcast.md)
+[**BroadcastResult**](BroadcastResult.md)
 
 ### Authorization
 
@@ -192,7 +195,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetNextBroadcast**
-> Broadcast GetNextBroadcast()
+> BroadcastResult GetNextBroadcast($withunpublished)
 
 Get next Broadcast
 
@@ -200,11 +203,14 @@ Get next Broadcast
 
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **withunpublished** | **bool**| Show Unpublished *(Optional)* | [optional] 
 
 ### Return type
 
-[**Broadcast**](Broadcast.md)
+[**BroadcastResult**](BroadcastResult.md)
 
 ### Authorization
 

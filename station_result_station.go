@@ -34,7 +34,7 @@ type StationResultStation struct {
 
 	Email string `json:"email,omitempty"`
 
-	Keywords string `json:"keywords,omitempty"`
+	Keywords []string `json:"keywords,omitempty"`
 
 	Description string `json:"description,omitempty"`
 

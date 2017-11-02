@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **MediumName** | **string** |  | [optional] [default to null]
 **Website** | **string** |  | [optional] [default to null]
 **Email** | **string** |  | [optional] [default to null]
-**Keywords** | **string** |  | [optional] [default to null]
+**Keywords** | **[]string** |  | [optional] [default to null]
 **Description** | **string** |  | [optional] [default to null]
 **Sms** | **string** |  | [optional] [default to null]
 **Telephone** | **string** |  | [optional] [default to null]

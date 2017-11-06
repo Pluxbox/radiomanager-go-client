@@ -65,6 +65,4 @@ type StationResultStation struct {
 	StationKey string `json:"station_key,omitempty"`
 
 	Timezone string `json:"timezone,omitempty"`
-
-	TrialDate time.Time `json:"trial_date,omitempty"`
 }

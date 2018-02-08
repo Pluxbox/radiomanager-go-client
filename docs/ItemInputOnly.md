@@ -4,6 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **PreviousId** | **int64** |  | [optional] [default to null]
+**BeforeId** | **int64** |  | [optional] [default to null]
 **Contacts** | **[]int32** |  | [optional] [default to null]
 **Tags** | **[]int32** |  | [optional] [default to null]
 

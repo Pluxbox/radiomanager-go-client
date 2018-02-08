@@ -50,6 +50,8 @@ type ItemDataInput struct {
 
 	PreviousId int64 `json:"_previous_id,omitempty"`
 
+	BeforeId int64 `json:"_before_id,omitempty"`
+
 	Contacts []int32 `json:"contacts,omitempty"`
 
 	Tags []int32 `json:"tags,omitempty"`

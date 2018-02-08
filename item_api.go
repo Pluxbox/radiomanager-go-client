@@ -603,7 +603,7 @@ func (a ItemApi) PlaylistPostTiming(data Data) (*InlineResponse202, *APIResponse
  * @param data Data *(Optional)*
  * @return *Success
  */
-func (a ItemApi) UpdateItemById(id int64, data Item) (*Success, *APIResponse, error) {
+func (a ItemApi) UpdateItemById(id int64, data ItemDataInput) (*Success, *APIResponse, error) {
 
 	var localVarHttpMethod = strings.ToUpper("Patch")
 	// create path and map variables

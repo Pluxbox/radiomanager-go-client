@@ -280,7 +280,7 @@ Update item by id.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int64**| ID of Item **(Required)** | 
- **data** | [**Item**](Item.md)| Data *(Optional)* | [optional] 
+ **data** | [**ItemDataInput**](ItemDataInput.md)| Data *(Optional)* | [optional] 
 
 ### Return type
 

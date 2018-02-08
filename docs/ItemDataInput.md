@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **StaticStart** | **bool** |  | [optional] [default to null]
 **Details** | **string** |  | [optional] [default to null]
 **PreviousId** | **int64** |  | [optional] [default to null]
+**BeforeId** | **int64** |  | [optional] [default to null]
 **Contacts** | **[]int32** |  | [optional] [default to null]
 **Tags** | **[]int32** |  | [optional] [default to null]
 

@@ -14,5 +14,5 @@ type InviteUserData struct {
 
 	Email string `json:"email"`
 
-	RoleId int64 `json:"role_id"`
+	RoleIds []int32 `json:"role_ids"`
 }

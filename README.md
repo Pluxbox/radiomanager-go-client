@@ -4,7 +4,7 @@ Pluxbox RadioManager gives you the power, flexibility and speed you always wante
 
 ## Overview
 - API version: 2.0
-- Package version: 1.1.2
+- Package version: 1.1.6
 - Build package: io.swagger.codegen.languages.GoClientCodegen
 For more information, please visit [https://pluxbox.com](https://pluxbox.com)
 
@@ -22,7 +22,7 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *BlockApi* | [**GetBlockById**](docs/BlockApi.md#getblockbyid) | **Get** /blocks/{id} | Get block by id
 *BlockApi* | [**GetCurrentBlock**](docs/BlockApi.md#getcurrentblock) | **Get** /blocks/current | Get current Block
-*BlockApi* | [**GetNextBlock**](docs/BlockApi.md#getnextblock) | **Get** /blocks/next | Get next Block
+*BlockApi* | [**GetNextBlock**](docs/BlockApi.md#getnextblock) | **Get** /blocks/next | Get upcoming Block
 *BlockApi* | [**ListBlocks**](docs/BlockApi.md#listblocks) | **Get** /blocks | Get a list of all blocks currently in your station.
 *BroadcastApi* | [**CreateBroadcast**](docs/BroadcastApi.md#createbroadcast) | **Post** /broadcasts | Create broadcast.
 *BroadcastApi* | [**DeleteBroadcastById**](docs/BroadcastApi.md#deletebroadcastbyid) | **Delete** /broadcasts/{id} | Delete broadcast by id
@@ -208,6 +208,7 @@ Class | Method | HTTP request | Description
  - [TooManyRequests](docs/TooManyRequests.md)
  - [UnprocessableEntity](docs/UnprocessableEntity.md)
  - [UserResult](docs/UserResult.md)
+ - [UserResultRoles](docs/UserResultRoles.md)
  - [UserResultSettings](docs/UserResultSettings.md)
  - [UserResults](docs/UserResults.md)
  - [VisualResult](docs/VisualResult.md)

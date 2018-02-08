@@ -10,7 +10,13 @@
 
 package radiomanagerclient
 
-type ImportItemFieldValues struct {
+type UserResultRoles struct {
 
-	Type_ string `json:"type,omitempty"`
+	Href string `json:"href,omitempty"`
+
+	Model string `json:"model,omitempty"`
+
+	Operation string `json:"operation,omitempty"`
+
+	Params int64 `json:"params,omitempty"`
 }

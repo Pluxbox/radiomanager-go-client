@@ -1,10 +1,12 @@
-# InviteUserData
+# UserResultRoles
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Email** | **string** |  | [default to null]
-**RoleIds** | **[]int32** |  | [default to null]
+**Href** | **string** |  | [optional] [default to null]
+**Model** | **string** |  | [optional] [default to null]
+**Operation** | **string** |  | [optional] [default to null]
+**Params** | **int64** |  | [optional] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

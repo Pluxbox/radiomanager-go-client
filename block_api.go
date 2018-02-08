@@ -167,8 +167,8 @@ func (a BlockApi) GetCurrentBlock() (*BlockResult, *APIResponse, error) {
 }
 
 /**
- * Get next Block
- * Get next Block
+ * Get upcoming Block
+ * Get upcoming Block
  *
  * @return *BlockResult
  */

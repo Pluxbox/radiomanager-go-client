@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**GetBlockById**](BlockApi.md#GetBlockById) | **Get** /blocks/{id} | Get block by id
 [**GetCurrentBlock**](BlockApi.md#GetCurrentBlock) | **Get** /blocks/current | Get current Block
-[**GetNextBlock**](BlockApi.md#GetNextBlock) | **Get** /blocks/next | Get next Block
+[**GetNextBlock**](BlockApi.md#GetNextBlock) | **Get** /blocks/next | Get upcoming Block
 [**ListBlocks**](BlockApi.md#ListBlocks) | **Get** /blocks | Get a list of all blocks currently in your station.
 
 
@@ -69,9 +69,9 @@ This endpoint does not need any parameter.
 # **GetNextBlock**
 > BlockResult GetNextBlock()
 
-Get next Block
+Get upcoming Block
 
-Get next Block
+Get upcoming Block
 
 
 ### Parameters

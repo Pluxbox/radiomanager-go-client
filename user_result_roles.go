@@ -10,13 +10,13 @@
 
 package radiomanagerclient
 
-type ItemInputOnly struct {
+type UserResultRoles struct {
 
-	PreviousId int64 `json:"_previous_id,omitempty"`
+	Href string `json:"href,omitempty"`
 
-	BeforeId int64 `json:"_before_id,omitempty"`
+	Model string `json:"model,omitempty"`
 
-	Contacts []int32 `json:"contacts,omitempty"`
+	Operation string `json:"operation,omitempty"`
 
-	Tags []int32 `json:"tags,omitempty"`
+	Params int64 `json:"params,omitempty"`
 }

@@ -10,9 +10,5 @@
 
 package radiomanagerclient
 
-type InviteUserData struct {
-
-	Email string `json:"email"`
-
-	RoleIds []int32 `json:"role_ids"`
+type SearchDataInput struct {
 }

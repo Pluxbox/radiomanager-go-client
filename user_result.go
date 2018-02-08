@@ -38,5 +38,5 @@ type UserResult struct {
 
 	ActiveExternalStationId int64 `json:"active_external_station_id,omitempty"`
 
-	RoleId int64 `json:"role_id,omitempty"`
+	Roles []UserResultRoles `json:"roles,omitempty"`
 }

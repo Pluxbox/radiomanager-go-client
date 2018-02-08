@@ -13,4 +13,6 @@ package radiomanagerclient
 type ModelTypeOptions struct {
 
 	Color string `json:"color,omitempty"`
+
+	SubBroadcast bool `json:"subBroadcast,omitempty"`
 }

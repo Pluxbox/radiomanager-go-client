@@ -650,16 +650,14 @@ func (a BroadcastApi) ListBroadcasts(page int64, programId int64, blockId int64,
 }
 
 /**
- * Print Broadcast by id
- * Print Broadcast by id
+ * Print broadcast by id with template
+ * Print broadcast by id with template
  *
  * @param id ID of Broadcast **(Required)**
- * @param programId Search on Program ID *(Optional)* &#x60;(Relation)&#x60;
- * @param presenterId Search on Presenter ID *(Optional)* &#x60;(Relation)&#x60;
- * @param tagId Search on Tag ID *(Optional)* &#x60;(Relation)&#x60;
+ * @param templateId Search on template ID *(Optional)*
  * @return *EpgResults
  */
-func (a BroadcastApi) PrintBroadcastById(id int64, programId int64, presenterId int64, tagId int64) (*EpgResults, *APIResponse, error) {
+func (a BroadcastApi) PrintBroadcastById(id int64, templateId int64) (*EpgResults, *APIResponse, error) {
 
 	var localVarHttpMethod = strings.ToUpper("Get")
 	// create path and map variables
@@ -679,9 +677,7 @@ func (a BroadcastApi) PrintBroadcastById(id int64, programId int64, presenterId 
 	for key := range a.Configuration.DefaultHeader {
 		localVarHeaderParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	localVarQueryParams.Add("program_id", a.Configuration.APIClient.ParameterToString(programId, ""))
-	localVarQueryParams.Add("presenter_id", a.Configuration.APIClient.ParameterToString(presenterId, ""))
-	localVarQueryParams.Add("tag_id", a.Configuration.APIClient.ParameterToString(tagId, ""))
+	localVarQueryParams.Add("template_id", a.Configuration.APIClient.ParameterToString(templateId, ""))
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }

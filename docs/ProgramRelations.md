@@ -3,6 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Genre** | [**BroadcastRelationsGenre**](BroadcastRelations_genre.md) |  | [optional] [default to null]
 **Items** | [**ProgramRelationsItems**](ProgramRelations_items.md) |  | [optional] [default to null]
 **Blocks** | [**ProgramRelationsBlocks**](ProgramRelations_blocks.md) |  | [optional] [default to null]
 **Broadcasts** | [**ProgramRelationsBroadcasts**](ProgramRelations_broadcasts.md) |  | [optional] [default to null]

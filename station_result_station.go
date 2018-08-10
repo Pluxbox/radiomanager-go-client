@@ -65,4 +65,6 @@ type StationResultStation struct {
 	StationKey string `json:"station_key,omitempty"`
 
 	Timezone string `json:"timezone,omitempty"`
+
+	StartDays StationResultStationStartDays `json:"start_days,omitempty"`
 }

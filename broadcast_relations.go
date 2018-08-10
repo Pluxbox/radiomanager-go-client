@@ -12,6 +12,8 @@ package radiomanagerclient
 
 type BroadcastRelations struct {
 
+	Genre BroadcastRelationsGenre `json:"genre,omitempty"`
+
 	Items BroadcastRelationsItems `json:"items,omitempty"`
 
 	Blocks BroadcastRelationsBlocks `json:"blocks,omitempty"`

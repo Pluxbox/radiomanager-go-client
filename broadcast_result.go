@@ -70,6 +70,8 @@ type BroadcastResult struct {
 
 	PtyCodeId int64 `json:"pty_code_id,omitempty"`
 
+	Genre BroadcastRelationsGenre `json:"genre,omitempty"`
+
 	Items BroadcastRelationsItems `json:"items,omitempty"`
 
 	Blocks BroadcastRelationsBlocks `json:"blocks,omitempty"`

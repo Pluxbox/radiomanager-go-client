@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**CurrentItemPostStructure**](ItemApi.md#CurrentItemPostStructure) | **Post** /items/current/structure | Post a current playing item, keep structure
 [**CurrentItemPostTiming**](ItemApi.md#CurrentItemPostTiming) | **Post** /items/current/timing | Post a current playing item
 [**DeleteItemById**](ItemApi.md#DeleteItemById) | **Delete** /items/{id} | Delete item by ID.
+[**GetCurrentItem**](ItemApi.md#GetCurrentItem) | **Get** /items/current | Get current Item
 [**GetItemById**](ItemApi.md#GetItemById) | **Get** /items/{id} | Get extended item details by ID.
 [**ListItems**](ItemApi.md#ListItems) | **Get** /items | Get a list of all the items currently in your station.
 [**PlaylistPostStructure**](ItemApi.md#PlaylistPostStructure) | **Post** /items/playlist/structure | Post a playlist, keep current structure
@@ -131,6 +132,35 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **GetCurrentItem**
+> ItemResult GetCurrentItem($lastplayed)
+
+Get current Item
+
+Get current Item
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **lastplayed** | **bool**| Show last played item if there is no current item*(Optional)* | [optional] 
+
+### Return type
+
+[**ItemResult**](ItemResult.md)
+
+### Authorization
+
+[API Key](../README.md#API Key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **GetItemById**
 > ItemResult GetItemById($id, $externalStationId)
 
@@ -162,7 +192,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ListItems**
-> ItemResults ListItems($page, $blockId, $broadcastId, $modelTypeId, $tagId, $campaignId, $contactId, $programDraftId, $userDraftId, $stationDraftId, $programId, $startMin, $startMax, $durationMin, $durationMax, $status, $limit, $orderBy, $orderDirection, $externalStationId)
+> ItemResults ListItems($page, $blockId, $broadcastId, $modelTypeId, $tagId, $campaignId, $contactId, $programDraftId, $userDraftId, $stationDraftId, $programId, $externalId, $startMin, $startMax, $durationMin, $durationMax, $status, $limit, $orderBy, $orderDirection, $externalStationId)
 
 Get a list of all the items currently in your station.
 
@@ -184,6 +214,7 @@ Name | Type | Description  | Notes
  **userDraftId** | **int64**| Search on User Draft ID *(Optional)* | [optional] 
  **stationDraftId** | **int64**| Search on Station Draft ID *(Optional)* | [optional] 
  **programId** | **int64**| Search on Program ID *(Optional)* &#x60;(Relation)&#x60; | [optional] 
+ **externalId** | **string**| Search on External ID *(Optional)* | [optional] 
  **startMin** | **time.Time**| Minimum start date *(Optional)* | [optional] 
  **startMax** | **time.Time**| Maximum start date *(Optional)* | [optional] 
  **durationMin** | **int32**| Minimum duration (seconds) *(Optional)* | [optional] 

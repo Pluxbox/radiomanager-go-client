@@ -52,6 +52,8 @@ type ProgramResult struct {
 
 	PtyCodeId int64 `json:"pty_code_id,omitempty"`
 
+	Genre BroadcastRelationsGenre `json:"genre,omitempty"`
+
 	Items ProgramRelationsItems `json:"items,omitempty"`
 
 	Blocks ProgramRelationsBlocks `json:"blocks,omitempty"`

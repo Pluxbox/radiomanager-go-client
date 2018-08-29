@@ -4,7 +4,7 @@ Pluxbox RadioManager gives you the power, flexibility and speed you always wante
 
 ## Overview
 - API version: 2.0
-- Package version: 1.1.6
+- Package version: 1.1.7
 - Build package: io.swagger.codegen.languages.GoClientCodegen
 For more information, please visit [https://pluxbox.com](https://pluxbox.com)
 
@@ -51,6 +51,7 @@ Class | Method | HTTP request | Description
 *ItemApi* | [**CurrentItemPostStructure**](docs/ItemApi.md#currentitempoststructure) | **Post** /items/current/structure | Post a current playing item, keep structure
 *ItemApi* | [**CurrentItemPostTiming**](docs/ItemApi.md#currentitemposttiming) | **Post** /items/current/timing | Post a current playing item
 *ItemApi* | [**DeleteItemById**](docs/ItemApi.md#deleteitembyid) | **Delete** /items/{id} | Delete item by ID.
+*ItemApi* | [**GetCurrentItem**](docs/ItemApi.md#getcurrentitem) | **Get** /items/current | Get current Item
 *ItemApi* | [**GetItemById**](docs/ItemApi.md#getitembyid) | **Get** /items/{id} | Get extended item details by ID.
 *ItemApi* | [**ListItems**](docs/ItemApi.md#listitems) | **Get** /items | Get a list of all the items currently in your station.
 *ItemApi* | [**PlaylistPostStructure**](docs/ItemApi.md#playlistpoststructure) | **Post** /items/playlist/structure | Post a playlist, keep current structure

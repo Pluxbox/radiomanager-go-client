@@ -298,6 +298,70 @@ func (a ItemApi) DeleteItemById(id int64) (*Success, *APIResponse, error) {
 }
 
 /**
+ * Get current Item
+ * Get current Item
+ *
+ * @param lastplayed Show last played item if there is no current item*(Optional)*
+ * @return *ItemResult
+ */
+func (a ItemApi) GetCurrentItem(lastplayed bool) (*ItemResult, *APIResponse, error) {
+
+	var localVarHttpMethod = strings.ToUpper("Get")
+	// create path and map variables
+	localVarPath := a.Configuration.BasePath + "/items/current"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := make(map[string]string)
+	var localVarPostBody interface{}
+	var localVarFileName string
+	var localVarFileBytes []byte
+	// authentication '(API Key)' required
+	// set key with prefix in header
+	localVarHeaderParams["api-key"] = a.Configuration.GetAPIKeyWithPrefix("api-key")
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		localVarHeaderParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	localVarQueryParams.Add("lastplayed", a.Configuration.APIClient.ParameterToString(lastplayed, ""))
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+		}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload = new(ItemResult)
+	localVarHttpResponse, err := a.Configuration.APIClient.CallAPI(localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+
+	var localVarURL, _ = url.Parse(localVarPath)
+	localVarURL.RawQuery = localVarQueryParams.Encode()
+	var localVarAPIResponse = &APIResponse{Operation: "GetCurrentItem", Method: localVarHttpMethod, RequestURL: localVarURL.String()}
+	if localVarHttpResponse != nil {
+		localVarAPIResponse.Response = localVarHttpResponse.RawResponse
+		localVarAPIResponse.Payload = localVarHttpResponse.Body()
+	}
+
+	if err != nil {
+		return successPayload, localVarAPIResponse, err
+	}
+	err = json.Unmarshal(localVarHttpResponse.Body(), &successPayload)
+	return successPayload, localVarAPIResponse, err
+}
+
+/**
  * Get extended item details by ID.
  * Read item by id.
  *
@@ -378,6 +442,7 @@ func (a ItemApi) GetItemById(id int64, externalStationId int64) (*ItemResult, *A
  * @param userDraftId Search on User Draft ID *(Optional)*
  * @param stationDraftId Search on Station Draft ID *(Optional)*
  * @param programId Search on Program ID *(Optional)* &#x60;(Relation)&#x60;
+ * @param externalId Search on External ID *(Optional)*
  * @param startMin Minimum start date *(Optional)*
  * @param startMax Maximum start date *(Optional)*
  * @param durationMin Minimum duration (seconds) *(Optional)*
@@ -389,7 +454,7 @@ func (a ItemApi) GetItemById(id int64, externalStationId int64) (*ItemResult, *A
  * @param externalStationId Query on a different (content providing) station *(Optional)*
  * @return *ItemResults
  */
-func (a ItemApi) ListItems(page int64, blockId int64, broadcastId int64, modelTypeId int64, tagId int64, campaignId int64, contactId int64, programDraftId int64, userDraftId int64, stationDraftId int64, programId int64, startMin time.Time, startMax time.Time, durationMin int32, durationMax int32, status string, limit int64, orderBy string, orderDirection string, externalStationId int64) (*ItemResults, *APIResponse, error) {
+func (a ItemApi) ListItems(page int64, blockId int64, broadcastId int64, modelTypeId int64, tagId int64, campaignId int64, contactId int64, programDraftId int64, userDraftId int64, stationDraftId int64, programId int64, externalId string, startMin time.Time, startMax time.Time, durationMin int32, durationMax int32, status string, limit int64, orderBy string, orderDirection string, externalStationId int64) (*ItemResults, *APIResponse, error) {
 
 	var localVarHttpMethod = strings.ToUpper("Get")
 	// create path and map variables
@@ -419,6 +484,7 @@ func (a ItemApi) ListItems(page int64, blockId int64, broadcastId int64, modelTy
 	localVarQueryParams.Add("user_draft_id", a.Configuration.APIClient.ParameterToString(userDraftId, ""))
 	localVarQueryParams.Add("station_draft_id", a.Configuration.APIClient.ParameterToString(stationDraftId, ""))
 	localVarQueryParams.Add("program_id", a.Configuration.APIClient.ParameterToString(programId, ""))
+	localVarQueryParams.Add("external_id", a.Configuration.APIClient.ParameterToString(externalId, ""))
 	localVarQueryParams.Add("start-min", a.Configuration.APIClient.ParameterToString(startMin, ""))
 	localVarQueryParams.Add("start-max", a.Configuration.APIClient.ParameterToString(startMax, ""))
 	localVarQueryParams.Add("duration-min", a.Configuration.APIClient.ParameterToString(durationMin, ""))

@@ -28,7 +28,7 @@ Name | Type | Description | Notes
 **PtyType** | **string** |  | [optional] [default to null]
 **StationKey** | **string** |  | [optional] [default to null]
 **Timezone** | **string** |  | [optional] [default to null]
-**StartDays** | [**StationResultStationStartDays**](StationResult_station_start_days.md) |  | [optional] [default to null]
+**StartDays** | [***StationResultStationStartDays**](StationResult_station_start_days.md) |  | [optional] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

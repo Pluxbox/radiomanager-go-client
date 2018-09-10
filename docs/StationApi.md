@@ -8,14 +8,12 @@ Method | HTTP request | Description
 
 
 # **GetStation**
-> StationResult GetStation()
-
+> StationResult GetStation(ctx, )
 Get own station only
 
 Get own station only
 
-
-### Parameters
+### Required Parameters
 This endpoint does not need any parameter.
 
 ### Return type

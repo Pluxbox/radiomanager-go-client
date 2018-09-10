@@ -8,19 +8,18 @@ Method | HTTP request | Description
 
 
 # **GetStringsByName**
-> TextString GetStringsByName($name, $fullModel)
-
+> TextString GetStringsByName(ctx, name, fullModel)
 Get Strings (formatted)
 
 Get Strings (formatted)
 
-
-### Parameters
+### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **string**| Name of Strings **(Required)** | 
- **fullModel** | **bool**| Full model or content only **(Required)** | [default to true]
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+  **name** | **string**| Name of Strings **(Required)** | 
+  **fullModel** | **bool**| Full model or content only **(Required)** | [default to true]
 
 ### Return type
 

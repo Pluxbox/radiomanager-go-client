@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Model** | **string** |  | [optional] [default to null]
 **CreatedAt** | [**time.Time**](time.Time.md) |  | [optional] [default to null]
 **UpdatedAt** | [**time.Time**](time.Time.md) |  | [optional] [default to null]
-**Options** | [**ModelTypeOptions**](ModelType_options.md) |  | [optional] [default to null]
+**Options** | [***ModelTypeOptions**](ModelType_options.md) |  | [optional] [default to null]
 **Order** | **int64** |  | [optional] [default to null]
 **DeletedAt** | [**time.Time**](time.Time.md) |  | [optional] [default to null]
 

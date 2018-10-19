@@ -18,5 +18,7 @@ type Data struct {
 
 	Start time.Time `json:"start,omitempty"`
 
+	AllowPlaylistPast int32 `json:"allow_playlist_past,omitempty"`
+
 	Items []ImportItem `json:"items,omitempty"`
 }

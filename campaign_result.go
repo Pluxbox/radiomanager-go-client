@@ -24,7 +24,7 @@ type CampaignResult struct {
 
 	DeletedAt time.Time `json:"deleted_at"`
 
-	Item *Item `json:"item,omitempty"`
+	Item *CampaignTemplateItem `json:"item,omitempty"`
 
 	ExternalStationId int64 `json:"_external_station_id,omitempty"`
 

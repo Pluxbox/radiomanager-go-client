@@ -11,8 +11,10 @@ Method | HTTP request | Description
 [**GetCurrentItem**](ItemApi.md#GetCurrentItem) | **Get** /items/current | Get current Item
 [**GetItemById**](ItemApi.md#GetItemById) | **Get** /items/{id} | Get extended item details by ID.
 [**ListItems**](ItemApi.md#ListItems) | **Get** /items | Get a list of all the items currently in your station.
+[**PlaylistPostMerge**](ItemApi.md#PlaylistPostMerge) | **Post** /items/playlist/merge | Post a playlist, do not remove previously imported items
 [**PlaylistPostStructure**](ItemApi.md#PlaylistPostStructure) | **Post** /items/playlist/structure | Post a playlist, keep current structure
 [**PlaylistPostTiming**](ItemApi.md#PlaylistPostTiming) | **Post** /items/playlist/timing | Post a playlist
+[**StopCurrentItem**](ItemApi.md#StopCurrentItem) | **Post** /items/stopcurrent | Stop an Item
 [**UpdateItemById**](ItemApi.md#UpdateItemById) | **Patch** /items/{id} | Update extended item details by ID.
 
 
@@ -276,6 +278,41 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **PlaylistPostMerge**
+> InlineResponse202 PlaylistPostMerge(ctx, optional)
+Post a playlist, do not remove previously imported items
+
+Post a playlist, do not remove previously imported items
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **data** | [**Data2**](Data2.md)| Data *(Optional)* | 
+
+### Return type
+
+[**InlineResponse202**](inline_response_202.md)
+
+### Authorization
+
+[API Key](../README.md#API Key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **PlaylistPostStructure**
 > InlineResponse202 PlaylistPostStructure(ctx, optional)
 Post a playlist, keep current structure
@@ -334,6 +371,41 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**InlineResponse202**](inline_response_202.md)
+
+### Authorization
+
+[API Key](../README.md#API Key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **StopCurrentItem**
+> Success StopCurrentItem(ctx, optional)
+Stop an Item
+
+Set a current playing or specific item on played
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **data** | [**Data3**](Data3.md)| Data *(Optional)* | 
+
+### Return type
+
+[**Success**](Success.md)
 
 ### Authorization
 

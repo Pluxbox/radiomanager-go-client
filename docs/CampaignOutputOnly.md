@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **UpdatedAt** | [**time.Time**](time.Time.md) |  | [default to null]
 **CreatedAt** | [**time.Time**](time.Time.md) |  | [default to null]
 **DeletedAt** | [**time.Time**](time.Time.md) |  | [default to null]
-**Item** | [**[]Item**](Item.md) |  | [optional] [default to null]
+**Item** | [***CampaignTemplateItem**](CampaignTemplateItem.md) |  | [optional] [default to null]
 **ExternalStationId** | **int64** |  | [optional] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

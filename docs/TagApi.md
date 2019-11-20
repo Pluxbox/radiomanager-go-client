@@ -12,18 +12,17 @@ Method | HTTP request | Description
 
 
 # **CreateTag**
-> PostSuccess CreateTag($data)
-
+> PostSuccess CreateTag(ctx, data)
 Create tag.
 
 Create tag.
 
-
-### Parameters
+### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **data** | [**TagDataInput**](TagDataInput.md)| Data **(Required)** | 
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+  **data** | [**TagDataInput**](TagDataInput.md)| Data **(Required)** | 
 
 ### Return type
 
@@ -41,18 +40,17 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **DeleteTagById**
-> Success DeleteTagById($id)
-
+> Success DeleteTagById(ctx, id)
 Delete tag by id
 
 Delete tag by id
 
-
-### Parameters
+### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int64**| ID of Tag **(Required)** | 
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+  **id** | **int64**| ID of Tag **(Required)** | 
 
 ### Return type
 
@@ -70,19 +68,26 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetTagById**
-> TagResult GetTagById($id, $externalStationId)
-
+> TagResult GetTagById(ctx, id, optional)
 Get tags by id
 
 Get tags by id
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+  **id** | **int64**| ID of Tag **(Required)** | 
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int64**| ID of Tag **(Required)** | 
- **externalStationId** | **int64**| Query on a different (content providing) station *(Optional)* | [optional] 
+ **externalStationId** | **int64**| Query on a different (content providing) station *(Optional)* | 
 
 ### Return type
 
@@ -100,26 +105,32 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ListTags**
-> TagResults ListTags($page, $programId, $itemId, $broadcastId, $contactId, $limit, $orderBy, $orderDirection, $externalStationId)
-
+> TagResults ListTags(ctx, optional)
 Get a list of all the tags currently in your station.
 
 Get a list of all the tags currently in your station. This feature supports pagination and will give a maximum results of 50 tags back.
 
-
-### Parameters
+### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **int64**| Current page *(Optional)* | [optional] 
- **programId** | **int64**| Search on Program ID *(Optional)* &#x60;(Relation)&#x60; | [optional] 
- **itemId** | **int64**| Search on Item ID *(Optional)* &#x60;(Relation)&#x60; | [optional] 
- **broadcastId** | **int64**| Search on Broadcast ID *(Optional)* &#x60;(Relation)&#x60; | [optional] 
- **contactId** | **int64**| Search on Contact ID *(Optional)* &#x60;(Relation)&#x60; | [optional] 
- **limit** | **int64**| Results per page *(Optional)* | [optional] 
- **orderBy** | **string**| Field to order the results *(Optional)* | [optional] 
- **orderDirection** | **string**| Direction of ordering *(Optional)* | [optional] 
- **externalStationId** | **int64**| Query on a different (content providing) station *(Optional)* | [optional] 
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **page** | **int64**| Current page *(Optional)* | 
+ **programId** | **int64**| Search on Program ID *(Optional)* &#x60;(Relation)&#x60; | 
+ **itemId** | **int64**| Search on Item ID *(Optional)* &#x60;(Relation)&#x60; | 
+ **broadcastId** | **int64**| Search on Broadcast ID *(Optional)* &#x60;(Relation)&#x60; | 
+ **contactId** | **int64**| Search on Contact ID *(Optional)* &#x60;(Relation)&#x60; | 
+ **limit** | **int64**| Results per page *(Optional)* | 
+ **orderBy** | **string**| Field to order the results *(Optional)* | 
+ **orderDirection** | **string**| Direction of ordering *(Optional)* | 
+ **externalStationId** | **int64**| Query on a different (content providing) station *(Optional)* | 
 
 ### Return type
 
@@ -137,19 +148,26 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **UpdateTagByID**
-> Success UpdateTagByID($id, $data)
-
+> Success UpdateTagByID(ctx, id, optional)
 Update tag by id
 
 Update tag by id
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+  **id** | **int64**| ID of Tag **(Required)** | 
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int64**| ID of Tag **(Required)** | 
- **data** | [**TagDataInput**](TagDataInput.md)| Data *(Optional)* | [optional] 
+ **data** | [**TagDataInput**](TagDataInput.md)| Data *(Optional)* | 
 
 ### Return type
 

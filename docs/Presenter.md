@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ModelTypeId** | **int64** |  | [default to null]
-**FieldValues** | [**interface{}**](interface{}.md) |  | [optional] [default to null]
+**FieldValues** | [***interface{}**](interface{}.md) |  | [optional] [default to null]
 **Firstname** | **string** |  | [optional] [default to null]
 **Lastname** | **string** |  | [optional] [default to null]
 **Active** | **bool** |  | [optional] [default to null]

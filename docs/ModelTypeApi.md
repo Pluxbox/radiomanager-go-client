@@ -9,19 +9,26 @@ Method | HTTP request | Description
 
 
 # **GetModelTypeById**
-> ModelTypeResult GetModelTypeById($id, $externalStationId)
-
+> ModelTypeResult GetModelTypeById(ctx, id, optional)
 Get modelType by id
 
 Get modelType by id
 
+### Required Parameters
 
-### Parameters
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+  **id** | **int64**| ID of ModelType **(Required)** | 
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int64**| ID of ModelType **(Required)** | 
- **externalStationId** | **int64**| Query on a different (content providing) station *(Optional)* | [optional] 
+ **externalStationId** | **int64**| Query on a different (content providing) station *(Optional)* | 
 
 ### Return type
 
@@ -39,29 +46,35 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ListModelTypes**
-> ModelTypeResults ListModelTypes($page, $programId, $broadcastId, $itemId, $campaignId, $presenterId, $contactId, $model, $limit, $orderBy, $orderDirection, $externalStationId)
-
+> ModelTypeResults ListModelTypes(ctx, optional)
 Get all modelTypes.
 
 List all modelTypes.
 
-
-### Parameters
+### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **int64**| Current page *(Optional)* | [optional] 
- **programId** | **int64**| Search on Program ID *(Optional)* | [optional] 
- **broadcastId** | **int64**| Search on Broadcast ID *(Optional)* | [optional] 
- **itemId** | **int64**| Search on Item ID *(Optional)* | [optional] 
- **campaignId** | **int64**| Search on Campaign ID *(Optional)* | [optional] 
- **presenterId** | **int64**| Search on Presenter ID *(Optional)* | [optional] 
- **contactId** | **int64**| Search on Contact ID *(Optional)* | [optional] 
- **model** | **string**| Search Modeltypes for certain Model *(Optional)* | [optional] 
- **limit** | **int64**| Results per page *(Optional)* | [optional] 
- **orderBy** | **string**| Field to order the results *(Optional)* | [optional] 
- **orderDirection** | **string**| Direction of ordering *(Optional)* | [optional] 
- **externalStationId** | **int64**| Query on a different (content providing) station *(Optional)* | [optional] 
+ **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
+ **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a map[string]interface{}.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **page** | **int64**| Current page *(Optional)* | 
+ **programId** | **int64**| Search on Program ID *(Optional)* | 
+ **broadcastId** | **int64**| Search on Broadcast ID *(Optional)* | 
+ **itemId** | **int64**| Search on Item ID *(Optional)* | 
+ **campaignId** | **int64**| Search on Campaign ID *(Optional)* | 
+ **presenterId** | **int64**| Search on Presenter ID *(Optional)* | 
+ **contactId** | **int64**| Search on Contact ID *(Optional)* | 
+ **model** | **string**| Search Modeltypes for certain Model *(Optional)* | 
+ **limit** | **int64**| Results per page *(Optional)* | 
+ **orderBy** | **string**| Field to order the results *(Optional)* | 
+ **orderDirection** | **string**| Direction of ordering *(Optional)* | 
+ **externalStationId** | **int64**| Query on a different (content providing) station *(Optional)* | 
 
 ### Return type
 

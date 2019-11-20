@@ -4,7 +4,7 @@ Pluxbox RadioManager gives you the power, flexibility and speed you always wante
 
 ## Overview
 - API version: 2.0
-- Package version: 1.1.7
+- Package version: 1.1.12
 - Build package: io.swagger.codegen.languages.GoClientCodegen
 For more information, please visit [https://pluxbox.com](https://pluxbox.com)
 
@@ -33,7 +33,7 @@ Class | Method | HTTP request | Description
 *BroadcastApi* | [**GetNextBroadcast**](docs/BroadcastApi.md#getnextbroadcast) | **Get** /broadcasts/next | Get next Broadcast
 *BroadcastApi* | [**GetWeeklyEPG**](docs/BroadcastApi.md#getweeklyepg) | **Get** /broadcasts/epg/weekly | Get weekly EPG
 *BroadcastApi* | [**ListBroadcasts**](docs/BroadcastApi.md#listbroadcasts) | **Get** /broadcasts | Get all broadcasts.
-*BroadcastApi* | [**PrintBroadcastById**](docs/BroadcastApi.md#printbroadcastbyid) | **Get** /broadcasts/print/{id} | Print Broadcast by id
+*BroadcastApi* | [**PrintBroadcastById**](docs/BroadcastApi.md#printbroadcastbyid) | **Get** /broadcasts/print/{id} | Print broadcast by id with template
 *BroadcastApi* | [**UpdateBroadcastByID**](docs/BroadcastApi.md#updatebroadcastbyid) | **Patch** /broadcasts/{id} | Update broadcast by id
 *CampaignApi* | [**CreateCampaign**](docs/CampaignApi.md#createcampaign) | **Post** /campaigns | Create campaign.
 *CampaignApi* | [**DeleteCampaignById**](docs/CampaignApi.md#deletecampaignbyid) | **Delete** /campaigns/{id} | Delete campaign by id
@@ -54,8 +54,10 @@ Class | Method | HTTP request | Description
 *ItemApi* | [**GetCurrentItem**](docs/ItemApi.md#getcurrentitem) | **Get** /items/current | Get current Item
 *ItemApi* | [**GetItemById**](docs/ItemApi.md#getitembyid) | **Get** /items/{id} | Get extended item details by ID.
 *ItemApi* | [**ListItems**](docs/ItemApi.md#listitems) | **Get** /items | Get a list of all the items currently in your station.
+*ItemApi* | [**PlaylistPostMerge**](docs/ItemApi.md#playlistpostmerge) | **Post** /items/playlist/merge | Post a playlist, do not remove previously imported items
 *ItemApi* | [**PlaylistPostStructure**](docs/ItemApi.md#playlistpoststructure) | **Post** /items/playlist/structure | Post a playlist, keep current structure
 *ItemApi* | [**PlaylistPostTiming**](docs/ItemApi.md#playlistposttiming) | **Post** /items/playlist/timing | Post a playlist
+*ItemApi* | [**StopCurrentItem**](docs/ItemApi.md#stopcurrentitem) | **Post** /items/stopcurrent | Stop an Item
 *ItemApi* | [**UpdateItemById**](docs/ItemApi.md#updateitembyid) | **Patch** /items/{id} | Update extended item details by ID.
 *ModelTypeApi* | [**GetModelTypeById**](docs/ModelTypeApi.md#getmodeltypebyid) | **Get** /model_types/{id} | Get modelType by id
 *ModelTypeApi* | [**ListModelTypes**](docs/ModelTypeApi.md#listmodeltypes) | **Get** /model_types | Get all modelTypes.
@@ -105,6 +107,7 @@ Class | Method | HTTP request | Description
  - [BroadcastOutputOnly](docs/BroadcastOutputOnly.md)
  - [BroadcastRelations](docs/BroadcastRelations.md)
  - [BroadcastRelationsBlocks](docs/BroadcastRelationsBlocks.md)
+ - [BroadcastRelationsGenre](docs/BroadcastRelationsGenre.md)
  - [BroadcastRelationsItems](docs/BroadcastRelationsItems.md)
  - [BroadcastRelationsItemsParams](docs/BroadcastRelationsItemsParams.md)
  - [BroadcastRelationsModelType](docs/BroadcastRelationsModelType.md)
@@ -117,6 +120,7 @@ Class | Method | HTTP request | Description
  - [CampaignRelationsItems](docs/CampaignRelationsItems.md)
  - [CampaignRelationsItemsParams](docs/CampaignRelationsItemsParams.md)
  - [CampaignResults](docs/CampaignResults.md)
+ - [CampaignTemplateItem](docs/CampaignTemplateItem.md)
  - [Contact](docs/Contact.md)
  - [ContactOutputOnly](docs/ContactOutputOnly.md)
  - [ContactRelations](docs/ContactRelations.md)
@@ -126,6 +130,8 @@ Class | Method | HTTP request | Description
  - [ContactResults](docs/ContactResults.md)
  - [Data](docs/Data.md)
  - [Data1](docs/Data1.md)
+ - [Data2](docs/Data2.md)
+ - [Data3](docs/Data3.md)
  - [EpgResults](docs/EpgResults.md)
  - [Forbidden](docs/Forbidden.md)
  - [Genre](docs/Genre.md)
@@ -187,6 +193,7 @@ Class | Method | HTTP request | Description
  - [RelationsPlaceholder](docs/RelationsPlaceholder.md)
  - [StationResult](docs/StationResult.md)
  - [StationResultStation](docs/StationResultStation.md)
+ - [StationResultStationStartDays](docs/StationResultStationStartDays.md)
  - [Story](docs/Story.md)
  - [StoryInputOnly](docs/StoryInputOnly.md)
  - [StoryOutputOnly](docs/StoryOutputOnly.md)
@@ -238,13 +245,17 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Authorization
 
-
 ## API Key
-
 - **Type**: API key 
-- **API key parameter name**: api-key
-- **Location**: HTTP header
 
+Example
+```
+	auth := context.WithValue(context.Background(), sw.ContextAPIKey, sw.APIKey{
+		Key: "APIKEY",
+		Prefix: "Bearer", // Omit if not necessary.
+	})
+    r, err := client.Service.Operation(auth, args)
+```
 
 ## Author
 

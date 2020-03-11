@@ -1,6 +1,6 @@
 # \BroadcastApi
 
-All URIs are relative to *https://staging.radiomanager.io/api/v2*
+All URIs are relative to *https://radiomanager.io/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -17,18 +17,22 @@ Method | HTTP request | Description
 [**UpdateBroadcastByID**](BroadcastApi.md#UpdateBroadcastByID) | **Patch** /broadcasts/{id} | Update broadcast by id
 
 
-# **CreateBroadcast**
+
+## CreateBroadcast
+
 > PostSuccess CreateBroadcast(ctx, data)
+
 Create broadcast.
 
 Create broadcast.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
-  **data** | [**BroadcastDataInput**](BroadcastDataInput.md)| Data **(Required)** | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**data** | [**BroadcastDataInput**](BroadcastDataInput.md)| Data **(Required)** | 
 
 ### Return type
 
@@ -36,27 +40,33 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[API Key](../README.md#API Key)
+[API-Key](../README.md#API-Key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **DeleteBroadcastById**
+
+## DeleteBroadcastById
+
 > Success DeleteBroadcastById(ctx, id)
+
 Delete broadcast by id
 
 Delete broadcast by id
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
-  **id** | **int64**| ID of Broadcast **(Required)** | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int64**| ID of Broadcast **(Required)** | [default to 0]
 
 ### Return type
 
@@ -64,36 +74,44 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[API Key](../README.md#API Key)
+[API-Key](../README.md#API-Key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **GetBroadcastById**
+
+## GetBroadcastById
+
 > BroadcastResult GetBroadcastById(ctx, id, optional)
+
 Get broadcast by id
 
 Get broadcast by id
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
-  **id** | **int64**| ID of Broadcast **(Required)** | 
- **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int64**| ID of Broadcast **(Required)** | [default to 0]
+ **optional** | ***GetBroadcastByIdOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
-Optional parameters are passed through a map[string]interface{}.
+
+Optional parameters are passed through a pointer to a GetBroadcastByIdOpts struct
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int64**| ID of Broadcast **(Required)** | 
- **externalStationId** | **int64**| Query on a different (content providing) station *(Optional)* | 
+
+ **externalStationId** | **optional.Int64**| Query on a different (content providing) station *(Optional)* | 
 
 ### Return type
 
@@ -101,34 +119,42 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[API Key](../README.md#API Key)
+[API-Key](../README.md#API-Key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **GetCurrentBroadcast**
+
+## GetCurrentBroadcast
+
 > BroadcastResult GetCurrentBroadcast(ctx, optional)
+
 Get current Broadcast
 
 Get current Broadcast
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
- **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+ **optional** | ***GetCurrentBroadcastOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
-Optional parameters are passed through a map[string]interface{}.
+
+Optional parameters are passed through a pointer to a GetCurrentBroadcastOpts struct
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **withunpublished** | **bool**| Show Unpublished *(Optional)* | 
+ **withunpublished** | **optional.Bool**| Show Unpublished *(Optional)* | 
 
 ### Return type
 
@@ -136,35 +162,43 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[API Key](../README.md#API Key)
+[API-Key](../README.md#API-Key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **GetDailyEPG**
+
+## GetDailyEPG
+
 > EpgResults GetDailyEPG(ctx, optional)
+
 Get daily EPG
 
 Get current Broadcast
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
- **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+ **optional** | ***GetDailyEPGOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
-Optional parameters are passed through a map[string]interface{}.
+
+Optional parameters are passed through a pointer to a GetDailyEPGOpts struct
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **date** | **time.Time**| Date *(Optional)* | 
- **withunpublished** | **bool**| Show Unpublished *(Optional)* | 
+ **date** | **optional.Time**| Date *(Optional)* | 
+ **withunpublished** | **optional.Bool**| Show Unpublished *(Optional)* | 
 
 ### Return type
 
@@ -172,35 +206,43 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[API Key](../README.md#API Key)
+[API-Key](../README.md#API-Key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **GetEPGByDate**
+
+## GetEPGByDate
+
 > EpgResults GetEPGByDate(ctx, optional)
+
 Get EPG by date
 
 Get EPG by date
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
- **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+ **optional** | ***GetEPGByDateOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
-Optional parameters are passed through a map[string]interface{}.
+
+Optional parameters are passed through a pointer to a GetEPGByDateOpts struct
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **date** | **time.Time**| Date *(Optional)* | 
- **withunpublished** | **bool**| Show Unpublished *(Optional)* | 
+ **date** | **optional.Time**| Date *(Optional)* | 
+ **withunpublished** | **optional.Bool**| Show Unpublished *(Optional)* | 
 
 ### Return type
 
@@ -208,34 +250,42 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[API Key](../README.md#API Key)
+[API-Key](../README.md#API-Key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **GetNextBroadcast**
+
+## GetNextBroadcast
+
 > BroadcastResult GetNextBroadcast(ctx, optional)
+
 Get next Broadcast
 
 Get next Broadcast
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
- **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+ **optional** | ***GetNextBroadcastOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
-Optional parameters are passed through a map[string]interface{}.
+
+Optional parameters are passed through a pointer to a GetNextBroadcastOpts struct
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **withunpublished** | **bool**| Show Unpublished *(Optional)* | 
+ **withunpublished** | **optional.Bool**| Show Unpublished *(Optional)* | 
 
 ### Return type
 
@@ -243,35 +293,43 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[API Key](../README.md#API Key)
+[API-Key](../README.md#API-Key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **GetWeeklyEPG**
+
+## GetWeeklyEPG
+
 > EpgResults GetWeeklyEPG(ctx, optional)
+
 Get weekly EPG
 
 Get weekly EPG
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
- **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+ **optional** | ***GetWeeklyEPGOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
-Optional parameters are passed through a map[string]interface{}.
+
+Optional parameters are passed through a pointer to a GetWeeklyEPGOpts struct
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **date** | **string**| Date *(Optional)* | 
- **withunpublished** | **bool**| Show Unpublished *(Optional)* | 
+ **date** | **optional.String**| Date *(Optional)* | 
+ **withunpublished** | **optional.Bool**| Show Unpublished *(Optional)* | 
 
 ### Return type
 
@@ -279,47 +337,55 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[API Key](../README.md#API Key)
+[API-Key](../README.md#API-Key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **ListBroadcasts**
+
+## ListBroadcasts
+
 > BroadcastResults ListBroadcasts(ctx, optional)
+
 Get all broadcasts.
 
 List all broadcasts.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
- **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+ **optional** | ***ListBroadcastsOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
-Optional parameters are passed through a map[string]interface{}.
+
+Optional parameters are passed through a pointer to a ListBroadcastsOpts struct
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **int64**| Current page *(Optional)* | [default to 1]
- **programId** | **int64**| Search on Program ID *(Optional)* &#x60;(Relation)&#x60; | 
- **blockId** | **int64**| Search on Block ID *(Optional)* &#x60;(Relation)&#x60; | 
- **modelTypeId** | **int64**| Search on ModelType ID *(Optional)* &#x60;(Relation)&#x60; | 
- **tagId** | **int64**| Search on Tag ID *(Optional)* &#x60;(Relation)&#x60; | 
- **presenterId** | **int64**| Search on Presenter ID *(Optional)* &#x60;(Relation)&#x60; | 
- **genreId** | **int64**| Search on Genre ID *(Optional)* &#x60;(Relation)&#x60; | 
- **itemId** | **int64**| Search on Item ID *(Optional)* &#x60;(Relation)&#x60; | 
- **startMin** | **time.Time**| Minimum start date *(Optional)* | 
- **startMax** | **time.Time**| Maximum start date *(Optional)* | 
- **limit** | **int64**| Results per page *(Optional)* | 
- **orderBy** | **string**| Field to order the results *(Optional)* | 
- **orderDirection** | **string**| Direction of ordering *(Optional)* | 
- **externalStationId** | **int64**| Query on a different (content providing) station *(Optional)* | 
+ **page** | **optional.Int64**| Current page *(Optional)* | [default to 1]
+ **programId** | **optional.Int64**| Search on Program ID *(Optional)* &#x60;(Relation)&#x60; | 
+ **blockId** | **optional.Int64**| Search on Block ID *(Optional)* &#x60;(Relation)&#x60; | 
+ **modelTypeId** | **optional.Int64**| Search on ModelType ID *(Optional)* &#x60;(Relation)&#x60; | 
+ **tagId** | **optional.Int64**| Search on Tag ID *(Optional)* &#x60;(Relation)&#x60; | 
+ **presenterId** | **optional.Int64**| Search on Presenter ID *(Optional)* &#x60;(Relation)&#x60; | 
+ **genreId** | **optional.Int64**| Search on Genre ID *(Optional)* &#x60;(Relation)&#x60; | 
+ **itemId** | **optional.Int64**| Search on Item ID *(Optional)* &#x60;(Relation)&#x60; | 
+ **startMin** | **optional.Time**| Minimum start date *(Optional)* | 
+ **startMax** | **optional.Time**| Maximum start date *(Optional)* | 
+ **limit** | **optional.Int64**| Results per page *(Optional)* | 
+ **orderBy** | **optional.String**| Field to order the results *(Optional)* | 
+ **orderDirection** | **optional.String**| Direction of ordering *(Optional)* | 
+ **externalStationId** | **optional.Int64**| Query on a different (content providing) station *(Optional)* | 
 
 ### Return type
 
@@ -327,36 +393,44 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[API Key](../README.md#API Key)
+[API-Key](../README.md#API-Key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **PrintBroadcastById**
+
+## PrintBroadcastById
+
 > string PrintBroadcastById(ctx, id, optional)
+
 Print broadcast by id with template
 
 Print broadcast by id with template
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
-  **id** | **int64**| ID of Broadcast **(Required)** | 
- **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int64**| ID of Broadcast **(Required)** | [default to 0]
+ **optional** | ***PrintBroadcastByIdOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
-Optional parameters are passed through a map[string]interface{}.
+
+Optional parameters are passed through a pointer to a PrintBroadcastByIdOpts struct
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int64**| ID of Broadcast **(Required)** | 
- **templateId** | **int64**| Search on template ID *(Optional)* | 
+
+ **templateId** | **optional.Int64**| Search on template ID *(Optional)* | 
 
 ### Return type
 
@@ -364,36 +438,44 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[API Key](../README.md#API Key)
+[API-Key](../README.md#API-Key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **UpdateBroadcastByID**
+
+## UpdateBroadcastByID
+
 > Success UpdateBroadcastByID(ctx, id, optional)
+
 Update broadcast by id
 
 Update broadcast by id
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
-  **id** | **int64**| ID of Broadcast **(Required)** | 
- **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int64**| ID of Broadcast **(Required)** | [default to 0]
+ **optional** | ***UpdateBroadcastByIDOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
-Optional parameters are passed through a map[string]interface{}.
+
+Optional parameters are passed through a pointer to a UpdateBroadcastByIDOpts struct
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int64**| ID of Broadcast **(Required)** | 
- **data** | [**BroadcastDataInput**](BroadcastDataInput.md)| Data *(Optional)* | 
+
+ **data** | [**optional.Interface of BroadcastDataInput**](BroadcastDataInput.md)| Data *(Optional)* | 
 
 ### Return type
 
@@ -401,12 +483,14 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[API Key](../README.md#API Key)
+[API-Key](../README.md#API-Key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 

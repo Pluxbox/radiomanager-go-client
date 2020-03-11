@@ -1,14 +1,15 @@
 # CampaignOutputOnly
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **int64** |  | [default to null]
-**UpdatedAt** | [**time.Time**](time.Time.md) |  | [default to null]
-**CreatedAt** | [**time.Time**](time.Time.md) |  | [default to null]
-**DeletedAt** | [**time.Time**](time.Time.md) |  | [default to null]
-**Item** | [***CampaignTemplateItem**](CampaignTemplateItem.md) |  | [optional] [default to null]
-**ExternalStationId** | **int64** |  | [optional] [default to null]
+**Id** | **int64** |  | 
+**UpdatedAt** | [**time.Time**](time.Time.md) |  | 
+**CreatedAt** | [**time.Time**](time.Time.md) |  | 
+**DeletedAt** | [**time.Time**](time.Time.md) |  | 
+**Item** | [**CampaignTemplateItem**](CampaignTemplateItem.md) |  | [optional] 
+**ExternalStationId** | **int64** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

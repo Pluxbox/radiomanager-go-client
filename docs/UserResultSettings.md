@@ -1,14 +1,15 @@
 # UserResultSettings
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ShowSideBar** | **bool** |  | [optional] [default to null]
-**ShowSocialBar** | **bool** |  | [optional] [default to null]
-**ShowCheckboxColumn** | **bool** |  | [optional] [default to null]
-**ShowTimeColumn** | **bool** |  | [optional] [default to null]
-**ShowSpeechTime** | **bool** |  | [optional] [default to null]
-**ZoomFactor** | **int64** |  | [optional] [default to null]
+**ShowSideBar** | **bool** |  | [optional] 
+**ShowSocialBar** | **bool** |  | [optional] 
+**ShowCheckboxColumn** | **bool** |  | [optional] 
+**ShowTimeColumn** | **bool** |  | [optional] 
+**ShowSpeechTime** | **bool** |  | [optional] 
+**ZoomFactor** | **int64** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

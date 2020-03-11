@@ -1,6 +1,6 @@
 # \CampaignApi
 
-All URIs are relative to *https://staging.radiomanager.io/api/v2*
+All URIs are relative to *https://radiomanager.io/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -11,18 +11,22 @@ Method | HTTP request | Description
 [**UpdateCampaignByID**](CampaignApi.md#UpdateCampaignByID) | **Patch** /campaigns/{id} | Update campaign by id
 
 
-# **CreateCampaign**
+
+## CreateCampaign
+
 > PostSuccess CreateCampaign(ctx, data)
+
 Create campaign.
 
 Create campaign.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
-  **data** | [**CampaignDataInput**](CampaignDataInput.md)| Data **(Required)** | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**data** | [**CampaignDataInput**](CampaignDataInput.md)| Data **(Required)** | 
 
 ### Return type
 
@@ -30,27 +34,33 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[API Key](../README.md#API Key)
+[API-Key](../README.md#API-Key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **DeleteCampaignById**
+
+## DeleteCampaignById
+
 > Success DeleteCampaignById(ctx, id)
+
 Delete campaign by id
 
 Delete campaign by id
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
-  **id** | **int64**| ID of Campaign **(Required)** | 
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int64**| ID of Campaign **(Required)** | [default to 0]
 
 ### Return type
 
@@ -58,36 +68,44 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[API Key](../README.md#API Key)
+[API-Key](../README.md#API-Key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **GetCampaignById**
+
+## GetCampaignById
+
 > CampaignResult GetCampaignById(ctx, id, optional)
+
 Get campaign by id
 
 Get campaign by id
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
-  **id** | **int64**| ID of Campaign **(Required)** | 
- **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int64**| ID of Campaign **(Required)** | [default to 0]
+ **optional** | ***GetCampaignByIdOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
-Optional parameters are passed through a map[string]interface{}.
+
+Optional parameters are passed through a pointer to a GetCampaignByIdOpts struct
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int64**| ID of Campaign **(Required)** | 
- **externalStationId** | **int64**| Query on a different (content providing) station *(Optional)* | 
+
+ **externalStationId** | **optional.Int64**| Query on a different (content providing) station *(Optional)* | 
 
 ### Return type
 
@@ -95,42 +113,50 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[API Key](../README.md#API Key)
+[API-Key](../README.md#API-Key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **ListCampaigns**
+
+## ListCampaigns
+
 > CampaignResults ListCampaigns(ctx, optional)
+
 Get all campaigns.
 
 List all campaigns.
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
- **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+ **optional** | ***ListCampaignsOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
-Optional parameters are passed through a map[string]interface{}.
+
+Optional parameters are passed through a pointer to a ListCampaignsOpts struct
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **int64**| Current page *(Optional)* | 
- **itemId** | **int64**| Search on Item ID *(Optional)* &#x60;(Relation)&#x60; | 
- **modelTypeId** | **int64**| Search on ModelType ID *(Optional)* &#x60;(Relation)&#x60; | 
- **startMin** | **time.Time**| Minimum start date *(Optional)* | 
- **startMax** | **time.Time**| Maximum start date *(Optional)* | 
- **limit** | **int64**| Results per page *(Optional)* | 
- **orderBy** | **string**| Field to order the results *(Optional)* | 
- **orderDirection** | **string**| Direction of ordering *(Optional)* | 
- **externalStationId** | **int64**| Query on a different (content providing) station *(Optional)* | 
+ **page** | **optional.Int64**| Current page *(Optional)* | 
+ **itemId** | **optional.Int64**| Search on Item ID *(Optional)* &#x60;(Relation)&#x60; | 
+ **modelTypeId** | **optional.Int64**| Search on ModelType ID *(Optional)* &#x60;(Relation)&#x60; | 
+ **startMin** | **optional.Time**| Minimum start date *(Optional)* | 
+ **startMax** | **optional.Time**| Maximum start date *(Optional)* | 
+ **limit** | **optional.Int64**| Results per page *(Optional)* | 
+ **orderBy** | **optional.String**| Field to order the results *(Optional)* | 
+ **orderDirection** | **optional.String**| Direction of ordering *(Optional)* | 
+ **externalStationId** | **optional.Int64**| Query on a different (content providing) station *(Optional)* | 
 
 ### Return type
 
@@ -138,36 +164,44 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[API Key](../README.md#API Key)
+[API-Key](../README.md#API-Key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
-# **UpdateCampaignByID**
+
+## UpdateCampaignByID
+
 > Success UpdateCampaignByID(ctx, id, optional)
+
 Update campaign by id
 
 Update campaign by id
 
 ### Required Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for logging, tracing, authentication, etc.
-  **id** | **int64**| ID of Campaign **(Required)** | 
- **optional** | **map[string]interface{}** | optional parameters | nil if no parameters
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int64**| ID of Campaign **(Required)** | [default to 0]
+ **optional** | ***UpdateCampaignByIDOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
-Optional parameters are passed through a map[string]interface{}.
+
+Optional parameters are passed through a pointer to a UpdateCampaignByIDOpts struct
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int64**| ID of Campaign **(Required)** | 
- **data** | [**CampaignDataInput**](CampaignDataInput.md)| Data *(Optional)* | 
+
+ **data** | [**optional.Interface of CampaignDataInput**](CampaignDataInput.md)| Data *(Optional)* | 
 
 ### Return type
 
@@ -175,12 +209,14 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[API Key](../README.md#API Key)
+[API-Key](../README.md#API-Key)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 

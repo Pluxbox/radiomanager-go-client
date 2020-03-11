@@ -1,14 +1,15 @@
 # ContactDataInput
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ModelTypeId** | **int64** |  | [default to null]
-**FieldValues** | [***interface{}**](interface{}.md) |  | [optional] [default to null]
-**Email** | **string** |  | [optional] [default to null]
-**Firstname** | **string** |  | [default to null]
-**Lastname** | **string** |  | [default to null]
-**Phone** | **string** |  | [optional] [default to null]
+**ModelTypeId** | **int64** |  | 
+**FieldValues** | [**map[string]interface{}**](.md) |  | [optional] 
+**Email** | **string** |  | [optional] 
+**Firstname** | **string** |  | 
+**Lastname** | **string** |  | 
+**Phone** | **string** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

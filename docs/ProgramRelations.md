@@ -1,15 +1,16 @@
 # ProgramRelations
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Genre** | [***BroadcastRelationsGenre**](BroadcastRelations_genre.md) |  | [optional] [default to null]
-**Items** | [***ProgramRelationsItems**](ProgramRelations_items.md) |  | [optional] [default to null]
-**Blocks** | [***ProgramRelationsBlocks**](ProgramRelations_blocks.md) |  | [optional] [default to null]
-**Broadcasts** | [***ProgramRelationsBroadcasts**](ProgramRelations_broadcasts.md) |  | [optional] [default to null]
-**Presenters** | [***ProgramRelationsPresenters**](ProgramRelations_presenters.md) |  | [optional] [default to null]
-**Tags** | [***ProgramRelationsTags**](ProgramRelations_tags.md) |  | [optional] [default to null]
-**ModelType** | [***BroadcastRelationsModelType**](BroadcastRelations_model_type.md) |  | [optional] [default to null]
+**Genre** | [**BroadcastRelationsGenre**](BroadcastRelations_genre.md) |  | [optional] 
+**Items** | [**ProgramRelationsItems**](ProgramRelations_items.md) |  | [optional] 
+**Blocks** | [**ProgramRelationsBlocks**](ProgramRelations_blocks.md) |  | [optional] 
+**Broadcasts** | [**ProgramRelationsBroadcasts**](ProgramRelations_broadcasts.md) |  | [optional] 
+**Presenters** | [**ProgramRelationsPresenters**](ProgramRelations_presenters.md) |  | [optional] 
+**Tags** | [**ProgramRelationsTags**](ProgramRelations_tags.md) |  | [optional] 
+**ModelType** | [**BroadcastRelationsModelType**](BroadcastRelations_model_type.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -1,33 +1,34 @@
 # ProgramResult
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **int64** |  | [default to null]
-**UpdatedAt** | [**time.Time**](time.Time.md) |  | [default to null]
-**CreatedAt** | [**time.Time**](time.Time.md) |  | [default to null]
-**DeletedAt** | [**time.Time**](time.Time.md) |  | [default to null]
-**ExternalStationId** | **int64** |  | [optional] [default to null]
-**ModelTypeId** | **int64** |  | [default to null]
-**FieldValues** | [***interface{}**](interface{}.md) |  | [optional] [default to null]
-**Title** | **string** |  | [default to null]
-**Disabled** | **bool** |  | [optional] [default to null]
-**GenreId** | **int64** |  | [optional] [default to null]
-**Description** | **string** |  | [optional] [default to null]
-**ShortName** | **string** |  | [optional] [default to null]
-**MediumName** | **string** |  | [optional] [default to null]
-**Website** | **string** |  | [optional] [default to null]
-**Email** | **string** |  | [optional] [default to null]
-**Recommended** | **bool** |  | [optional] [default to null]
-**Language** | **string** |  | [optional] [default to null]
-**PtyCodeId** | **int64** |  | [optional] [default to null]
-**Genre** | [***BroadcastRelationsGenre**](BroadcastRelations_genre.md) |  | [optional] [default to null]
-**Items** | [***ProgramRelationsItems**](ProgramRelations_items.md) |  | [optional] [default to null]
-**Blocks** | [***ProgramRelationsBlocks**](ProgramRelations_blocks.md) |  | [optional] [default to null]
-**Broadcasts** | [***ProgramRelationsBroadcasts**](ProgramRelations_broadcasts.md) |  | [optional] [default to null]
-**Presenters** | [***ProgramRelationsPresenters**](ProgramRelations_presenters.md) |  | [optional] [default to null]
-**Tags** | [***ProgramRelationsTags**](ProgramRelations_tags.md) |  | [optional] [default to null]
-**ModelType** | [***BroadcastRelationsModelType**](BroadcastRelations_model_type.md) |  | [optional] [default to null]
+**Id** | **int64** |  | 
+**UpdatedAt** | [**time.Time**](time.Time.md) |  | 
+**CreatedAt** | [**time.Time**](time.Time.md) |  | 
+**DeletedAt** | [**time.Time**](time.Time.md) |  | 
+**ExternalStationId** | **int64** |  | [optional] 
+**ModelTypeId** | **int64** |  | 
+**FieldValues** | [**map[string]interface{}**](.md) |  | [optional] 
+**Title** | **string** |  | 
+**Disabled** | **bool** |  | [optional] 
+**GenreId** | **int64** |  | [optional] 
+**Description** | **string** |  | [optional] 
+**ShortName** | **string** |  | [optional] 
+**MediumName** | **string** |  | [optional] 
+**Website** | **string** |  | [optional] 
+**Email** | **string** |  | [optional] 
+**Recommended** | **bool** |  | [optional] 
+**Language** | **string** |  | [optional] 
+**PtyCodeId** | **int64** |  | [optional] 
+**Genre** | [**BroadcastRelationsGenre**](BroadcastRelations_genre.md) |  | [optional] 
+**Items** | [**ProgramRelationsItems**](ProgramRelations_items.md) |  | [optional] 
+**Blocks** | [**ProgramRelationsBlocks**](ProgramRelations_blocks.md) |  | [optional] 
+**Broadcasts** | [**ProgramRelationsBroadcasts**](ProgramRelations_broadcasts.md) |  | [optional] 
+**Presenters** | [**ProgramRelationsPresenters**](ProgramRelations_presenters.md) |  | [optional] 
+**Tags** | [**ProgramRelationsTags**](ProgramRelations_tags.md) |  | [optional] 
+**ModelType** | [**BroadcastRelationsModelType**](BroadcastRelations_model_type.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

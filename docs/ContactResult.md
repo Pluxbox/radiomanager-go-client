@@ -1,22 +1,23 @@
 # ContactResult
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **int64** |  | [optional] [default to null]
-**CreatedAt** | [**time.Time**](time.Time.md) |  | [optional] [default to null]
-**UpdatedAt** | [**time.Time**](time.Time.md) |  | [optional] [default to null]
-**DeletedAt** | [**time.Time**](time.Time.md) |  | [optional] [default to null]
-**ExternalStationId** | **int64** |  | [optional] [default to null]
-**ModelTypeId** | **int64** |  | [default to null]
-**FieldValues** | [***interface{}**](interface{}.md) |  | [optional] [default to null]
-**Email** | **string** |  | [optional] [default to null]
-**Firstname** | **string** |  | [default to null]
-**Lastname** | **string** |  | [default to null]
-**Phone** | **string** |  | [optional] [default to null]
-**Tags** | [***ContactRelationsTags**](ContactRelations_tags.md) |  | [default to null]
-**Items** | [***ContactRelationsItems**](ContactRelations_items.md) |  | [optional] [default to null]
-**ModelType** | [***BroadcastRelationsModelType**](BroadcastRelations_model_type.md) |  | [optional] [default to null]
+**Id** | **int64** |  | [optional] 
+**CreatedAt** | [**time.Time**](time.Time.md) |  | [optional] 
+**UpdatedAt** | [**time.Time**](time.Time.md) |  | [optional] 
+**DeletedAt** | [**time.Time**](time.Time.md) |  | [optional] 
+**ExternalStationId** | **int64** |  | [optional] 
+**ModelTypeId** | **int64** |  | 
+**FieldValues** | [**map[string]interface{}**](.md) |  | [optional] 
+**Email** | **string** |  | [optional] 
+**Firstname** | **string** |  | 
+**Lastname** | **string** |  | 
+**Phone** | **string** |  | [optional] 
+**Tags** | [**ContactRelationsTags**](ContactRelations_tags.md) |  | 
+**Items** | [**ContactRelationsItems**](ContactRelations_items.md) |  | [optional] 
+**ModelType** | [**BroadcastRelationsModelType**](BroadcastRelations_model_type.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -1,20 +1,21 @@
 # UserResult
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **int64** |  | [default to null]
-**Email** | **string** |  | [default to null]
-**Firstname** | **string** |  | [default to null]
-**Lastname** | **string** |  | [default to null]
-**Phone** | **string** |  | [optional] [default to null]
-**CreatedAt** | [**time.Time**](time.Time.md) |  | [optional] [default to null]
-**UpdatedAt** | [**time.Time**](time.Time.md) |  | [optional] [default to null]
-**Active** | **bool** |  | [optional] [default to null]
-**Settings** | [***UserResultSettings**](UserResult_settings.md) |  | [optional] [default to null]
-**Language** | **bool** |  | [optional] [default to null]
-**ActiveExternalStationId** | **int64** |  | [optional] [default to null]
-**Roles** | [**[]UserResultRoles**](UserResult_roles.md) |  | [optional] [default to null]
+**Id** | **int64** |  | 
+**Email** | **string** |  | 
+**Firstname** | **string** |  | 
+**Lastname** | **string** |  | 
+**Phone** | **string** |  | [optional] 
+**CreatedAt** | [**time.Time**](time.Time.md) |  | [optional] 
+**UpdatedAt** | [**time.Time**](time.Time.md) |  | [optional] 
+**Active** | **bool** |  | [optional] 
+**Settings** | [**UserResultSettings**](UserResult_settings.md) |  | [optional] 
+**Language** | **bool** |  | [optional] 
+**ActiveExternalStationId** | **int64** |  | [optional] 
+**Roles** | [**[]UserResultRoles**](UserResult_roles.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

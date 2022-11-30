@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateItem**](ItemApi.md#CreateItem) | **Post** /items | Create an new item.
 [**CurrentItemPostStructure**](ItemApi.md#CurrentItemPostStructure) | **Post** /items/current/structure | Post a current playing item, keep structure
-[**CurrentItemPostTiming**](ItemApi.md#CurrentItemPostTiming) | **Post** /items/current/timing | Post a current playing item
+[**CurrentItemPostTiming**](ItemApi.md#CurrentItemPostTiming) | **Post** /items/current/timing | Post current playing Item
 [**DeleteItemById**](ItemApi.md#DeleteItemById) | **Delete** /items/{id} | Delete item by ID.
 [**GetCurrentItem**](ItemApi.md#GetCurrentItem) | **Get** /items/current | Get current Item
 [**GetItemById**](ItemApi.md#GetItemById) | **Get** /items/{id} | Get extended item details by ID.
@@ -21,32 +21,55 @@ Method | HTTP request | Description
 
 ## CreateItem
 
-> PostSuccess CreateItem(ctx, optional)
+> InlineResponse2002 CreateItem(ctx).ItemDataInput(itemDataInput).Execute()
 
 Create an new item.
 
-Create item.
 
-### Required Parameters
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    itemDataInput := *openapiclient.NewItemDataInput(int64(14)) // ItemDataInput | Data **(Required)**
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ItemApi.CreateItem(context.Background()).ItemDataInput(itemDataInput).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ItemApi.CreateItem``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateItem`: InlineResponse2002
+    fmt.Fprintf(os.Stdout, "Response from `ItemApi.CreateItem`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateItemRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***CreateItemOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-
-Optional parameters are passed through a pointer to a CreateItemOpts struct
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **data** | [**optional.Interface of ItemDataInput**](ItemDataInput.md)| Data *(Optional)* | 
+ **itemDataInput** | [**ItemDataInput**](ItemDataInput.md) | Data **(Required)** | 
 
 ### Return type
 
-[**PostSuccess**](PostSuccess.md)
+[**InlineResponse2002**](InlineResponse2002.md)
 
 ### Authorization
 
@@ -64,32 +87,55 @@ Name | Type | Description  | Notes
 
 ## CurrentItemPostStructure
 
-> Success CurrentItemPostStructure(ctx, optional)
+> ItemResult CurrentItemPostStructure(ctx).ImportItem(importItem).Execute()
 
 Post a current playing item, keep structure
 
-Post a current playing item, keep structure
 
-### Required Parameters
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    importItem := *openapiclient.NewImportItem(int64(14), "0") // ImportItem | Data **(Required)**
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ItemApi.CurrentItemPostStructure(context.Background()).ImportItem(importItem).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ItemApi.CurrentItemPostStructure``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CurrentItemPostStructure`: ItemResult
+    fmt.Fprintf(os.Stdout, "Response from `ItemApi.CurrentItemPostStructure`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCurrentItemPostStructureRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***CurrentItemPostStructureOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-
-Optional parameters are passed through a pointer to a CurrentItemPostStructureOpts struct
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **data** | [**optional.Interface of ImportItem**](ImportItem.md)| Data *(Optional)* | 
+ **importItem** | [**ImportItem**](ImportItem.md) | Data **(Required)** | 
 
 ### Return type
 
-[**Success**](Success.md)
+[**ItemResult**](ItemResult.md)
 
 ### Authorization
 
@@ -107,32 +153,55 @@ Name | Type | Description  | Notes
 
 ## CurrentItemPostTiming
 
-> Success CurrentItemPostTiming(ctx, optional)
+> ItemResult CurrentItemPostTiming(ctx).ImportItem(importItem).Execute()
 
-Post a current playing item
+Post current playing Item
 
-Post a current playing item
 
-### Required Parameters
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    importItem := *openapiclient.NewImportItem(int64(14), "0") // ImportItem | Data **(Required)**
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ItemApi.CurrentItemPostTiming(context.Background()).ImportItem(importItem).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ItemApi.CurrentItemPostTiming``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CurrentItemPostTiming`: ItemResult
+    fmt.Fprintf(os.Stdout, "Response from `ItemApi.CurrentItemPostTiming`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCurrentItemPostTimingRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***CurrentItemPostTimingOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-
-Optional parameters are passed through a pointer to a CurrentItemPostTimingOpts struct
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **data** | [**optional.Interface of ImportItem**](ImportItem.md)| Data *(Optional)* | 
+ **importItem** | [**ImportItem**](ImportItem.md) | Data **(Required)** | 
 
 ### Return type
 
-[**Success**](Success.md)
+[**ItemResult**](ItemResult.md)
 
 ### Authorization
 
@@ -150,23 +219,57 @@ Name | Type | Description  | Notes
 
 ## DeleteItemById
 
-> Success DeleteItemById(ctx, id)
+> DeleteItemById(ctx, id).Execute()
 
 Delete item by ID.
 
-Delete item by id.
 
-### Required Parameters
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int64(789) // int64 | ID of Item **(Required)**
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ItemApi.DeleteItemById(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ItemApi.DeleteItemById``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int64**| ID of Item **(Required)** | [default to 0]
+**id** | **int64** | ID of Item **(Required)** | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteItemByIdRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
 
 ### Return type
 
-[**Success**](Success.md)
+ (empty response body)
 
 ### Authorization
 
@@ -184,28 +287,51 @@ Name | Type | Description  | Notes
 
 ## GetCurrentItem
 
-> ItemResult GetCurrentItem(ctx, optional)
+> ItemResult GetCurrentItem(ctx).Lastplayed(lastplayed).Execute()
 
 Get current Item
 
-Get current Item
 
-### Required Parameters
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    lastplayed := true // bool | Show last played item if there is no current item*(Optional)* (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ItemApi.GetCurrentItem(context.Background()).Lastplayed(lastplayed).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ItemApi.GetCurrentItem``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetCurrentItem`: ItemResult
+    fmt.Fprintf(os.Stdout, "Response from `ItemApi.GetCurrentItem`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetCurrentItemRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***GetCurrentItemOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-
-Optional parameters are passed through a pointer to a GetCurrentItemOpts struct
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **lastplayed** | **optional.Bool**| Show last played item if there is no current item*(Optional)* | 
+ **lastplayed** | **bool** | Show last played item if there is no current item*(Optional)* | 
 
 ### Return type
 
@@ -227,30 +353,57 @@ Name | Type | Description  | Notes
 
 ## GetItemById
 
-> ItemResult GetItemById(ctx, id, optional)
+> ItemResult GetItemById(ctx, id).ExternalStationId(externalStationId).Execute()
 
 Get extended item details by ID.
 
-Read item by id.
 
-### Required Parameters
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int64(789) // int64 | ID of Item **(Required)**
+    externalStationId := int64(789) // int64 | Query on a different (content providing) station *(Optional)* (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ItemApi.GetItemById(context.Background(), id).ExternalStationId(externalStationId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ItemApi.GetItemById``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetItemById`: ItemResult
+    fmt.Fprintf(os.Stdout, "Response from `ItemApi.GetItemById`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int64**| ID of Item **(Required)** | [default to 0]
- **optional** | ***GetItemByIdOpts** | optional parameters | nil if no parameters
+**id** | **int64** | ID of Item **(Required)** | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a GetItemByIdOpts struct
+Other parameters are passed through a pointer to a apiGetItemByIdRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **externalStationId** | **optional.Int64**| Query on a different (content providing) station *(Optional)* | 
+ **externalStationId** | **int64** | Query on a different (content providing) station *(Optional)* | 
 
 ### Return type
 
@@ -272,52 +425,96 @@ Name | Type | Description  | Notes
 
 ## ListItems
 
-> ItemResults ListItems(ctx, optional)
+> InlineResponse2008 ListItems(ctx).BlockId(blockId).BroadcastId(broadcastId).ModelTypeId(modelTypeId).TagId(tagId).CampaignId(campaignId).ContactId(contactId).ProgramDraftId(programDraftId).UserDraftId(userDraftId).StationDraftId(stationDraftId).ProgramId(programId).ExternalId(externalId).DurationMin(durationMin).DurationMax(durationMax).Status(status).StartMin(startMin).StartMax(startMax).Page(page).Limit(limit).OrderBy(orderBy).OrderDirection(orderDirection).ExternalStationId(externalStationId).Execute()
 
 Get a list of all the items currently in your station.
 
-Get a list of all the items currently in your station. This feature supports pagination and will give a maximum results of 50 items back.
 
-### Required Parameters
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    "time"
+    openapiclient "./openapi"
+)
+
+func main() {
+    blockId := int64(789) // int64 | Search on Block ID *(Optional)* `(Relation)` (optional)
+    broadcastId := int64(789) // int64 | Search on Broadcast ID *(Optional)* `(Relation)` (optional)
+    modelTypeId := int64(789) // int64 | Search on ModelType ID *(Optional)* `(Relation)` (optional)
+    tagId := int64(789) // int64 | Search on Tag ID *(Optional)* `(Relation)` (optional)
+    campaignId := int64(789) // int64 | Search on Campaign ID *(Optional)* `(Relation)` (optional)
+    contactId := int64(789) // int64 | Search on Contact ID *(Optional)* `(Relation)` (optional)
+    programDraftId := int64(789) // int64 | Search on Program Draft ID *(Optional)* (optional)
+    userDraftId := int64(789) // int64 | Search on User Draft ID *(Optional)* (optional)
+    stationDraftId := int64(789) // int64 | Search on Station Draft ID *(Optional)* (optional)
+    programId := int64(789) // int64 | Search on Program ID *(Optional)* `(Relation)` (optional)
+    externalId := "externalId_example" // string | Search on External ID *(Optional)* (optional)
+    durationMin := int32(56) // int32 | Minimum duration (seconds) *(Optional)* (optional)
+    durationMax := int32(56) // int32 | Maximum duration (seconds) *(Optional)* (optional)
+    status := "status_example" // string | Play Status of item *(Optional)* (optional)
+    startMin := time.Now() // time.Time | Minimum start date *(Optional)* (optional)
+    startMax := time.Now() // time.Time | Maximum start date *(Optional)* (optional)
+    page := int64(789) // int64 | Current page *(Optional)* (optional) (default to 1)
+    limit := int64(789) // int64 | Results per page *(Optional)* (optional)
+    orderBy := "orderBy_example" // string | Field to order the results *(Optional)* (optional)
+    orderDirection := "orderDirection_example" // string | Direction of ordering *(Optional)* (optional)
+    externalStationId := int64(789) // int64 | Query on a different (content providing) station *(Optional)* (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ItemApi.ListItems(context.Background()).BlockId(blockId).BroadcastId(broadcastId).ModelTypeId(modelTypeId).TagId(tagId).CampaignId(campaignId).ContactId(contactId).ProgramDraftId(programDraftId).UserDraftId(userDraftId).StationDraftId(stationDraftId).ProgramId(programId).ExternalId(externalId).DurationMin(durationMin).DurationMax(durationMax).Status(status).StartMin(startMin).StartMax(startMax).Page(page).Limit(limit).OrderBy(orderBy).OrderDirection(orderDirection).ExternalStationId(externalStationId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ItemApi.ListItems``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListItems`: InlineResponse2008
+    fmt.Fprintf(os.Stdout, "Response from `ItemApi.ListItems`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListItemsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***ListItemsOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-
-Optional parameters are passed through a pointer to a ListItemsOpts struct
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **page** | **optional.Int64**| Current page *(Optional)* | 
- **blockId** | **optional.Int64**| Search on Block ID *(Optional)* &#x60;(Relation)&#x60; | 
- **broadcastId** | **optional.Int64**| Search on Broadcast ID *(Optional)* &#x60;(Relation)&#x60; | 
- **modelTypeId** | **optional.Int64**| Search on ModelType ID *(Optional)* &#x60;(Relation)&#x60; | 
- **tagId** | **optional.Int64**| Search on Tag ID *(Optional)* &#x60;(Relation)&#x60; | 
- **campaignId** | **optional.Int64**| Search on Campaign ID *(Optional)* &#x60;(Relation)&#x60; | 
- **contactId** | **optional.Int64**| Search on Contact ID *(Optional)* &#x60;(Relation)&#x60; | 
- **programDraftId** | **optional.Int64**| Search on Program Draft ID *(Optional)* | 
- **userDraftId** | **optional.Int64**| Search on User Draft ID *(Optional)* | 
- **stationDraftId** | **optional.Int64**| Search on Station Draft ID *(Optional)* | 
- **programId** | **optional.Int64**| Search on Program ID *(Optional)* &#x60;(Relation)&#x60; | 
- **externalId** | **optional.String**| Search on External ID *(Optional)* | 
- **startMin** | **optional.Time**| Minimum start date *(Optional)* | 
- **startMax** | **optional.Time**| Maximum start date *(Optional)* | 
- **durationMin** | **optional.Int32**| Minimum duration (seconds) *(Optional)* | 
- **durationMax** | **optional.Int32**| Maximum duration (seconds) *(Optional)* | 
- **status** | **optional.String**| Play Status of item *(Optional)* | 
- **limit** | **optional.Int64**| Results per page *(Optional)* | 
- **orderBy** | **optional.String**| Field to order the results *(Optional)* | 
- **orderDirection** | **optional.String**| Direction of ordering *(Optional)* | 
- **externalStationId** | **optional.Int64**| Query on a different (content providing) station *(Optional)* | 
+ **blockId** | **int64** | Search on Block ID *(Optional)* &#x60;(Relation)&#x60; | 
+ **broadcastId** | **int64** | Search on Broadcast ID *(Optional)* &#x60;(Relation)&#x60; | 
+ **modelTypeId** | **int64** | Search on ModelType ID *(Optional)* &#x60;(Relation)&#x60; | 
+ **tagId** | **int64** | Search on Tag ID *(Optional)* &#x60;(Relation)&#x60; | 
+ **campaignId** | **int64** | Search on Campaign ID *(Optional)* &#x60;(Relation)&#x60; | 
+ **contactId** | **int64** | Search on Contact ID *(Optional)* &#x60;(Relation)&#x60; | 
+ **programDraftId** | **int64** | Search on Program Draft ID *(Optional)* | 
+ **userDraftId** | **int64** | Search on User Draft ID *(Optional)* | 
+ **stationDraftId** | **int64** | Search on Station Draft ID *(Optional)* | 
+ **programId** | **int64** | Search on Program ID *(Optional)* &#x60;(Relation)&#x60; | 
+ **externalId** | **string** | Search on External ID *(Optional)* | 
+ **durationMin** | **int32** | Minimum duration (seconds) *(Optional)* | 
+ **durationMax** | **int32** | Maximum duration (seconds) *(Optional)* | 
+ **status** | **string** | Play Status of item *(Optional)* | 
+ **startMin** | **time.Time** | Minimum start date *(Optional)* | 
+ **startMax** | **time.Time** | Maximum start date *(Optional)* | 
+ **page** | **int64** | Current page *(Optional)* | [default to 1]
+ **limit** | **int64** | Results per page *(Optional)* | 
+ **orderBy** | **string** | Field to order the results *(Optional)* | 
+ **orderDirection** | **string** | Direction of ordering *(Optional)* | 
+ **externalStationId** | **int64** | Query on a different (content providing) station *(Optional)* | 
 
 ### Return type
 
-[**ItemResults**](ItemResults.md)
+[**InlineResponse2008**](InlineResponse2008.md)
 
 ### Authorization
 
@@ -335,32 +532,55 @@ Name | Type | Description  | Notes
 
 ## PlaylistPostMerge
 
-> InlineResponse202 PlaylistPostMerge(ctx, optional)
+> InlineResponse2021 PlaylistPostMerge(ctx).PlaylistMergeBody(playlistMergeBody).Execute()
 
 Post a playlist, do not remove previously imported items
 
-Post a playlist, do not remove previously imported items
 
-### Required Parameters
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    playlistMergeBody := *openapiclient.NewPlaylistMergeBody() // PlaylistMergeBody | Data *(Required)*
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ItemApi.PlaylistPostMerge(context.Background()).PlaylistMergeBody(playlistMergeBody).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ItemApi.PlaylistPostMerge``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PlaylistPostMerge`: InlineResponse2021
+    fmt.Fprintf(os.Stdout, "Response from `ItemApi.PlaylistPostMerge`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPlaylistPostMergeRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***PlaylistPostMergeOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-
-Optional parameters are passed through a pointer to a PlaylistPostMergeOpts struct
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **data** | [**optional.Interface of InlineObject2**](InlineObject2.md)|  | 
+ **playlistMergeBody** | [**PlaylistMergeBody**](PlaylistMergeBody.md) | Data *(Required)* | 
 
 ### Return type
 
-[**InlineResponse202**](inline_response_202.md)
+[**InlineResponse2021**](InlineResponse2021.md)
 
 ### Authorization
 
@@ -378,32 +598,55 @@ Name | Type | Description  | Notes
 
 ## PlaylistPostStructure
 
-> InlineResponse202 PlaylistPostStructure(ctx, optional)
+> InlineResponse2021 PlaylistPostStructure(ctx).PlaylistStructureBody(playlistStructureBody).Execute()
 
 Post a playlist, keep current structure
 
-Post a playlist, keep current structure
 
-### Required Parameters
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    playlistStructureBody := *openapiclient.NewPlaylistStructureBody() // PlaylistStructureBody | Data *(Required)*
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ItemApi.PlaylistPostStructure(context.Background()).PlaylistStructureBody(playlistStructureBody).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ItemApi.PlaylistPostStructure``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PlaylistPostStructure`: InlineResponse2021
+    fmt.Fprintf(os.Stdout, "Response from `ItemApi.PlaylistPostStructure`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPlaylistPostStructureRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***PlaylistPostStructureOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-
-Optional parameters are passed through a pointer to a PlaylistPostStructureOpts struct
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **data** | [**optional.Interface of InlineObject1**](InlineObject1.md)|  | 
+ **playlistStructureBody** | [**PlaylistStructureBody**](PlaylistStructureBody.md) | Data *(Required)* | 
 
 ### Return type
 
-[**InlineResponse202**](inline_response_202.md)
+[**InlineResponse2021**](InlineResponse2021.md)
 
 ### Authorization
 
@@ -421,32 +664,55 @@ Name | Type | Description  | Notes
 
 ## PlaylistPostTiming
 
-> InlineResponse202 PlaylistPostTiming(ctx, optional)
+> InlineResponse2021 PlaylistPostTiming(ctx).PlaylistTimingBody(playlistTimingBody).Execute()
 
 Post a playlist
 
-Post a playlist
 
-### Required Parameters
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    playlistTimingBody := *openapiclient.NewPlaylistTimingBody() // PlaylistTimingBody | Data *(Required)*
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ItemApi.PlaylistPostTiming(context.Background()).PlaylistTimingBody(playlistTimingBody).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ItemApi.PlaylistPostTiming``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PlaylistPostTiming`: InlineResponse2021
+    fmt.Fprintf(os.Stdout, "Response from `ItemApi.PlaylistPostTiming`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPlaylistPostTimingRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***PlaylistPostTimingOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-
-Optional parameters are passed through a pointer to a PlaylistPostTimingOpts struct
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **data** | [**optional.Interface of InlineObject**](InlineObject.md)|  | 
+ **playlistTimingBody** | [**PlaylistTimingBody**](PlaylistTimingBody.md) | Data *(Required)* | 
 
 ### Return type
 
-[**InlineResponse202**](inline_response_202.md)
+[**InlineResponse2021**](InlineResponse2021.md)
 
 ### Authorization
 
@@ -464,32 +730,55 @@ Name | Type | Description  | Notes
 
 ## StopCurrentItem
 
-> Success StopCurrentItem(ctx, optional)
+> InlineResponse202 StopCurrentItem(ctx).ItemsStopcurrentBody(itemsStopcurrentBody).Execute()
 
 Stop an Item
 
-Set a current playing or specific item on played
 
-### Required Parameters
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    itemsStopcurrentBody := *openapiclient.NewItemsStopcurrentBody() // ItemsStopcurrentBody | Data *(Optional)* (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ItemApi.StopCurrentItem(context.Background()).ItemsStopcurrentBody(itemsStopcurrentBody).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ItemApi.StopCurrentItem``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `StopCurrentItem`: InlineResponse202
+    fmt.Fprintf(os.Stdout, "Response from `ItemApi.StopCurrentItem`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiStopCurrentItemRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***StopCurrentItemOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-
-Optional parameters are passed through a pointer to a StopCurrentItemOpts struct
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **data** | [**optional.Interface of InlineObject3**](InlineObject3.md)|  | 
+ **itemsStopcurrentBody** | [**ItemsStopcurrentBody**](ItemsStopcurrentBody.md) | Data *(Optional)* | 
 
 ### Return type
 
-[**Success**](Success.md)
+[**InlineResponse202**](InlineResponse202.md)
 
 ### Authorization
 
@@ -507,34 +796,61 @@ Name | Type | Description  | Notes
 
 ## UpdateItemById
 
-> Success UpdateItemById(ctx, id, optional)
+> InlineResponse202 UpdateItemById(ctx, id).ItemDataInput(itemDataInput).Execute()
 
 Update extended item details by ID.
 
-Update item by id.
 
-### Required Parameters
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int64(789) // int64 | ID of Item **(Required)**
+    itemDataInput := *openapiclient.NewItemDataInput(int64(14)) // ItemDataInput | Data *(Optional)*
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ItemApi.UpdateItemById(context.Background(), id).ItemDataInput(itemDataInput).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ItemApi.UpdateItemById``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateItemById`: InlineResponse202
+    fmt.Fprintf(os.Stdout, "Response from `ItemApi.UpdateItemById`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int64**| ID of Item **(Required)** | [default to 0]
- **optional** | ***UpdateItemByIdOpts** | optional parameters | nil if no parameters
+**id** | **int64** | ID of Item **(Required)** | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a UpdateItemByIdOpts struct
+Other parameters are passed through a pointer to a apiUpdateItemByIdRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **data** | [**optional.Interface of ItemDataInput**](ItemDataInput.md)| Data *(Optional)* | 
+ **itemDataInput** | [**ItemDataInput**](ItemDataInput.md) | Data *(Optional)* | 
 
 ### Return type
 
-[**Success**](Success.md)
+[**InlineResponse202**](InlineResponse202.md)
 
 ### Authorization
 

@@ -14,23 +14,55 @@ Method | HTTP request | Description
 
 ## CreatePresenter
 
-> PostSuccess CreatePresenter(ctx, data)
+> InlineResponse2002 CreatePresenter(ctx).PresenterDataInput(presenterDataInput).Execute()
 
 Create presenter.
 
-Create presenter.
 
-### Required Parameters
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    presenterDataInput := *openapiclient.NewPresenterDataInput(int64(1)) // PresenterDataInput | Data **(Required)**
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PresenterApi.CreatePresenter(context.Background()).PresenterDataInput(presenterDataInput).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PresenterApi.CreatePresenter``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreatePresenter`: InlineResponse2002
+    fmt.Fprintf(os.Stdout, "Response from `PresenterApi.CreatePresenter`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreatePresenterRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**data** | [**PresenterDataInput**](PresenterDataInput.md)| Data **(Required)** | 
+ **presenterDataInput** | [**PresenterDataInput**](PresenterDataInput.md) | Data **(Required)** | 
 
 ### Return type
 
-[**PostSuccess**](PostSuccess.md)
+[**InlineResponse2002**](InlineResponse2002.md)
 
 ### Authorization
 
@@ -48,23 +80,59 @@ Name | Type | Description  | Notes
 
 ## DeletePresenterById
 
-> Success DeletePresenterById(ctx, id)
+> InlineResponse202 DeletePresenterById(ctx, id).Execute()
 
 Delete presenter by id
 
-Delete presenter by id
 
-### Required Parameters
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int64(789) // int64 | id of presenter
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PresenterApi.DeletePresenterById(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PresenterApi.DeletePresenterById``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DeletePresenterById`: InlineResponse202
+    fmt.Fprintf(os.Stdout, "Response from `PresenterApi.DeletePresenterById`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int64**| id of presenter | [default to 0]
+**id** | **int64** | id of presenter | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeletePresenterByIdRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
 
 ### Return type
 
-[**Success**](Success.md)
+[**InlineResponse202**](InlineResponse202.md)
 
 ### Authorization
 
@@ -82,30 +150,55 @@ Name | Type | Description  | Notes
 
 ## GetPresenterById
 
-> PresenterResult GetPresenterById(ctx, id, optional)
+> PresenterResult GetPresenterById(ctx, id).Execute()
 
 Get presenter by id
 
-Get presenter by id
 
-### Required Parameters
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int64(789) // int64 | id of Presenter
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PresenterApi.GetPresenterById(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PresenterApi.GetPresenterById``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetPresenterById`: PresenterResult
+    fmt.Fprintf(os.Stdout, "Response from `PresenterApi.GetPresenterById`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int64**| id of Presenter | [default to 0]
- **optional** | ***GetPresenterByIdOpts** | optional parameters | nil if no parameters
+**id** | **int64** | id of Presenter | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a GetPresenterByIdOpts struct
+Other parameters are passed through a pointer to a apiGetPresenterByIdRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **externalStationId** | **optional.Int64**| Query on a different (content providing) station *(Optional)* | 
 
 ### Return type
 
@@ -127,39 +220,69 @@ Name | Type | Description  | Notes
 
 ## ListPresenters
 
-> PresenterResults ListPresenters(ctx, optional)
+> InlineResponse20010 ListPresenters(ctx).ProgramId(programId).BroadcastId(broadcastId).ModelTypeId(modelTypeId).Page(page).Limit(limit).OrderBy(orderBy).OrderDirection(orderDirection).ExternalStationId(externalStationId).Execute()
 
 Get all presenters.
 
-List all presenters.
 
-### Required Parameters
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    programId := int64(789) // int64 | Search on Program ID *(Optional)* `(Relation)` (optional)
+    broadcastId := int64(789) // int64 | Search on Broadcast ID *(Optional)* `(Relation)` (optional)
+    modelTypeId := int64(789) // int64 | Search on ModelType ID (Optional) (optional)
+    page := int64(789) // int64 | Current page *(Optional)* (optional) (default to 1)
+    limit := int64(789) // int64 | Results per page *(Optional)* (optional)
+    orderBy := "orderBy_example" // string | Field to order the results *(Optional)* (optional)
+    orderDirection := "orderDirection_example" // string | Direction of ordering *(Optional)* (optional)
+    externalStationId := int64(789) // int64 | Query on a different (content providing) station *(Optional)* (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PresenterApi.ListPresenters(context.Background()).ProgramId(programId).BroadcastId(broadcastId).ModelTypeId(modelTypeId).Page(page).Limit(limit).OrderBy(orderBy).OrderDirection(orderDirection).ExternalStationId(externalStationId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PresenterApi.ListPresenters``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListPresenters`: InlineResponse20010
+    fmt.Fprintf(os.Stdout, "Response from `PresenterApi.ListPresenters`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListPresentersRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***ListPresentersOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-
-Optional parameters are passed through a pointer to a ListPresentersOpts struct
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **page** | **optional.Int64**| Current page *(Optional)* | 
- **programId** | **optional.Int64**| Search on Program ID *(Optional)* &#x60;(Relation)&#x60; | 
- **broadcastId** | **optional.Int64**| Search on Broadcast ID *(Optional)* &#x60;(Relation)&#x60; | 
- **modelTypeId** | **optional.Int64**| Search on ModelType ID (Optional) | 
- **limit** | **optional.Int64**| Results per page *(Optional)* | 
- **orderBy** | **optional.String**| Field to order the results *(Optional)* | 
- **orderDirection** | **optional.String**| Direction of ordering *(Optional)* | 
- **externalStationId** | **optional.Int64**| Query on a different (content providing) station *(Optional)* | 
+ **programId** | **int64** | Search on Program ID *(Optional)* &#x60;(Relation)&#x60; | 
+ **broadcastId** | **int64** | Search on Broadcast ID *(Optional)* &#x60;(Relation)&#x60; | 
+ **modelTypeId** | **int64** | Search on ModelType ID (Optional) | 
+ **page** | **int64** | Current page *(Optional)* | [default to 1]
+ **limit** | **int64** | Results per page *(Optional)* | 
+ **orderBy** | **string** | Field to order the results *(Optional)* | 
+ **orderDirection** | **string** | Direction of ordering *(Optional)* | 
+ **externalStationId** | **int64** | Query on a different (content providing) station *(Optional)* | 
 
 ### Return type
 
-[**PresenterResults**](PresenterResults.md)
+[**InlineResponse20010**](InlineResponse20010.md)
 
 ### Authorization
 
@@ -177,34 +300,61 @@ Name | Type | Description  | Notes
 
 ## UpdatePresenterByID
 
-> Success UpdatePresenterByID(ctx, id, optional)
+> InlineResponse202 UpdatePresenterByID(ctx, id).PresenterDataInput(presenterDataInput).Execute()
 
 Update presenter by id
 
-Update presenter by id
 
-### Required Parameters
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int64(789) // int64 | id of Presenter
+    presenterDataInput := *openapiclient.NewPresenterDataInput(int64(1)) // PresenterDataInput | Data *(Optional)*
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.PresenterApi.UpdatePresenterByID(context.Background(), id).PresenterDataInput(presenterDataInput).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PresenterApi.UpdatePresenterByID``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdatePresenterByID`: InlineResponse202
+    fmt.Fprintf(os.Stdout, "Response from `PresenterApi.UpdatePresenterByID`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int64**| id of Presenter | [default to 0]
- **optional** | ***UpdatePresenterByIDOpts** | optional parameters | nil if no parameters
+**id** | **int64** | id of Presenter | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a UpdatePresenterByIDOpts struct
+Other parameters are passed through a pointer to a apiUpdatePresenterByIDRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **data** | [**optional.Interface of PresenterDataInput**](PresenterDataInput.md)| Data *(Optional)* | 
+ **presenterDataInput** | [**PresenterDataInput**](PresenterDataInput.md) | Data *(Optional)* | 
 
 ### Return type
 
-[**Success**](Success.md)
+[**InlineResponse202**](InlineResponse202.md)
 
 ### Authorization
 

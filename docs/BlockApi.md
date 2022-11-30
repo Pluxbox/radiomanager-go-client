@@ -13,30 +13,57 @@ Method | HTTP request | Description
 
 ## GetBlockById
 
-> BlockResult GetBlockById(ctx, id, optional)
+> BlockResult GetBlockById(ctx, id).ExternalStationId(externalStationId).Execute()
 
 Get block by id
 
-Get block by id
 
-### Required Parameters
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int64(789) // int64 | ID of Block **(Required)**
+    externalStationId := int64(789) // int64 | Query on a different (content providing) station *(Optional)* (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BlockApi.GetBlockById(context.Background(), id).ExternalStationId(externalStationId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BlockApi.GetBlockById``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetBlockById`: BlockResult
+    fmt.Fprintf(os.Stdout, "Response from `BlockApi.GetBlockById`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int64**| ID of Block **(Required)** | [default to 0]
- **optional** | ***GetBlockByIdOpts** | optional parameters | nil if no parameters
+**id** | **int64** | ID of Block **(Required)** | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a GetBlockByIdOpts struct
+Other parameters are passed through a pointer to a apiGetBlockByIdRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **externalStationId** | **optional.Int64**| Query on a different (content providing) station *(Optional)* | 
+ **externalStationId** | **int64** | Query on a different (content providing) station *(Optional)* | 
 
 ### Return type
 
@@ -58,15 +85,46 @@ Name | Type | Description  | Notes
 
 ## GetCurrentBlock
 
-> BlockResult GetCurrentBlock(ctx, )
+> BlockResult GetCurrentBlock(ctx).Execute()
 
 Get current Block
 
-Get current Block
 
-### Required Parameters
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BlockApi.GetCurrentBlock(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BlockApi.GetCurrentBlock``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetCurrentBlock`: BlockResult
+    fmt.Fprintf(os.Stdout, "Response from `BlockApi.GetCurrentBlock`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetCurrentBlockRequest struct via the builder pattern
+
 
 ### Return type
 
@@ -88,15 +146,46 @@ This endpoint does not need any parameter.
 
 ## GetNextBlock
 
-> BlockResult GetNextBlock(ctx, )
+> BlockResult GetNextBlock(ctx).Execute()
 
 Get upcoming Block
 
-Get upcoming Block
 
-### Required Parameters
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BlockApi.GetNextBlock(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BlockApi.GetNextBlock``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetNextBlock`: BlockResult
+    fmt.Fprintf(os.Stdout, "Response from `BlockApi.GetNextBlock`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetNextBlockRequest struct via the builder pattern
+
 
 ### Return type
 
@@ -118,41 +207,74 @@ This endpoint does not need any parameter.
 
 ## ListBlocks
 
-> BlockResults ListBlocks(ctx, optional)
+> InlineResponse200 ListBlocks(ctx).BroadcastId(broadcastId).ItemId(itemId).ProgramId(programId).StartMin(startMin).StartMax(startMax).Page(page).Limit(limit).OrderBy(orderBy).OrderDirection(orderDirection).ExternalStationId(externalStationId).Execute()
 
 Get a list of all blocks currently in your station.
 
-Get a list of all blocks currently in your station. This feature supports pagination and will give a maximum of 50 blocks back.
 
-### Required Parameters
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    "time"
+    openapiclient "./openapi"
+)
+
+func main() {
+    broadcastId := int64(789) // int64 | Search on Broadcast ID *(Optional)* `(Relation)` (optional)
+    itemId := int64(789) // int64 | Search on Item ID *(Optional)* `(Relation)` (optional)
+    programId := int64(789) // int64 | Search on Program ID *(Optional)* `(Relation)` (optional)
+    startMin := time.Now() // time.Time | Minimum start date *(Optional)* (optional)
+    startMax := time.Now() // time.Time | Maximum start date *(Optional)* (optional)
+    page := int64(789) // int64 | Current page *(Optional)* (optional) (default to 1)
+    limit := int64(789) // int64 | Results per page *(Optional)* (optional)
+    orderBy := "orderBy_example" // string | Field to order the results *(Optional)* (optional)
+    orderDirection := "orderDirection_example" // string | Direction of ordering *(Optional)* (optional)
+    externalStationId := int64(789) // int64 | Query on a different (content providing) station *(Optional)* (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BlockApi.ListBlocks(context.Background()).BroadcastId(broadcastId).ItemId(itemId).ProgramId(programId).StartMin(startMin).StartMax(startMax).Page(page).Limit(limit).OrderBy(orderBy).OrderDirection(orderDirection).ExternalStationId(externalStationId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BlockApi.ListBlocks``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListBlocks`: InlineResponse200
+    fmt.Fprintf(os.Stdout, "Response from `BlockApi.ListBlocks`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListBlocksRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***ListBlocksOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-
-Optional parameters are passed through a pointer to a ListBlocksOpts struct
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **page** | **optional.Int64**| Current page *(Optional)* | [default to 1]
- **broadcastId** | **optional.Int64**| Search on Broadcast ID *(Optional)* &#x60;(Relation)&#x60; | 
- **itemId** | **optional.Int64**| Search on Item ID *(Optional)* &#x60;(Relation)&#x60; | 
- **programId** | **optional.Int64**| Search on Program ID *(Optional)* &#x60;(Relation)&#x60; | 
- **startMin** | **optional.Time**| Minimum start date *(Optional)* | 
- **startMax** | **optional.Time**| Maximum start date *(Optional)* | 
- **limit** | **optional.Int64**| Results per page *(Optional)* | 
- **orderBy** | **optional.String**| Field to order the results *(Optional)* | 
- **orderDirection** | **optional.String**| Direction of ordering *(Optional)* | 
- **externalStationId** | **optional.Int64**| Query on a different (content providing) station *(Optional)* | 
+ **broadcastId** | **int64** | Search on Broadcast ID *(Optional)* &#x60;(Relation)&#x60; | 
+ **itemId** | **int64** | Search on Item ID *(Optional)* &#x60;(Relation)&#x60; | 
+ **programId** | **int64** | Search on Program ID *(Optional)* &#x60;(Relation)&#x60; | 
+ **startMin** | **time.Time** | Minimum start date *(Optional)* | 
+ **startMax** | **time.Time** | Maximum start date *(Optional)* | 
+ **page** | **int64** | Current page *(Optional)* | [default to 1]
+ **limit** | **int64** | Results per page *(Optional)* | 
+ **orderBy** | **string** | Field to order the results *(Optional)* | 
+ **orderDirection** | **string** | Direction of ordering *(Optional)* | 
+ **externalStationId** | **int64** | Query on a different (content providing) station *(Optional)* | 
 
 ### Return type
 
-[**BlockResults**](BlockResults.md)
+[**InlineResponse200**](InlineResponse200.md)
 
 ### Authorization
 

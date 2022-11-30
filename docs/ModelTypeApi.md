@@ -11,30 +11,59 @@ Method | HTTP request | Description
 
 ## GetModelTypeById
 
-> ModelTypeResult GetModelTypeById(ctx, id, optional)
+> ModelTypeResult GetModelTypeById(ctx, id).OrderDirection(orderDirection).ExternalStationId(externalStationId).Execute()
 
 Get modelType by id
 
-Get modelType by id
 
-### Required Parameters
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int64(789) // int64 | ID of ModelType **(Required)**
+    orderDirection := "orderDirection_example" // string | Direction of ordering *(Optional)* (optional)
+    externalStationId := int64(789) // int64 | Query on a different (content providing) station *(Optional)* (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ModelTypeApi.GetModelTypeById(context.Background(), id).OrderDirection(orderDirection).ExternalStationId(externalStationId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ModelTypeApi.GetModelTypeById``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetModelTypeById`: ModelTypeResult
+    fmt.Fprintf(os.Stdout, "Response from `ModelTypeApi.GetModelTypeById`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int64**| ID of ModelType **(Required)** | [default to 0]
- **optional** | ***GetModelTypeByIdOpts** | optional parameters | nil if no parameters
+**id** | **int64** | ID of ModelType **(Required)** | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a GetModelTypeByIdOpts struct
+Other parameters are passed through a pointer to a apiGetModelTypeByIdRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **externalStationId** | **optional.Int64**| Query on a different (content providing) station *(Optional)* | 
+ **orderDirection** | **string** | Direction of ordering *(Optional)* | 
+ **externalStationId** | **int64** | Query on a different (content providing) station *(Optional)* | 
 
 ### Return type
 
@@ -56,43 +85,71 @@ Name | Type | Description  | Notes
 
 ## ListModelTypes
 
-> ModelTypeResults ListModelTypes(ctx, optional)
+> InlineResponse2009 ListModelTypes(ctx).ProgramId(programId).BroadcastId(broadcastId).ItemId(itemId).CampaignId(campaignId).PresenterId(presenterId).ContactId(contactId).Model(model).OrderDirection(orderDirection).ExternalStationId(externalStationId).Execute()
 
 Get all modelTypes.
 
-List all modelTypes.
 
-### Required Parameters
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    programId := int64(789) // int64 | Search on Program ID *(Optional)* (optional)
+    broadcastId := int64(789) // int64 | Search on Broadcast ID *(Optional)* (optional)
+    itemId := int64(789) // int64 | Search on Item ID *(Optional)* (optional)
+    campaignId := int64(789) // int64 | Search on Campaign ID *(Optional)* (optional)
+    presenterId := int64(789) // int64 | Search on Presenter ID *(Optional)* (optional)
+    contactId := int64(789) // int64 | Search on Contact ID *(Optional)* (optional)
+    model := "model_example" // string | Search Modeltypes for certain Model *(Optional)* (optional)
+    orderDirection := "orderDirection_example" // string | Direction of ordering *(Optional)* (optional)
+    externalStationId := int64(789) // int64 | Query on a different (content providing) station *(Optional)* (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ModelTypeApi.ListModelTypes(context.Background()).ProgramId(programId).BroadcastId(broadcastId).ItemId(itemId).CampaignId(campaignId).PresenterId(presenterId).ContactId(contactId).Model(model).OrderDirection(orderDirection).ExternalStationId(externalStationId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ModelTypeApi.ListModelTypes``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListModelTypes`: InlineResponse2009
+    fmt.Fprintf(os.Stdout, "Response from `ModelTypeApi.ListModelTypes`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListModelTypesRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***ListModelTypesOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-
-Optional parameters are passed through a pointer to a ListModelTypesOpts struct
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **page** | **optional.Int64**| Current page *(Optional)* | 
- **programId** | **optional.Int64**| Search on Program ID *(Optional)* | 
- **broadcastId** | **optional.Int64**| Search on Broadcast ID *(Optional)* | 
- **itemId** | **optional.Int64**| Search on Item ID *(Optional)* | 
- **campaignId** | **optional.Int64**| Search on Campaign ID *(Optional)* | 
- **presenterId** | **optional.Int64**| Search on Presenter ID *(Optional)* | 
- **contactId** | **optional.Int64**| Search on Contact ID *(Optional)* | 
- **model** | **optional.String**| Search Modeltypes for certain Model *(Optional)* | 
- **limit** | **optional.Int64**| Results per page *(Optional)* | 
- **orderBy** | **optional.String**| Field to order the results *(Optional)* | 
- **orderDirection** | **optional.String**| Direction of ordering *(Optional)* | 
- **externalStationId** | **optional.Int64**| Query on a different (content providing) station *(Optional)* | 
+ **programId** | **int64** | Search on Program ID *(Optional)* | 
+ **broadcastId** | **int64** | Search on Broadcast ID *(Optional)* | 
+ **itemId** | **int64** | Search on Item ID *(Optional)* | 
+ **campaignId** | **int64** | Search on Campaign ID *(Optional)* | 
+ **presenterId** | **int64** | Search on Presenter ID *(Optional)* | 
+ **contactId** | **int64** | Search on Contact ID *(Optional)* | 
+ **model** | **string** | Search Modeltypes for certain Model *(Optional)* | 
+ **orderDirection** | **string** | Direction of ordering *(Optional)* | 
+ **externalStationId** | **int64** | Query on a different (content providing) station *(Optional)* | 
 
 ### Return type
 
-[**ModelTypeResults**](ModelTypeResults.md)
+[**InlineResponse2009**](InlineResponse2009.md)
 
 ### Authorization
 

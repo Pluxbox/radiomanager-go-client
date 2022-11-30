@@ -10,15 +10,46 @@ Method | HTTP request | Description
 
 ## GetStation
 
-> StationResult GetStation(ctx, )
+> StationResult GetStation(ctx).Execute()
 
 Get own station only
 
-Get own station only
 
-### Required Parameters
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.StationApi.GetStation(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StationApi.GetStation``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetStation`: StationResult
+    fmt.Fprintf(os.Stdout, "Response from `StationApi.GetStation`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetStationRequest struct via the builder pattern
+
 
 ### Return type
 

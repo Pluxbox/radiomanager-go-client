@@ -14,23 +14,56 @@ Method | HTTP request | Description
 
 ## CreateCampaign
 
-> PostSuccess CreateCampaign(ctx, data)
+> InlineResponse2002 CreateCampaign(ctx).CampaignDataInput(campaignDataInput).Execute()
 
 Create campaign.
 
-Create campaign.
 
-### Required Parameters
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    "time"
+    openapiclient "./openapi"
+)
+
+func main() {
+    campaignDataInput := *openapiclient.NewCampaignDataInput(int64(1), time.Now(), time.Now()) // CampaignDataInput | Data **(Required)**
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CampaignApi.CreateCampaign(context.Background()).CampaignDataInput(campaignDataInput).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CampaignApi.CreateCampaign``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateCampaign`: InlineResponse2002
+    fmt.Fprintf(os.Stdout, "Response from `CampaignApi.CreateCampaign`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateCampaignRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**data** | [**CampaignDataInput**](CampaignDataInput.md)| Data **(Required)** | 
+ **campaignDataInput** | [**CampaignDataInput**](CampaignDataInput.md) | Data **(Required)** | 
 
 ### Return type
 
-[**PostSuccess**](PostSuccess.md)
+[**InlineResponse2002**](InlineResponse2002.md)
 
 ### Authorization
 
@@ -48,23 +81,59 @@ Name | Type | Description  | Notes
 
 ## DeleteCampaignById
 
-> Success DeleteCampaignById(ctx, id)
+> InlineResponse202 DeleteCampaignById(ctx, id).Execute()
 
 Delete campaign by id
 
-Delete campaign by id
 
-### Required Parameters
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int64(789) // int64 | ID of Campaign **(Required)**
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CampaignApi.DeleteCampaignById(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CampaignApi.DeleteCampaignById``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DeleteCampaignById`: InlineResponse202
+    fmt.Fprintf(os.Stdout, "Response from `CampaignApi.DeleteCampaignById`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int64**| ID of Campaign **(Required)** | [default to 0]
+**id** | **int64** | ID of Campaign **(Required)** | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteCampaignByIdRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
 
 ### Return type
 
-[**Success**](Success.md)
+[**InlineResponse202**](InlineResponse202.md)
 
 ### Authorization
 
@@ -82,30 +151,55 @@ Name | Type | Description  | Notes
 
 ## GetCampaignById
 
-> CampaignResult GetCampaignById(ctx, id, optional)
+> CampaignResult GetCampaignById(ctx, id).Execute()
 
 Get campaign by id
 
-Get campaign by id
 
-### Required Parameters
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int64(789) // int64 | ID of Campaign **(Required)**
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CampaignApi.GetCampaignById(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CampaignApi.GetCampaignById``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetCampaignById`: CampaignResult
+    fmt.Fprintf(os.Stdout, "Response from `CampaignApi.GetCampaignById`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int64**| ID of Campaign **(Required)** | [default to 0]
- **optional** | ***GetCampaignByIdOpts** | optional parameters | nil if no parameters
+**id** | **int64** | ID of Campaign **(Required)** | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a GetCampaignByIdOpts struct
+Other parameters are passed through a pointer to a apiGetCampaignByIdRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **externalStationId** | **optional.Int64**| Query on a different (content providing) station *(Optional)* | 
 
 ### Return type
 
@@ -127,40 +221,72 @@ Name | Type | Description  | Notes
 
 ## ListCampaigns
 
-> CampaignResults ListCampaigns(ctx, optional)
+> InlineResponse2004 ListCampaigns(ctx).ItemId(itemId).ModelTypeId(modelTypeId).StartMin(startMin).StartMax(startMax).Page(page).Limit(limit).OrderBy(orderBy).OrderDirection(orderDirection).ExternalStationId(externalStationId).Execute()
 
 Get all campaigns.
 
-List all campaigns.
 
-### Required Parameters
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    "time"
+    openapiclient "./openapi"
+)
+
+func main() {
+    itemId := int64(789) // int64 | Search on Item ID *(Optional)* `(Relation)` (optional)
+    modelTypeId := int64(789) // int64 | Search on ModelType ID *(Optional)* `(Relation)` (optional)
+    startMin := time.Now() // time.Time | Minimum start date *(Optional)* (optional)
+    startMax := time.Now() // time.Time | Maximum start date *(Optional)* (optional)
+    page := int64(789) // int64 | Current page *(Optional)* (optional) (default to 1)
+    limit := int64(789) // int64 | Results per page *(Optional)* (optional)
+    orderBy := "orderBy_example" // string | Field to order the results *(Optional)* (optional)
+    orderDirection := "orderDirection_example" // string | Direction of ordering *(Optional)* (optional)
+    externalStationId := int64(789) // int64 | Query on a different (content providing) station *(Optional)* (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CampaignApi.ListCampaigns(context.Background()).ItemId(itemId).ModelTypeId(modelTypeId).StartMin(startMin).StartMax(startMax).Page(page).Limit(limit).OrderBy(orderBy).OrderDirection(orderDirection).ExternalStationId(externalStationId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CampaignApi.ListCampaigns``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListCampaigns`: InlineResponse2004
+    fmt.Fprintf(os.Stdout, "Response from `CampaignApi.ListCampaigns`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListCampaignsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***ListCampaignsOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-
-Optional parameters are passed through a pointer to a ListCampaignsOpts struct
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **page** | **optional.Int64**| Current page *(Optional)* | 
- **itemId** | **optional.Int64**| Search on Item ID *(Optional)* &#x60;(Relation)&#x60; | 
- **modelTypeId** | **optional.Int64**| Search on ModelType ID *(Optional)* &#x60;(Relation)&#x60; | 
- **startMin** | **optional.Time**| Minimum start date *(Optional)* | 
- **startMax** | **optional.Time**| Maximum start date *(Optional)* | 
- **limit** | **optional.Int64**| Results per page *(Optional)* | 
- **orderBy** | **optional.String**| Field to order the results *(Optional)* | 
- **orderDirection** | **optional.String**| Direction of ordering *(Optional)* | 
- **externalStationId** | **optional.Int64**| Query on a different (content providing) station *(Optional)* | 
+ **itemId** | **int64** | Search on Item ID *(Optional)* &#x60;(Relation)&#x60; | 
+ **modelTypeId** | **int64** | Search on ModelType ID *(Optional)* &#x60;(Relation)&#x60; | 
+ **startMin** | **time.Time** | Minimum start date *(Optional)* | 
+ **startMax** | **time.Time** | Maximum start date *(Optional)* | 
+ **page** | **int64** | Current page *(Optional)* | [default to 1]
+ **limit** | **int64** | Results per page *(Optional)* | 
+ **orderBy** | **string** | Field to order the results *(Optional)* | 
+ **orderDirection** | **string** | Direction of ordering *(Optional)* | 
+ **externalStationId** | **int64** | Query on a different (content providing) station *(Optional)* | 
 
 ### Return type
 
-[**CampaignResults**](CampaignResults.md)
+[**InlineResponse2004**](InlineResponse2004.md)
 
 ### Authorization
 
@@ -178,34 +304,62 @@ Name | Type | Description  | Notes
 
 ## UpdateCampaignByID
 
-> Success UpdateCampaignByID(ctx, id, optional)
+> InlineResponse202 UpdateCampaignByID(ctx, id).CampaignDataInput(campaignDataInput).Execute()
 
 Update campaign by id
 
-Update campaign by id
 
-### Required Parameters
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    "time"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int64(789) // int64 | ID of Campaign **(Required)**
+    campaignDataInput := *openapiclient.NewCampaignDataInput(int64(1), time.Now(), time.Now()) // CampaignDataInput | Data **(Optional)**
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CampaignApi.UpdateCampaignByID(context.Background(), id).CampaignDataInput(campaignDataInput).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CampaignApi.UpdateCampaignByID``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateCampaignByID`: InlineResponse202
+    fmt.Fprintf(os.Stdout, "Response from `CampaignApi.UpdateCampaignByID`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int64**| ID of Campaign **(Required)** | [default to 0]
- **optional** | ***UpdateCampaignByIDOpts** | optional parameters | nil if no parameters
+**id** | **int64** | ID of Campaign **(Required)** | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a UpdateCampaignByIDOpts struct
+Other parameters are passed through a pointer to a apiUpdateCampaignByIDRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **data** | [**optional.Interface of CampaignDataInput**](CampaignDataInput.md)| Data *(Optional)* | 
+ **campaignDataInput** | [**CampaignDataInput**](CampaignDataInput.md) | Data **(Optional)** | 
 
 ### Return type
 
-[**Success**](Success.md)
+[**InlineResponse202**](InlineResponse202.md)
 
 ### Authorization
 

@@ -11,30 +11,55 @@ Method | HTTP request | Description
 
 ## GetGenreById
 
-> GenreResult GetGenreById(ctx, id, optional)
+> GenreResult GetGenreById(ctx, id).Execute()
 
 Get genre by id
 
-Get genre by id
 
-### Required Parameters
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int64(789) // int64 | 
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.GenreApi.GetGenreById(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `GenreApi.GetGenreById``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetGenreById`: GenreResult
+    fmt.Fprintf(os.Stdout, "Response from `GenreApi.GetGenreById`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int64**| ID of Genre **(Required)** | [default to 0]
- **optional** | ***GetGenreByIdOpts** | optional parameters | nil if no parameters
+**id** | **int64** |  | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a GetGenreByIdOpts struct
+Other parameters are passed through a pointer to a apiGetGenreByIdRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **externalStationId** | **optional.Int64**| Query on a different (content providing) station *(Optional)* | 
 
 ### Return type
 
@@ -56,39 +81,61 @@ Name | Type | Description  | Notes
 
 ## ListGenres
 
-> GenreResults ListGenres(ctx, optional)
+> InlineResponse2006 ListGenres(ctx).Page(page).Limit(limit).OrderBy(orderBy).OrderDirection(orderDirection).Execute()
 
 List all genres.
 
-List all genres.
 
-### Required Parameters
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    page := int64(789) // int64 | Current page *(Optional)* (optional) (default to 1)
+    limit := int64(789) // int64 | Results per page *(Optional)* (optional)
+    orderBy := "orderBy_example" // string | Field to order the results *(Optional)* (optional)
+    orderDirection := "orderDirection_example" // string | Direction of ordering *(Optional)* (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.GenreApi.ListGenres(context.Background()).Page(page).Limit(limit).OrderBy(orderBy).OrderDirection(orderDirection).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `GenreApi.ListGenres``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListGenres`: InlineResponse2006
+    fmt.Fprintf(os.Stdout, "Response from `GenreApi.ListGenres`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListGenresRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***ListGenresOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-
-Optional parameters are passed through a pointer to a ListGenresOpts struct
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **page** | **optional.Int64**| Current page *(Optional)* | 
- **parentId** | **optional.Int64**| Search on Parent ID of Genre *(Optional)* | 
- **programId** | **optional.Int64**| Search on Program ID *(Optional)* &#x60;(Relation)&#x60; | 
- **broadcastId** | **optional.Int64**| Search on Broadcast ID *(Optional)* &#x60;(Relation)&#x60; | 
- **limit** | **optional.Int64**| Results per page *(Optional)* | 
- **orderBy** | **optional.String**| Field to order the results *(Optional)* | 
- **orderDirection** | **optional.String**| Direction of ordering *(Optional)* | 
- **externalStationId** | **optional.Int64**| Query on a different (content providing) station *(Optional)* | 
+ **page** | **int64** | Current page *(Optional)* | [default to 1]
+ **limit** | **int64** | Results per page *(Optional)* | 
+ **orderBy** | **string** | Field to order the results *(Optional)* | 
+ **orderDirection** | **string** | Direction of ordering *(Optional)* | 
 
 ### Return type
 
-[**GenreResults**](GenreResults.md)
+[**InlineResponse2006**](InlineResponse2006.md)
 
 ### Authorization
 

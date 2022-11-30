@@ -20,23 +20,55 @@ Method | HTTP request | Description
 
 ## CreateBroadcast
 
-> PostSuccess CreateBroadcast(ctx, data)
+> InlineResponse2002 CreateBroadcast(ctx).BroadcastDataInput(broadcastDataInput).Execute()
 
 Create broadcast.
 
-Create broadcast.
 
-### Required Parameters
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    broadcastDataInput := *openapiclient.NewBroadcastDataInput() // BroadcastDataInput | Data **(Required)**
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BroadcastApi.CreateBroadcast(context.Background()).BroadcastDataInput(broadcastDataInput).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BroadcastApi.CreateBroadcast``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateBroadcast`: InlineResponse2002
+    fmt.Fprintf(os.Stdout, "Response from `BroadcastApi.CreateBroadcast`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateBroadcastRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**data** | [**BroadcastDataInput**](BroadcastDataInput.md)| Data **(Required)** | 
+ **broadcastDataInput** | [**BroadcastDataInput**](BroadcastDataInput.md) | Data **(Required)** | 
 
 ### Return type
 
-[**PostSuccess**](PostSuccess.md)
+[**InlineResponse2002**](InlineResponse2002.md)
 
 ### Authorization
 
@@ -54,23 +86,59 @@ Name | Type | Description  | Notes
 
 ## DeleteBroadcastById
 
-> Success DeleteBroadcastById(ctx, id)
+> InlineResponse202 DeleteBroadcastById(ctx, id).Execute()
 
 Delete broadcast by id
 
-Delete broadcast by id
 
-### Required Parameters
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int64(789) // int64 | ID of Broadcast **(Required)**
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BroadcastApi.DeleteBroadcastById(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BroadcastApi.DeleteBroadcastById``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DeleteBroadcastById`: InlineResponse202
+    fmt.Fprintf(os.Stdout, "Response from `BroadcastApi.DeleteBroadcastById`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int64**| ID of Broadcast **(Required)** | [default to 0]
+**id** | **int64** | ID of Broadcast **(Required)** | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteBroadcastByIdRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
 
 ### Return type
 
-[**Success**](Success.md)
+[**InlineResponse202**](InlineResponse202.md)
 
 ### Authorization
 
@@ -88,30 +156,57 @@ Name | Type | Description  | Notes
 
 ## GetBroadcastById
 
-> BroadcastResult GetBroadcastById(ctx, id, optional)
+> BroadcastResult GetBroadcastById(ctx, id).ExternalStationId(externalStationId).Execute()
 
 Get broadcast by id
 
-Get broadcast by id
 
-### Required Parameters
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int64(789) // int64 | ID of Broadcast **(Required)**
+    externalStationId := int64(789) // int64 | Query on a different (content providing) station *(Optional)* (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BroadcastApi.GetBroadcastById(context.Background(), id).ExternalStationId(externalStationId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BroadcastApi.GetBroadcastById``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetBroadcastById`: BroadcastResult
+    fmt.Fprintf(os.Stdout, "Response from `BroadcastApi.GetBroadcastById`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int64**| ID of Broadcast **(Required)** | [default to 0]
- **optional** | ***GetBroadcastByIdOpts** | optional parameters | nil if no parameters
+**id** | **int64** | ID of Broadcast **(Required)** | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a GetBroadcastByIdOpts struct
+Other parameters are passed through a pointer to a apiGetBroadcastByIdRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **externalStationId** | **optional.Int64**| Query on a different (content providing) station *(Optional)* | 
+ **externalStationId** | **int64** | Query on a different (content providing) station *(Optional)* | 
 
 ### Return type
 
@@ -133,28 +228,51 @@ Name | Type | Description  | Notes
 
 ## GetCurrentBroadcast
 
-> BroadcastResult GetCurrentBroadcast(ctx, optional)
+> BroadcastResult GetCurrentBroadcast(ctx).Withunpublished(withunpublished).Execute()
 
 Get current Broadcast
 
-Get current Broadcast
 
-### Required Parameters
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    withunpublished := true // bool | Show Unpublished *(Optional)* (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BroadcastApi.GetCurrentBroadcast(context.Background()).Withunpublished(withunpublished).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BroadcastApi.GetCurrentBroadcast``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetCurrentBroadcast`: BroadcastResult
+    fmt.Fprintf(os.Stdout, "Response from `BroadcastApi.GetCurrentBroadcast`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetCurrentBroadcastRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***GetCurrentBroadcastOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-
-Optional parameters are passed through a pointer to a GetCurrentBroadcastOpts struct
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **withunpublished** | **optional.Bool**| Show Unpublished *(Optional)* | 
+ **withunpublished** | **bool** | Show Unpublished *(Optional)* | 
 
 ### Return type
 
@@ -176,33 +294,58 @@ Name | Type | Description  | Notes
 
 ## GetDailyEPG
 
-> EpgResults GetDailyEPG(ctx, optional)
+> EPGResults GetDailyEPG(ctx).Date(date).Withunpublished(withunpublished).Execute()
 
 Get daily EPG
 
-Get current Broadcast
 
-### Required Parameters
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    "time"
+    openapiclient "./openapi"
+)
+
+func main() {
+    date := time.Now() // time.Time | Date *(Optional)* (optional)
+    withunpublished := true // bool | Show Unpublished *(Optional)* (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BroadcastApi.GetDailyEPG(context.Background()).Date(date).Withunpublished(withunpublished).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BroadcastApi.GetDailyEPG``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetDailyEPG`: EPGResults
+    fmt.Fprintf(os.Stdout, "Response from `BroadcastApi.GetDailyEPG`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetDailyEPGRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***GetDailyEPGOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-
-Optional parameters are passed through a pointer to a GetDailyEPGOpts struct
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **date** | **optional.Time**| Date *(Optional)* | 
- **withunpublished** | **optional.Bool**| Show Unpublished *(Optional)* | 
+ **date** | **time.Time** | Date *(Optional)* | 
+ **withunpublished** | **bool** | Show Unpublished *(Optional)* | 
 
 ### Return type
 
-[**EpgResults**](EPGResults.md)
+[**EPGResults**](EPGResults.md)
 
 ### Authorization
 
@@ -220,33 +363,58 @@ Name | Type | Description  | Notes
 
 ## GetEPGByDate
 
-> EpgResults GetEPGByDate(ctx, optional)
+> EPGResults GetEPGByDate(ctx).Date(date).Withunpublished(withunpublished).Execute()
 
 Get EPG by date
 
-Get EPG by date
 
-### Required Parameters
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    "time"
+    openapiclient "./openapi"
+)
+
+func main() {
+    date := time.Now() // time.Time | Date *(Optional)* (optional)
+    withunpublished := true // bool | Show Unpublished *(Optional)* (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BroadcastApi.GetEPGByDate(context.Background()).Date(date).Withunpublished(withunpublished).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BroadcastApi.GetEPGByDate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetEPGByDate`: EPGResults
+    fmt.Fprintf(os.Stdout, "Response from `BroadcastApi.GetEPGByDate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetEPGByDateRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***GetEPGByDateOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-
-Optional parameters are passed through a pointer to a GetEPGByDateOpts struct
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **date** | **optional.Time**| Date *(Optional)* | 
- **withunpublished** | **optional.Bool**| Show Unpublished *(Optional)* | 
+ **date** | **time.Time** | Date *(Optional)* | 
+ **withunpublished** | **bool** | Show Unpublished *(Optional)* | 
 
 ### Return type
 
-[**EpgResults**](EPGResults.md)
+[**EPGResults**](EPGResults.md)
 
 ### Authorization
 
@@ -264,28 +432,51 @@ Name | Type | Description  | Notes
 
 ## GetNextBroadcast
 
-> BroadcastResult GetNextBroadcast(ctx, optional)
+> BroadcastResult GetNextBroadcast(ctx).Withunpublished(withunpublished).Execute()
 
 Get next Broadcast
 
-Get next Broadcast
 
-### Required Parameters
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    withunpublished := true // bool | Show Unpublished *(Optional)* (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BroadcastApi.GetNextBroadcast(context.Background()).Withunpublished(withunpublished).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BroadcastApi.GetNextBroadcast``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetNextBroadcast`: BroadcastResult
+    fmt.Fprintf(os.Stdout, "Response from `BroadcastApi.GetNextBroadcast`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetNextBroadcastRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***GetNextBroadcastOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-
-Optional parameters are passed through a pointer to a GetNextBroadcastOpts struct
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **withunpublished** | **optional.Bool**| Show Unpublished *(Optional)* | 
+ **withunpublished** | **bool** | Show Unpublished *(Optional)* | 
 
 ### Return type
 
@@ -307,33 +498,58 @@ Name | Type | Description  | Notes
 
 ## GetWeeklyEPG
 
-> EpgResults GetWeeklyEPG(ctx, optional)
+> EPGResults GetWeeklyEPG(ctx).Date(date).Withunpublished(withunpublished).Execute()
 
 Get weekly EPG
 
-Get weekly EPG
 
-### Required Parameters
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    "time"
+    openapiclient "./openapi"
+)
+
+func main() {
+    date := time.Now() // string | Date *(Optional)* (optional)
+    withunpublished := true // bool | Show Unpublished *(Optional)* (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BroadcastApi.GetWeeklyEPG(context.Background()).Date(date).Withunpublished(withunpublished).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BroadcastApi.GetWeeklyEPG``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetWeeklyEPG`: EPGResults
+    fmt.Fprintf(os.Stdout, "Response from `BroadcastApi.GetWeeklyEPG`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetWeeklyEPGRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***GetWeeklyEPGOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-
-Optional parameters are passed through a pointer to a GetWeeklyEPGOpts struct
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **date** | **optional.String**| Date *(Optional)* | 
- **withunpublished** | **optional.Bool**| Show Unpublished *(Optional)* | 
+ **date** | **string** | Date *(Optional)* | 
+ **withunpublished** | **bool** | Show Unpublished *(Optional)* | 
 
 ### Return type
 
-[**EpgResults**](EPGResults.md)
+[**EPGResults**](EPGResults.md)
 
 ### Authorization
 
@@ -351,45 +567,86 @@ Name | Type | Description  | Notes
 
 ## ListBroadcasts
 
-> BroadcastResults ListBroadcasts(ctx, optional)
+> InlineResponse2001 ListBroadcasts(ctx).ProgramId(programId).BlockId(blockId).ModelTypeId(modelTypeId).TagId(tagId).PresenterId(presenterId).GenreId(genreId).GroupId(groupId).ItemId(itemId).PlannedInEpg(plannedInEpg).StartMin(startMin).StartMax(startMax).Page(page).Limit(limit).OrderBy(orderBy).OrderDirection(orderDirection).ExternalStationId(externalStationId).Execute()
 
 Get all broadcasts.
 
-List all broadcasts.
 
-### Required Parameters
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    "time"
+    openapiclient "./openapi"
+)
+
+func main() {
+    programId := int64(789) // int64 | Search on Program ID *(Optional)* `(Relation)` (optional)
+    blockId := int64(789) // int64 | Search on Block ID *(Optional)* `(Relation)` (optional)
+    modelTypeId := int64(789) // int64 | Search on ModelType ID *(Optional)* `(Relation)` (optional)
+    tagId := int64(789) // int64 | Search on Tag ID *(Optional)* `(Relation)` (optional)
+    presenterId := int64(789) // int64 | Search on Presenter ID *(Optional)* `(Relation)` (optional)
+    genreId := int64(789) // int64 | Search on Genre ID *(Optional)* `(Relation)` (optional)
+    groupId := int64(789) // int64 | Search on Group ID *(Optional)* `(Relation)` (optional)
+    itemId := int64(789) // int64 | Search on Item ID *(Optional)* `(Relation)` (optional)
+    plannedInEpg := int64(789) // int64 | Checks if item is in EPG *(Optional)* (optional)
+    startMin := time.Now() // time.Time | Minimum start date *(Optional)* (optional)
+    startMax := time.Now() // time.Time | Maximum start date *(Optional)* (optional)
+    page := int64(789) // int64 | Current page *(Optional)* (optional) (default to 1)
+    limit := int64(789) // int64 | Results per page *(Optional)* (optional)
+    orderBy := "orderBy_example" // string | Field to order the results *(Optional)* (optional)
+    orderDirection := "orderDirection_example" // string | Direction of ordering *(Optional)* (optional)
+    externalStationId := int64(789) // int64 | Query on a different (content providing) station *(Optional)* (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BroadcastApi.ListBroadcasts(context.Background()).ProgramId(programId).BlockId(blockId).ModelTypeId(modelTypeId).TagId(tagId).PresenterId(presenterId).GenreId(genreId).GroupId(groupId).ItemId(itemId).PlannedInEpg(plannedInEpg).StartMin(startMin).StartMax(startMax).Page(page).Limit(limit).OrderBy(orderBy).OrderDirection(orderDirection).ExternalStationId(externalStationId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BroadcastApi.ListBroadcasts``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListBroadcasts`: InlineResponse2001
+    fmt.Fprintf(os.Stdout, "Response from `BroadcastApi.ListBroadcasts`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListBroadcastsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***ListBroadcastsOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-
-Optional parameters are passed through a pointer to a ListBroadcastsOpts struct
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **page** | **optional.Int64**| Current page *(Optional)* | [default to 1]
- **programId** | **optional.Int64**| Search on Program ID *(Optional)* &#x60;(Relation)&#x60; | 
- **blockId** | **optional.Int64**| Search on Block ID *(Optional)* &#x60;(Relation)&#x60; | 
- **modelTypeId** | **optional.Int64**| Search on ModelType ID *(Optional)* &#x60;(Relation)&#x60; | 
- **tagId** | **optional.Int64**| Search on Tag ID *(Optional)* &#x60;(Relation)&#x60; | 
- **presenterId** | **optional.Int64**| Search on Presenter ID *(Optional)* &#x60;(Relation)&#x60; | 
- **genreId** | **optional.Int64**| Search on Genre ID *(Optional)* &#x60;(Relation)&#x60; | 
- **itemId** | **optional.Int64**| Search on Item ID *(Optional)* &#x60;(Relation)&#x60; | 
- **startMin** | **optional.Time**| Minimum start date *(Optional)* | 
- **startMax** | **optional.Time**| Maximum start date *(Optional)* | 
- **limit** | **optional.Int64**| Results per page *(Optional)* | 
- **orderBy** | **optional.String**| Field to order the results *(Optional)* | 
- **orderDirection** | **optional.String**| Direction of ordering *(Optional)* | 
- **externalStationId** | **optional.Int64**| Query on a different (content providing) station *(Optional)* | 
+ **programId** | **int64** | Search on Program ID *(Optional)* &#x60;(Relation)&#x60; | 
+ **blockId** | **int64** | Search on Block ID *(Optional)* &#x60;(Relation)&#x60; | 
+ **modelTypeId** | **int64** | Search on ModelType ID *(Optional)* &#x60;(Relation)&#x60; | 
+ **tagId** | **int64** | Search on Tag ID *(Optional)* &#x60;(Relation)&#x60; | 
+ **presenterId** | **int64** | Search on Presenter ID *(Optional)* &#x60;(Relation)&#x60; | 
+ **genreId** | **int64** | Search on Genre ID *(Optional)* &#x60;(Relation)&#x60; | 
+ **groupId** | **int64** | Search on Group ID *(Optional)* &#x60;(Relation)&#x60; | 
+ **itemId** | **int64** | Search on Item ID *(Optional)* &#x60;(Relation)&#x60; | 
+ **plannedInEpg** | **int64** | Checks if item is in EPG *(Optional)* | 
+ **startMin** | **time.Time** | Minimum start date *(Optional)* | 
+ **startMax** | **time.Time** | Maximum start date *(Optional)* | 
+ **page** | **int64** | Current page *(Optional)* | [default to 1]
+ **limit** | **int64** | Results per page *(Optional)* | 
+ **orderBy** | **string** | Field to order the results *(Optional)* | 
+ **orderDirection** | **string** | Direction of ordering *(Optional)* | 
+ **externalStationId** | **int64** | Query on a different (content providing) station *(Optional)* | 
 
 ### Return type
 
-[**BroadcastResults**](BroadcastResults.md)
+[**InlineResponse2001**](InlineResponse2001.md)
 
 ### Authorization
 
@@ -407,34 +664,61 @@ Name | Type | Description  | Notes
 
 ## PrintBroadcastById
 
-> string PrintBroadcastById(ctx, id, optional)
+> InlineResponse2003 PrintBroadcastById(ctx, id).TemplateId(templateId).Execute()
 
 Print broadcast by id with template
 
-Print broadcast by id with template
 
-### Required Parameters
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int64(789) // int64 | ID of Broadcast **(Required)**
+    templateId := int64(789) // int64 | The print template to be used *(Optional)* (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BroadcastApi.PrintBroadcastById(context.Background(), id).TemplateId(templateId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BroadcastApi.PrintBroadcastById``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PrintBroadcastById`: InlineResponse2003
+    fmt.Fprintf(os.Stdout, "Response from `BroadcastApi.PrintBroadcastById`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int64**| ID of Broadcast **(Required)** | [default to 0]
- **optional** | ***PrintBroadcastByIdOpts** | optional parameters | nil if no parameters
+**id** | **int64** | ID of Broadcast **(Required)** | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a PrintBroadcastByIdOpts struct
+Other parameters are passed through a pointer to a apiPrintBroadcastByIdRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **templateId** | **optional.Int64**| Search on template ID *(Optional)* | 
+ **templateId** | **int64** | The print template to be used *(Optional)* | 
 
 ### Return type
 
-**string**
+[**InlineResponse2003**](InlineResponse2003.md)
 
 ### Authorization
 
@@ -452,34 +736,61 @@ Name | Type | Description  | Notes
 
 ## UpdateBroadcastByID
 
-> Success UpdateBroadcastByID(ctx, id, optional)
+> InlineResponse202 UpdateBroadcastByID(ctx, id).BroadcastDataInput(broadcastDataInput).Execute()
 
 Update broadcast by id
 
-Update broadcast by id
 
-### Required Parameters
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int64(789) // int64 | ID of Broadcast **(Required)**
+    broadcastDataInput := *openapiclient.NewBroadcastDataInput() // BroadcastDataInput | Data *(Optional)* (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BroadcastApi.UpdateBroadcastByID(context.Background(), id).BroadcastDataInput(broadcastDataInput).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BroadcastApi.UpdateBroadcastByID``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateBroadcastByID`: InlineResponse202
+    fmt.Fprintf(os.Stdout, "Response from `BroadcastApi.UpdateBroadcastByID`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int64**| ID of Broadcast **(Required)** | [default to 0]
- **optional** | ***UpdateBroadcastByIDOpts** | optional parameters | nil if no parameters
+**id** | **int64** | ID of Broadcast **(Required)** | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a UpdateBroadcastByIDOpts struct
+Other parameters are passed through a pointer to a apiUpdateBroadcastByIDRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **data** | [**optional.Interface of BroadcastDataInput**](BroadcastDataInput.md)| Data *(Optional)* | 
+ **broadcastDataInput** | [**BroadcastDataInput**](BroadcastDataInput.md) | Data *(Optional)* | 
 
 ### Return type
 
-[**Success**](Success.md)
+[**InlineResponse202**](InlineResponse202.md)
 
 ### Authorization
 

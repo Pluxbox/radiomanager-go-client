@@ -14,23 +14,55 @@ Method | HTTP request | Description
 
 ## CreateContact
 
-> PostSuccess CreateContact(ctx, data)
+> InlineResponse2002 CreateContact(ctx).ContactDataInput(contactDataInput).Execute()
 
 Create contact.
 
-Create contact.
 
-### Required Parameters
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    contactDataInput := *openapiclient.NewContactDataInput(int64(1), "Foo", "Bar") // ContactDataInput | Data **(Required)**
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ContactApi.CreateContact(context.Background()).ContactDataInput(contactDataInput).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ContactApi.CreateContact``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateContact`: InlineResponse2002
+    fmt.Fprintf(os.Stdout, "Response from `ContactApi.CreateContact`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateContactRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**data** | [**ContactDataInput**](ContactDataInput.md)| Data **(Required)** | 
+ **contactDataInput** | [**ContactDataInput**](ContactDataInput.md) | Data **(Required)** | 
 
 ### Return type
 
-[**PostSuccess**](PostSuccess.md)
+[**InlineResponse2002**](InlineResponse2002.md)
 
 ### Authorization
 
@@ -48,23 +80,59 @@ Name | Type | Description  | Notes
 
 ## DeleteContactById
 
-> Success DeleteContactById(ctx, id)
+> InlineResponse202 DeleteContactById(ctx, id).Execute()
 
 Delete contact by id
 
-Delete contact by id
 
-### Required Parameters
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int64(789) // int64 | ID of Contact **(Required)**
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ContactApi.DeleteContactById(context.Background(), id).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ContactApi.DeleteContactById``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DeleteContactById`: InlineResponse202
+    fmt.Fprintf(os.Stdout, "Response from `ContactApi.DeleteContactById`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int64**| ID of Contact **(Required)** | [default to 0]
+**id** | **int64** | ID of Contact **(Required)** | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteContactByIdRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
 
 ### Return type
 
-[**Success**](Success.md)
+[**InlineResponse202**](InlineResponse202.md)
 
 ### Authorization
 
@@ -82,30 +150,57 @@ Name | Type | Description  | Notes
 
 ## GetContactById
 
-> ContactResult GetContactById(ctx, id, optional)
+> ContactResult GetContactById(ctx, id).ExternalStationId(externalStationId).Execute()
 
 Get contact by id
 
-Get contact by id
 
-### Required Parameters
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int64(789) // int64 | ID of Contact **(Required)**
+    externalStationId := int64(789) // int64 | Query on a different (content providing) station *(Optional)* (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ContactApi.GetContactById(context.Background(), id).ExternalStationId(externalStationId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ContactApi.GetContactById``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetContactById`: ContactResult
+    fmt.Fprintf(os.Stdout, "Response from `ContactApi.GetContactById`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int64**| ID of Contact **(Required)** | [default to 0]
- **optional** | ***GetContactByIdOpts** | optional parameters | nil if no parameters
+**id** | **int64** | ID of Contact **(Required)** | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a GetContactByIdOpts struct
+Other parameters are passed through a pointer to a apiGetContactByIdRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **externalStationId** | **optional.Int64**| Query on a different (content providing) station *(Optional)* | 
+ **externalStationId** | **int64** | Query on a different (content providing) station *(Optional)* | 
 
 ### Return type
 
@@ -127,39 +222,69 @@ Name | Type | Description  | Notes
 
 ## ListContacts
 
-> ContactResults ListContacts(ctx, optional)
+> InlineResponse2005 ListContacts(ctx).ItemId(itemId).ModelTypeId(modelTypeId).TagId(tagId).Page(page).Limit(limit).OrderBy(orderBy).OrderDirection(orderDirection).ExternalStationId(externalStationId).Execute()
 
 Get all contacts.
 
-List all contacts.
 
-### Required Parameters
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    itemId := int64(789) // int64 | Search on Item ID *(Optional)* `(Relation)` (optional)
+    modelTypeId := int64(789) // int64 | Search on ModelType ID *(Optional)* `(Relation)` (optional)
+    tagId := int64(789) // int64 | Search on Tag ID *(Optional)* `(Relation)` (optional)
+    page := int64(789) // int64 | Current page *(Optional)* (optional) (default to 1)
+    limit := int64(789) // int64 | Results per page *(Optional)* (optional)
+    orderBy := "orderBy_example" // string | Field to order the results *(Optional)* (optional)
+    orderDirection := "orderDirection_example" // string | Direction of ordering *(Optional)* (optional)
+    externalStationId := int64(789) // int64 | Query on a different (content providing) station *(Optional)* (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ContactApi.ListContacts(context.Background()).ItemId(itemId).ModelTypeId(modelTypeId).TagId(tagId).Page(page).Limit(limit).OrderBy(orderBy).OrderDirection(orderDirection).ExternalStationId(externalStationId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ContactApi.ListContacts``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListContacts`: InlineResponse2005
+    fmt.Fprintf(os.Stdout, "Response from `ContactApi.ListContacts`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListContactsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
- **optional** | ***ListContactsOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-
-Optional parameters are passed through a pointer to a ListContactsOpts struct
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **page** | **optional.Int64**| Current page *(Optional)* | [default to 1]
- **itemId** | **optional.Int64**| Search on Item ID *(Optional)* &#x60;(Relation)&#x60; | 
- **modelTypeId** | **optional.Int64**| Search on ModelType ID *(Optional)* &#x60;(Relation)&#x60; | 
- **tagId** | **optional.Int64**| Search on Tag ID *(Optional)* &#x60;(Relation)&#x60; | 
- **limit** | **optional.Int64**| Results per page *(Optional)* | 
- **orderBy** | **optional.String**| Field to order the results *(Optional)* | 
- **orderDirection** | **optional.String**| Direction of ordering *(Optional)* | 
- **externalStationId** | **optional.Int64**| Query on a different (content providing) station *(Optional)* | 
+ **itemId** | **int64** | Search on Item ID *(Optional)* &#x60;(Relation)&#x60; | 
+ **modelTypeId** | **int64** | Search on ModelType ID *(Optional)* &#x60;(Relation)&#x60; | 
+ **tagId** | **int64** | Search on Tag ID *(Optional)* &#x60;(Relation)&#x60; | 
+ **page** | **int64** | Current page *(Optional)* | [default to 1]
+ **limit** | **int64** | Results per page *(Optional)* | 
+ **orderBy** | **string** | Field to order the results *(Optional)* | 
+ **orderDirection** | **string** | Direction of ordering *(Optional)* | 
+ **externalStationId** | **int64** | Query on a different (content providing) station *(Optional)* | 
 
 ### Return type
 
-[**ContactResults**](ContactResults.md)
+[**InlineResponse2005**](InlineResponse2005.md)
 
 ### Authorization
 
@@ -177,34 +302,61 @@ Name | Type | Description  | Notes
 
 ## UpdateContactByID
 
-> Success UpdateContactByID(ctx, id, optional)
+> InlineResponse202 UpdateContactByID(ctx, id).ContactDataInput(contactDataInput).Execute()
 
 Update contact by id
 
-Update contact by id
 
-### Required Parameters
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    id := int64(789) // int64 | ID of Contact **(Required)**
+    contactDataInput := *openapiclient.NewContactDataInput(int64(1), "Foo", "Bar") // ContactDataInput | Data *(Optional)*
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ContactApi.UpdateContactByID(context.Background(), id).ContactDataInput(contactDataInput).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ContactApi.UpdateContactByID``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `UpdateContactByID`: InlineResponse202
+    fmt.Fprintf(os.Stdout, "Response from `ContactApi.UpdateContactByID`: %v\n", resp)
+}
+```
+
+### Path Parameters
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int64**| ID of Contact **(Required)** | [default to 0]
- **optional** | ***UpdateContactByIDOpts** | optional parameters | nil if no parameters
+**id** | **int64** | ID of Contact **(Required)** | 
 
-### Optional Parameters
+### Other Parameters
 
-Optional parameters are passed through a pointer to a UpdateContactByIDOpts struct
+Other parameters are passed through a pointer to a apiUpdateContactByIDRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **data** | [**optional.Interface of ContactDataInput**](ContactDataInput.md)| Data *(Optional)* | 
+ **contactDataInput** | [**ContactDataInput**](ContactDataInput.md) | Data *(Optional)* | 
 
 ### Return type
 
-[**Success**](Success.md)
+[**InlineResponse202**](InlineResponse202.md)
 
 ### Authorization
 

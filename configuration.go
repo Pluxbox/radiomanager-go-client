@@ -106,7 +106,7 @@ func NewConfiguration() *Configuration {
 		Debug:            false,
 		Servers:          ServerConfigurations{
 			{
-				URL: "https://radiomanager.io/api/v2",
+				URL: "https://staging.radiomanager.io/api/v2",
 				Description: "No description provided",
 			},
 			{
